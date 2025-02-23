@@ -513,7 +513,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 689060712}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: OnClickStart
+        m_MethodName: LoadGamePage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
