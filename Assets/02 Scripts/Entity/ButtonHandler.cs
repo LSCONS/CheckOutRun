@@ -9,4 +9,10 @@ public class ButtonHandler : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    float time = 0;
+    private void FixedUpdate()
+    {
+        
+    }
 }
