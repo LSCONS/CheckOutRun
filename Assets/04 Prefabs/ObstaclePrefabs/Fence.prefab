@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5534576579333005943}
   - component: {fileID: 8685044295331964836}
   - component: {fileID: 5413286974858660956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.115, y: -1.265}

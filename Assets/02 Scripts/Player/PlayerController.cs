@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
             player.jumpCount = 0;
             isFlap = false;
         }
-       
+
     }
 
     public void HandleJump()
     {
-        if (!isFlap) return; 
+        if (!isFlap) return;
         if (player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
         player.jumpCount++;
         Jump();
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleSlide()
     {
-        if (isFlap) return;
+        if (isFlap || !isGrounded) return;
         if (isSlide) Slide();
         else ResetSlide();
     }
