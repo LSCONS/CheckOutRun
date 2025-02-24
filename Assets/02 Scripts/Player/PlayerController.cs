@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
             player.jumpCount = 0;
             isFlap = false;
         }
-
     }
 
     public void HandleJump()

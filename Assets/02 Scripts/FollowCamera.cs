@@ -29,12 +29,12 @@ public class FollowCamera : MonoBehaviour
     {
         if( target == null) return;
 
-        Vector3 targetPosition = new Vector3(target.position.x, target.position.y, -10f);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        Vector3 targetPosition = new Vector3(target.position.x + 4, 0, -10f);
+        transform.position = targetPosition;
 
         if(backGround != null)
         {
-            backGround.position = new Vector3(transform.position.x * parallaxFactor, backGround.position.y, 0f); 
+            backGround.position = new Vector3((target.position.x * parallaxFactor) - 3, 0f, 0f); 
         }
     }
 }
