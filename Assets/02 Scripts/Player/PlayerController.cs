@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     private Player player;
     private ButtonHandler buttonHandler;
-    public bool isFlap = false; 
-    public bool isSlide = false; 
+    public bool isFlap = false;
+    public bool isSlide = false;
+    private bool isGrounded = false;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -19,44 +21,36 @@ public class PlayerController : MonoBehaviour
         if (player == null) return;
 
         HandleJump();
-        if (!isFlap)  
-        {
-            HandleSlide();
-        }
+        if (!isFlap) HandleSlide();
     }
 
     void FixedUpdate()
     {
         if (player == null) return;
-
         Move();
     }
 
     private void Move()
     {
-        if (player.rigid != null)
+        if (player.rigid == null) return;
+
+        player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Ground"));
+
+        if (isGrounded)
         {
-            player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
+            player.jumpCount = 0;
+            isFlap = false;
         }
     }
 
     public void HandleJump()
     {
-        if (isFlap)
-        {
-            if (player.jumpCount < player.maxJumpCount)
-            {
-                Jump();
-                player.jumpCount++;
-                isFlap = false;
+        if (!isFlap || player.jumpCount >= player.maxJumpCount) return;
 
-            }
-        }
-        if (player.rigid.velocity.y == 0)
-        {
-            player.jumpCount = 0;
-
-        }
+        Jump();
+        player.jumpCount++;
+        isFlap = false;
     }
 
     private void Jump()
@@ -70,15 +64,8 @@ public class PlayerController : MonoBehaviour
     public void HandleSlide()
     {
         if (isFlap) return;
-        if (isSlide)
-        {
-            Slide();
-         
-        }
-        else 
-        {
-            ResetSlide();
-        }
+        if (isSlide) Slide();
+        else ResetSlide();
     }
 
     private void Slide()
@@ -97,5 +84,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-
-
