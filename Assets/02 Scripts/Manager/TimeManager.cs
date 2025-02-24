@@ -7,7 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
     //1시간당 20초가 흐르도록
-    public float gameTime { get; private set; } = 9f * 60f;
+    public float gameTime { get; private set; } = 0;
     public float gameSpeed = 3f; //1초당 3분이 흘러야 함(60분 = 20초)
     private float speedMultiplier = 1f; //속도아이템 증감 배율
 
@@ -43,13 +43,12 @@ public class TimeManager : MonoBehaviour
             //else
             gameTime = startHour;
         }
-        gameTime += Time.deltaTime * gameSpeed;
     }
 
     public void AddGameTime(float moveDistance)
     {
         float TimetoAdd = moveDistance * 3f; // 플레이어 이동거리에 따라 더해주는거라 Time.deltaTime을 곱해주지 않아도 됨
-        gameTime += TimetoAdd;
+        gameTime = TimetoAdd + startHour;
 
         if (gameTime >= endHour)
         {
