@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rigid { get; private set; }
     public BoxCollider2D coll { get; private set; }
 
-
+    public int playerMaxHealth = 100;
     public int playerHealth = 100;
     public float jumpForce = 5f;
     public float playerSpeed = 5f;

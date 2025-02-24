@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 117601631}
   - component: {fileID: 117601630}
   - component: {fileID: 117601634}
+  - component: {fileID: 117601635}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -307,6 +308,20 @@ MonoBehaviour:
   front: {fileID: 510010179}
   scoreTxt: {fileID: 1865148914}
   Time: {fileID: 484097459}
+--- !u!114 &117601635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117601629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d924637cb24eef547a436298494cfb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1464109025}
+  playerController: {fileID: 1464109027}
 --- !u!1001 &166238785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1748,6 +1763,7 @@ GameObject:
   - component: {fileID: 1462164589}
   - component: {fileID: 1462164588}
   - component: {fileID: 1462164587}
+  - component: {fileID: 1462164590}
   m_Layer: 5
   m_Name: SlideButton
   m_TagString: Untagged
@@ -1857,6 +1873,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462164585}
   m_CullTransparentMesh: 1
+--- !u!114 &1462164590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462164585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 117601635}
+          m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+          m_MethodName: PlayerSlideButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 117601635}
+          m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+          m_MethodName: PlayerReleaseSlideButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1464109022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,6 +2018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c01257b85090924592c5bab695d9f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMaxHealth: 100
   playerHealth: 100
   jumpForce: 5
   playerSpeed: 5
@@ -2001,7 +2063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e30bba8443304f9550afd63755475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isJumping: 0
+  isFlap: 0
+  isSlide: 0
 --- !u!61 &1464109028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2914,7 +2977,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2090900489}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117601635}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: PlayerJumpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2090900489
 MonoBehaviour:
   m_ObjectHideFlags: 0

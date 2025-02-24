@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     private Player player;
     private ButtonHandler buttonHandler;
-    public bool isJumping = false;
     public bool isFlap = false; 
     public bool isSlide = false; 
     void Start()
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour
         if (player == null) return;
 
         HandleJump();
-        if (!isJumping)  
+        if (!isFlap)  
         {
             HandleSlide();
         }
@@ -50,13 +49,13 @@ public class PlayerController : MonoBehaviour
                 Jump();
                 player.jumpCount++;
                 isFlap = false;
-                isJumping = true;
+
             }
         }
         if (player.rigid.velocity.y == 0)
         {
             player.jumpCount = 0;
-            isJumping = false;
+
         }
     }
 
@@ -70,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleSlide()
     {
-        if (isJumping) return;
+        if (isFlap) return;
         if (isSlide)
         {
             Slide();
