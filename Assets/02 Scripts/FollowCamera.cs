@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public Transform target;
-    float offsetX; // Ä«¸Þ¶ó ÃÊ±â xÀ§Ä¡
+    float offsetX; // Ä«ï¿½Þ¶ï¿½ ï¿½Ê±ï¿½ xï¿½ï¿½Ä¡
     
     // Start is called before the first frame update
     void Start()

@@ -299,8 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924637cb24eef547a436298494cfb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerController: {fileID: 0}
+  playerController: {fileID: 238547897}
   pauseButton: {fileID: 0}
   pausePopUp: {fileID: 0}
 --- !u!1 &171793635
@@ -442,6 +441,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230679849}
   m_CullTransparentMesh: 1
+--- !u!114 &238547897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4466251748570362155, guid: 2d55bc117f3912447b82868469827b26, type: 3}
+  m_PrefabInstance: {fileID: 930329220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7e30bba8443304f9550afd63755475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &238547901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5683936181922834745, guid: 2d55bc117f3912447b82868469827b26, type: 3}
@@ -704,7 +714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 3
-  player: {fileID: 0}
 --- !u!1 &484097457
 GameObject:
   m_ObjectHideFlags: 0
