@@ -6,16 +6,15 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
-    //1½Ã°£´ç 20ÃÊ°¡ Èå¸£µµ·Ï
+    //1ì‹œê°„ë‹¹ 20ì´ˆê°€ íë¥´ë„ë¡
     public float gameTime { get; private set; } = 9f * 60f;
-    public float gameSpeed = 3f; //1ÃÊ´ç 3ºĞÀÌ Èê·¯¾ß ÇÔ(60ºĞ = 20ÃÊ)
-    private float speedMultiplier = 1f; //¼Óµµ¾ÆÀÌÅÛ Áõ°¨ ¹èÀ²
+    public float gameSpeed = 3f; //1ì´ˆë‹¹ 3ë¶„ì´ í˜ëŸ¬ì•¼ í•¨(60ë¶„ = 20ì´ˆ)
+    private float speedMultiplier = 1f; //ì†ë„ì•„ì´í…œ ì¦ê° ë°°ìœ¨
 
-    private float startHour = 9f * 60f; //Ãâ¼® ½Ã°£
-    private float endHour = 21f * 60f; //Åğ½Ç ½Ã°£
+    private float startHour = 9f * 60f; //ì¶œì„ ì‹œê°„
+    private float endHour = 21f * 60f; //í‡´ì‹¤ ì‹œê°„
 
-    //private bool isBoss = false; //21½Ã Á÷ÈÄ, º¸½ºÀüÆäÀÌÁî¿¡ µ¹ÀÔÇß´ÂÁö
-    [SerializeField] private Player player;
+    //private bool isBoss = false; //21ì‹œ ì§í›„, ë³´ìŠ¤ì „í˜ì´ì¦ˆì— ëŒì…í–ˆëŠ”ì§€
 
     private void Awake()
     {
@@ -32,15 +31,11 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        if (player == null) return;
-        //if (player.isDead) return;
-        
-        
-        //¼Óµµ Áõ°¡ ¾ÆÀÌÅÛÀ» ¸Ô¾ú´Ù¸é gameTime¿¡ speedMultiplerÀ» °öÇØ¾ß ÇÔ
-        //24½Ã°£ ±âÁØÀ¸·Î ½Ã°£ Á¦ÇÑ
+        //ì†ë„ ì¦ê°€ ì•„ì´í…œì„ ë¨¹ì—ˆë‹¤ë©´ gameTimeì— speedMultiplerì„ ê³±í•´ì•¼ í•¨
+        //24ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ì‹œê°„ ì œí•œ
         if(gameTime >= endHour)
         {
-            //¹Ù·Î ´ÙÀ½³¯ 9½Ã·Î ³Ñ¾î°¡´Â°Ô ¾Æ´Ï¶ó, º¸½ºÀüµ¿¾È Àá½Ã ´ë±âÇÏ´Â Á¶°Ç¹® ÇÊ¿ä
+            //ë°”ë¡œ ë‹¤ìŒë‚  9ì‹œë¡œ ë„˜ì–´ê°€ëŠ”ê²Œ ì•„ë‹ˆë¼, ë³´ìŠ¤ì „ë™ì•ˆ ì ì‹œ ëŒ€ê¸°í•˜ëŠ” ì¡°ê±´ë¬¸ í•„ìš”
             //if(isBoss == true)
             //{
 
@@ -53,12 +48,12 @@ public class TimeManager : MonoBehaviour
 
     public void AddGameTime(float moveDistance)
     {
-        float TimetoAdd = moveDistance * 3f; // ÇÃ·¹ÀÌ¾î ÀÌµ¿°Å¸®¿¡ µû¶ó ´õÇØÁÖ´Â°Å¶ó Time.deltaTimeÀ» °öÇØÁÖÁö ¾Ê¾Æµµ µÊ
+        float TimetoAdd = moveDistance * 3f; // í”Œë ˆì´ì–´ ì´ë™ê±°ë¦¬ì— ë”°ë¼ ë”í•´ì£¼ëŠ”ê±°ë¼ Time.deltaTimeì„ ê³±í•´ì£¼ì§€ ì•Šì•„ë„ ë¨
         gameTime += TimetoAdd;
 
         if (gameTime >= endHour)
         {
-            //º¸½ºÀü µ¿¾È moveDistance¸¦ Ä«¿îÆ®ÇÏ¸é ¾ÈµÊ
+            //ë³´ìŠ¤ì „ ë™ì•ˆ moveDistanceë¥¼ ì¹´ìš´íŠ¸í•˜ë©´ ì•ˆë¨
 
             gameTime = startHour;
         }

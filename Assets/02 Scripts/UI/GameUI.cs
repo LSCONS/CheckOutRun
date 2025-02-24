@@ -26,12 +26,12 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Update() // ë‚˜ì¤‘ì— ì—…ë°ì´íŠ¸ ë§ê³  ë‹¤ë¥¸ê±¸ë¡œ ìˆ˜ì •í•´ì•¼ë¨...(ìµœì í™” ë¬¸ì œ)
     {
         UpdateTimeUI();
         UpdateHealthBar();
     }
-    public void UpdateHealthBar() // hp°¡ º¯°æµÉ ¶§¸¶´Ù È£ÃâÇØ¼­ UI¸¦ ¾÷µ¥ÀÌÆ®ÇØÁà¾ßÇÔ
+    public void UpdateHealthBar() // hpê°€ ë³€ê²½ë  ë•Œë§ˆë‹¤ í˜¸ì¶œí•´ì„œ UIë¥¼ ì—…ë°ì´íŠ¸í•´ì¤˜ì•¼í•¨
     {
         float currentHp = player.playerHealth;
         float maxHp = player.playerMaxHealth;
@@ -41,12 +41,12 @@ public class GameUI : MonoBehaviour
         float fullWidth = 400f;
         float minWidth = 50f;
 
-        // ¸ñÇ¥°ª
+        // ëª©í‘œê°’
         float targetWidth = minWidth + ((currentHp / maxHp) * (fullWidth - minWidth));
-        // ÇöÀç °ª
+        // í˜„ì¬ ê°’
         float currentWidth = front.sizeDelta.x;
 
-        // °ÔÀÌÁö ºÎµå·´°Ô ÀÌµ¿
+        // ê²Œì´ì§€ ë¶€ë“œëŸ½ê²Œ ì´ë™
         float newWidth = Mathf.Lerp(currentWidth, targetWidth, Time.deltaTime * lerpSpeed);
 
         front.sizeDelta = new Vector2(newWidth, height);
