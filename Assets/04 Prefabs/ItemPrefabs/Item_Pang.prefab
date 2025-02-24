@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934677336536737630}
   - component: {fileID: 47462407485286417}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Item_Pang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 9102425518008651738}
   - component: {fileID: 9160526628847283671}
   - component: {fileID: 8886760807580163470}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Item_Pang_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

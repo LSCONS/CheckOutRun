@@ -18,7 +18,7 @@ public class StatHandler : MonoBehaviour
 
     public void ChangeSpeed(IItem item)
     {
-        if (item == null)
+        if (item == null || !player.isAlive)
         {
             return;
         }
@@ -38,7 +38,7 @@ public class StatHandler : MonoBehaviour
 
     public void Heal(IItem item)
     {
-        if (item == null)
+        if (item == null || !player.isAlive)
         {
             return;
         }
@@ -73,6 +73,8 @@ public class StatHandler : MonoBehaviour
     IEnumerator InvincibilityRoutine()
     {
         player.isInvincible = true;
+
+        //플레이어 무적 애니메이션 작업 필요
         yield return new WaitForSeconds(player.invincibleTime);
 
         player.isInvincible = false;

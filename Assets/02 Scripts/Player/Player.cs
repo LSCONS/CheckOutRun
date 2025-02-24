@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public bool isAlive = true;
     public bool isDamage = false;
     public bool isInvincible = false;
-    public float invincibleTime = 1.5f;
+    public float invincibleTime = 0.5f;
 
     public Vector2 originalColliderSize { get; private set; }
 
