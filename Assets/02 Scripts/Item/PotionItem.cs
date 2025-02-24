@@ -2,19 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotionItem : IItem
+public class PotionItem : MonoBehaviour, IItem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int heal = 60;         //충돌시 회복되는 체력 수치
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public int Heal { get { return heal; } }
 
     public void OnCollisionEffect()
     {

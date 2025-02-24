@@ -2,24 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedItem : IItem
+public class SpeedItem : MonoBehaviour ,IItem
 {
-    //플레이어 선언 필요
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //플레이어 초기화 필요
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public int speedStat = 1;               //충돌시 올려야할 speed 수치
+    public int speedType = 0;
+    
     public void OnCollisionEffect()
     {
 
     }
+}
+
+public enum SpeedType
+{
+    Slow,
+    Fast,
+    Max
 }

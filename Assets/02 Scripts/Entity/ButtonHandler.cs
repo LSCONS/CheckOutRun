@@ -8,8 +8,7 @@ public class ButtonHandler : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private PlayerController playerController;
-    public bool isFlap = false;
-    public bool isSlide = false;
+
 
     private void Start()
     {
@@ -40,19 +39,21 @@ public class ButtonHandler : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    public void PlayerJumpButton() 
+    public void PlayerJumpButton()
     {
-        isFlap = true;
+        playerController.isFlap = true; 
         playerController.HandleJump();
     }
-    public void PlayerSlideButton() 
+
+    public void PlayerSlideButton()
     {
-        isSlide = true;
+        playerController.isSlide = true; 
         playerController.HandleSlide();
     }
-    public void PlayerReleaseSlideButton() 
+
+    public void PlayerReleaseSlideButton()
     {
-        isSlide = false;
+        playerController.isSlide = false; 
         playerController.HandleSlide();
     }
 
