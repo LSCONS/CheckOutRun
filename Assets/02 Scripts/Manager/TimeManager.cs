@@ -9,7 +9,6 @@ public class TimeManager : MonoBehaviour
     //1시간당 20초가 흐르도록
     public float gameTime { get; private set; } = 0;
     public float gameSpeed = 3f; //1초당 3분이 흘러야 함(60분 = 20초)
-    private float speedMultiplier = 1f; //속도아이템 증감 배율
 
     private float startHour = 9f * 60f; //출석 시간
     private float endHour = 21f * 60f; //퇴실 시간
