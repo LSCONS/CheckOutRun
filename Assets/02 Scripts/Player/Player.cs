@@ -6,8 +6,9 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rigid;
     BoxCollider2D coll;
+    public int playerHealth = 100;
     public float jumpForce = 5f;
-    public float forwardSpeed = 5f;
+    public float  playerSpeed = 5f;
     public int maxJumpCount = 1;
     public int jumpCount = 0;
     private Vector2 originalColliderSize;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
     {
         if (rigid != null)
         {
-            rigid.velocity = new Vector2(forwardSpeed, rigid.velocity.y);
+            rigid.velocity = new Vector2(playerSpeed, rigid.velocity.y);
         }
     }
 
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
     {
         if (rigid != null)
         {
-            rigid.velocity = new Vector2(forwardSpeed, jumpForce);
+            rigid.velocity = new Vector2(playerSpeed, jumpForce);
         }
     }
     public void Slide()
