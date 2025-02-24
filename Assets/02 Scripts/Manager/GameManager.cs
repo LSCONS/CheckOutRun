@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         SceneManager.LoadScene("ResultScene");
     }
