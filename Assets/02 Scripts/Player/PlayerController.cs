@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Player player;
     private ButtonHandler buttonHandler;
+    private StatHandler statHandler;
+    private DataManager dataManager;
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<Player>();
         buttonHandler = FindObjectOfType<ButtonHandler>();
+        statHandler = GetComponent<StatHandler>();
+        dataManager = DataManager.Instance;
     }
 
     void Update()
@@ -58,12 +62,9 @@ public class PlayerController : MonoBehaviour
     {
         if (player.rigid != null)
         {
-
             player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
             player.jumpCount++;
         }
-        
-
     }
 
     public void HandleSlide()
@@ -91,4 +92,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision == null)
+        {
+            return;
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            if (collision.GetType() == typeof(PotionItem))
+            {
+                PotionItem item = collision.gameObject.GetComponent<PotionItem>();
+                if (item != null)
+                {
+                    statHandler.Heal(item);
+                }
+                //item.OnCollisionEffect();
+            }
+
+            if (collision.GetType() == typeof(SpeedItem))
+            {
+                SpeedItem item = collision.gameObject.GetComponent<SpeedItem>();
+                if (item != null)
+                {
+                    statHandler.ChangeSpeed(item);
+                }
+                //item.OnCollisionEffect();
+            }
+
+            if (collision.GetType() == typeof(CoinItem))
+            {
+                CoinItem item = collision.gameObject.GetComponent<CoinItem>();
+                if (item != null)
+                {
+                    dataManager.AddScore(item.CoinScore);
+                }
+                //item.OnCollisionEffect();
+            }
+        }
+    }
 }
