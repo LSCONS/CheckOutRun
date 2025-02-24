@@ -14,27 +14,27 @@ public class ButtonHandler : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("Player°¡ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("Playerï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
     }
 
-    public void LoadGamePage() //º¯¼ö¸í ¼öÁ¤Çß½À´Ï´Ù. + ResultScene¿¡¼­ ´Ù½ÃÇÏ±â Å¬¸¯½Ã ÀÌ ÇÔ¼ö »ç¿ë
+    public void LoadGamePage() //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. + ResultSceneï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ï¿½Ï±ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½
     {
         SceneManager.LoadScene("GameScene");
     }
 
-    //public void LoadTutorialPage() Æ©Åä¸®¾ó °ü·Ã ±âÈ¹ ÈÄ ¼öÁ¤ ¿¹Á¤
+    //public void LoadTutorialPage() Æ©ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¹ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //{
     //    SceneManager.LoadScene("TutorialScene")
     //}
 
-    public void LoadResultPage() //GameScene¿¡¼­ °ÔÀÓ¿À¹öµÉ¶§ »ç¿ë ÇÔ¼ö
+    public void LoadResultPage() //GameSceneï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½É¶ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     {
         SceneManager.LoadScene("ResultScene");
     }
 
-    public void LoadMainPage() //ResultScene¿¡¼­ ´Ù½ÃÇÏ±â/¸ÞÀÎÈ­¸é Áß ¸ÞÀÎÈ­¸é Å¬¸¯½Ã »ç¿ë ÇÔ¼ö
+    public void LoadMainPage() //ResultSceneï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ï¿½Ï±ï¿½/ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     {
         SceneManager.LoadScene("MainScene");
     }
