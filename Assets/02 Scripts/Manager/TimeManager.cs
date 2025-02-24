@@ -51,4 +51,16 @@ public class TimeManager : MonoBehaviour
         gameTime += Time.deltaTime * gameSpeed;
     }
 
+    public void AddGameTime(float moveDistance)
+    {
+        float TimetoAdd = moveDistance * 3f; // 플레이어 이동거리에 따라 더해주는거라 Time.deltaTime을 곱해주지 않아도 됨
+        gameTime += TimetoAdd;
+
+        if (gameTime >= endHour)
+        {
+            //보스전 동안 moveDistance를 카운트하면 안됨
+
+            gameTime = startHour;
+        }
+    }
 }
