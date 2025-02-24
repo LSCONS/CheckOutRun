@@ -32,6 +32,13 @@ public class Player : MonoBehaviour
 
         originalColliderSize = coll != null ? coll.size : Vector2.zero;
     }
+    private void Update()
+    {
+        if (transform.position.x > 0f)
+        {
+            TimeManager.Instance.AddGameTime(transform.position.x); //한픽셀움직인거리당 3분씩 더해지도록
+        }
+    }
 }
 
 
