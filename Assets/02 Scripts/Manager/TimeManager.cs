@@ -1,10 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
+    //1시간당 20초가 흐르도록
+    public float gameTime { get; private set; } = 9f * 60f;
+    public float gameSpeed = 3f; //1초당 3분이 흘러야 함(60분 = 20초)
+    private float speedMultiplier = 1f; //속도아이템 증감 배율
+
+    private float startHour = 9f * 60f; //출석 시간
+    private float endHour = 21f * 60f; //퇴실 시간
+
+    //private bool isBoss = false; //21시 직후, 보스전페이즈에 돌입했는지
+    [SerializeField] private Player player;
 
     private void Awake()
     {
@@ -18,4 +29,26 @@ public class TimeManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        if (player == null) return;
+        //if (player.isDead) return;
+        
+        
+        //속도 증가 아이템을 먹었다면 gameTime에 speedMultipler을 곱해야 함
+        //24시간 기준으로 시간 제한
+        if(gameTime >= endHour)
+        {
+            //바로 다음날 9시로 넘어가는게 아니라, 보스전동안 잠시 대기하는 조건문 필요
+            //if(isBoss == true)
+            //{
+
+            //}
+            //else
+            gameTime = startHour;
+        }
+        gameTime += Time.deltaTime * gameSpeed;
+    }
+
 }
