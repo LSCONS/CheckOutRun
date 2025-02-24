@@ -941,7 +941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2488977116868061857, guid: e0f09731dc3427e4ab52da20228d9e55, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4363402518211671793, guid: e0f09731dc3427e4ab52da20228d9e55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1117,7 +1117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811558841}
   - component: {fileID: 811558842}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,11 +1410,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 797130390282812134, guid: 92e2d7d34305449409c0603fe25f5ae8, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1069743814736413797, guid: 92e2d7d34305449409c0603fe25f5ae8, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1609340534540644374, guid: 92e2d7d34305449409c0603fe25f5ae8, type: 3}
       propertyPath: m_Color.a
@@ -1426,7 +1426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3516587274997079853, guid: 92e2d7d34305449409c0603fe25f5ae8, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8047083014429143265, guid: 92e2d7d34305449409c0603fe25f5ae8, type: 3}
       propertyPath: m_Color.a
@@ -1649,7 +1649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1139145543}
   - component: {fileID: 1139145544}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2488977116868061857, guid: e0f09731dc3427e4ab52da20228d9e55, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4363402518211671793, guid: e0f09731dc3427e4ab52da20228d9e55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1930,7 +1930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988838546694512786, guid: 772706b692ca6524b8ebd33c58d020f2, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2045,7 +2045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1342253230}
   - component: {fileID: 1342253231}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2129,7 +2129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362908750}
   - component: {fileID: 1362908751}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2596,7 +2596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 755198042134595538, guid: 225ef0ddda9b3a34398248078988ae78, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4686804150251302446, guid: 225ef0ddda9b3a34398248078988ae78, type: 3}
       propertyPath: m_Color.a
@@ -2661,7 +2661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1740630701}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2755,7 +2755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1758795184}
   - component: {fileID: 1758795185}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3218,7 +3218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893225290}
   - component: {fileID: 1893225291}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3302,7 +3302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014378985}
   - component: {fileID: 2014378986}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3587,7 +3587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2100042433}
   - component: {fileID: 2100042434}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Window (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
