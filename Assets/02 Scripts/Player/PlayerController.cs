@@ -5,16 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Player player;
-
+    private ButtonHandler buttonHandler;
+    public bool isJumping = false;
     void Start()
     {
         player = GetComponent<Player>();
-
-        if (player == null)
-        {
-            Debug.LogError("PlayerController: Player 컴포넌트를 찾을 수 없습니다!");
-            return;
-        }
+        buttonHandler = FindObjectOfType<ButtonHandler>();
     }
 
     void Update()
@@ -22,7 +18,10 @@ public class PlayerController : MonoBehaviour
         if (player == null) return;
 
         HandleJump();
-        HandleSlide();
+        if (!isJumping)  
+        {
+            HandleSlide();
+        }
     }
 
     void FixedUpdate()
@@ -40,19 +39,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleJump()
+    public void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (buttonHandler.isFlap)
         {
             if (player.jumpCount < player.maxJumpCount)
             {
                 Jump();
                 player.jumpCount++;
+                buttonHandler.isFlap = false;
+                isJumping = true;
             }
         }
         if (player.rigid.velocity.y == 0)
         {
             player.jumpCount = 0;
+            isJumping = false;
         }
     }
 
@@ -64,13 +66,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleSlide()
+    public void HandleSlide()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isJumping) return;
+        if (buttonHandler.isSlide)
         {
             Slide();
+         
         }
-        else if (Input.GetMouseButtonUp(0))
+        else 
         {
             ResetSlide();
         }

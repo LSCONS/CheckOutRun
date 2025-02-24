@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private PlayerController playerController;
+    public bool isFlap = false;
+    public bool isSlide = false;
 
     private void Start()
     {
@@ -36,15 +40,20 @@ public class ButtonHandler : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    public void PlayerJumpButton(float flapForce) //추후 구현 예정
+    public void PlayerJumpButton() 
     {
-        player.velocity.y += flapForce;
-        player.isFlap = false;
+        isFlap = true;
+        playerController.HandleJump();
+    }
+    public void PlayerSlideButton() 
+    {
+        isSlide = true;
+        playerController.HandleSlide();
+    }
+    public void PlayerReleaseSlideButton() 
+    {
+        isSlide = false;
+        playerController.HandleSlide();
     }
 
-    public void PlayerSlideButton(float forwardSpeed) //추후 구현 예정
-    {
-        player.velocity.x += forwardSpeed;
-        player.isSlide = false;
-    }
 }
