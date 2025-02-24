@@ -131,5 +131,10 @@ public class PlayerController : MonoBehaviour
                 //item.OnCollisionEffect();
             }
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            statHandler.Damage();
+        }
     }
 }

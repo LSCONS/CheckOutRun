@@ -6,17 +6,19 @@ using static UnityEditor.Progress;
 
 public class StatHandler : MonoBehaviour
 {
+    GameManager gameManager;
     Player player;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         player = GetComponent<Player>();
     }
 
     public void ChangeSpeed(IItem item)
     {
-        if (item == null)
+        if (item == null || !player.isAlive)
         {
             return;
         }
@@ -36,7 +38,7 @@ public class StatHandler : MonoBehaviour
 
     public void Heal(IItem item)
     {
-        if (item == null)
+        if (item == null || !player.isAlive)
         {
             return;
         }
@@ -45,5 +47,36 @@ public class StatHandler : MonoBehaviour
             PotionItem potionItem = (PotionItem)item;
             player.playerHealth += potionItem.Heal;
         }
+    }
+
+    public void Damage()
+    {
+        int damage = 20;
+        if (player.isInvincible)
+        {
+            return;
+        }
+
+        if (player.playerHealth - damage <= 0)
+        {
+            player.playerHealth = 0;
+            gameManager.GameOver();
+        }
+        else
+        {
+            player.playerHealth -= damage;
+            StartCoroutine(InvincibilityRoutine());
+        }
+    }
+
+    //피격시 무적처리
+    IEnumerator InvincibilityRoutine()
+    {
+        player.isInvincible = true;
+
+        //플레이어 무적 애니메이션 작업 필요
+        yield return new WaitForSeconds(player.invincibleTime);
+
+        player.isInvincible = false;
     }
 }

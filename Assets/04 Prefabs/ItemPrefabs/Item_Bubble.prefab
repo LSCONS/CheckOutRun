@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8436842469578396017}
   - component: {fileID: 4545583297598591776}
   - component: {fileID: 773499084082620714}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Item_Bubble_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931978538288212106}
   - component: {fileID: 3580519705968853224}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Item_Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}

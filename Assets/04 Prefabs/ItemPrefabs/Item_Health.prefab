@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3692045687704171909}
   - component: {fileID: 851996131506997441}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Item_Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 1102072815715844273}
   - component: {fileID: 7751391271343665642}
   - component: {fileID: 6706059700395012067}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Item_Health_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
