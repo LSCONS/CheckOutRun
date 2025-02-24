@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public bool isWin = false;
 
     private void Awake()
     {
@@ -17,5 +18,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Application.targetFrameRate = 30;
+        QualitySettings.vSyncCount = 0;
     }
 }
