@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7813543165948311334}
   - component: {fileID: 9049003854549840660}
   - component: {fileID: 8623523101363425222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zeolite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
