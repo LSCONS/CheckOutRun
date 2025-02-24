@@ -35,21 +35,22 @@ public class PlayerController : MonoBehaviour
         if (player.rigid == null) return;
 
         player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Ground"));
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground"));
 
         if (isGrounded)
         {
             player.jumpCount = 0;
             isFlap = false;
         }
+       
     }
 
     public void HandleJump()
     {
-        if (!isFlap || player.jumpCount >= player.maxJumpCount) return;
-
-        Jump();
+        if (!isFlap) return; 
+        if (player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
         player.jumpCount++;
+        Jump();
         isFlap = false;
     }
 
@@ -57,8 +58,12 @@ public class PlayerController : MonoBehaviour
     {
         if (player.rigid != null)
         {
+
             player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
+            player.jumpCount++;
         }
+        
+
     }
 
     public void HandleSlide()
