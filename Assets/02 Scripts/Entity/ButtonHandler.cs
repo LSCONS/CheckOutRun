@@ -7,18 +7,9 @@ using UnityEngine.UI;
 
 public class ButtonHandler : MonoBehaviour
 {
-    [SerializeField] private Player player;
     [SerializeField] private PlayerController playerController;
     public Button pauseButton;
     public Transform pausePopUp;
-    private void Start()
-    {
-        if (player == null)
-        {
-            Debug.LogError("Player이 할당되지 않았습니다.");
-            return;
-        }
-    }
 
     public void LoadGamePage() //결과씬에서 다시하기 버튼 클릭시 이 함수 사용
     {
