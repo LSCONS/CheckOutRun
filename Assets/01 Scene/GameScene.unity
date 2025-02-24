@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   front: {fileID: 510010179}
+  scoreTxt: {fileID: 1865148914}
 --- !u!1001 &166238785
 PrefabInstance:
   m_ObjectHideFlags: 0
