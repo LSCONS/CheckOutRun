@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7050991094319825209}
   - component: {fileID: 7674062577972248149}
   - component: {fileID: -7080631557754266947}
-  m_Layer: 0
-  m_Name: PlatForm7
+  m_Layer: 3
+  m_Name: Platform7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4498861125210287637}
   - component: {fileID: 1930620384849849924}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

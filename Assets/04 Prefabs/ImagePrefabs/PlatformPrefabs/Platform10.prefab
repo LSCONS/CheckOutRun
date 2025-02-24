@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4742279788139853314}
   - component: {fileID: 108159616827390855}
   - component: {fileID: 741631724527668850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,8 +117,8 @@ GameObject:
   - component: {fileID: 7264423175004680206}
   - component: {fileID: 7674851034833544392}
   - component: {fileID: 5402123688943439149}
-  m_Layer: 0
-  m_Name: PlatForm10
+  m_Layer: 3
+  m_Name: Platform10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
