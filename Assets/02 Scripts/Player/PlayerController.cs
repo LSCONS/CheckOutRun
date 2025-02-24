@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y * 0.5f);
+            transform.rotation = Quaternion.Euler(0, 0, 90);
         }
     }
 
@@ -81,6 +82,8 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             player.coll.size = player.originalColliderSize;
+            transform.rotation = Quaternion.identity;
         }
     }
+
 }
