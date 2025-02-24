@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1815141274154952341}
   - component: {fileID: 7089564615579161463}
   - component: {fileID: -1987055954372892747}
+  - component: {fileID: -2553384864408431779}
   m_Layer: 3
   m_Name: Platform1
   m_TagString: Untagged
@@ -113,6 +114,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2553384864408431779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383217464833370701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f904566607f52f849a6df0f6e8fbfd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5023423115134817863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,6 +141,10 @@ PrefabInstance:
     - target: {fileID: 5413286974858660956, guid: 92e0c318484241c488f81eed31ccf0ec, type: 3}
       propertyPath: m_Offset.y
       value: -1.5857283
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413286974858660956, guid: 92e0c318484241c488f81eed31ccf0ec, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5534576579333005943, guid: 92e0c318484241c488f81eed31ccf0ec, type: 3}
       propertyPath: m_LocalScale.x
