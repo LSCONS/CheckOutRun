@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class StatHandler : MonoBehaviour
         player = GetComponent<Player>();
     }
 
-    public void SpeedUp(IItem item)
+    public void ChangeSpeed(IItem item)
     {
         if (item == null)
         {
@@ -22,20 +23,14 @@ public class StatHandler : MonoBehaviour
         if (item.GetType() == typeof(SpeedItem))
         {
             SpeedItem speedItem = (SpeedItem)item;
-            player.playerSpeed += speedItem.speedStat;
-        }
-    }
-
-    public void SpeedDown(IItem item)
-    {
-        if (item == null)
-        {
-            return;
-        }
-        if (item.GetType() == typeof(SpeedItem))
-        {
-            SpeedItem speedItem = (SpeedItem)item;
-            player.playerSpeed -= speedItem.speedStat;
+            if (Enum.Equals(speedItem.speedType, SpeedType.Slow))
+            {
+                player.playerSpeed -= speedItem.speedStat;
+            }
+            else if (Enum.Equals(speedItem.speedType, SpeedType.Fast))
+            {
+                player.playerSpeed += speedItem.speedStat;
+            }
         }
     }
 
@@ -45,7 +40,7 @@ public class StatHandler : MonoBehaviour
         {
             return;
         }
-        if (item.GetType() == typeof(SpeedItem))
+        if (item.GetType() == typeof(PotionItem))
         {
             PotionItem potionItem = (PotionItem)item;
             player.playerHealth += potionItem.Heal;
