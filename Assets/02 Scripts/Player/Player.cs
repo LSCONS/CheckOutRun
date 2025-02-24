@@ -23,11 +23,11 @@ public class Player : MonoBehaviour
 
         if (rigid == null)
         {
-            Debug.LogError("Player: Rigidbody2D¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù!");
+            Debug.LogError("Player: Rigidbody2Dë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!");
         }
         if (coll == null)
         {
-            Debug.LogError("Player: BoxCollider2D¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù!");
+            Debug.LogError("Player: BoxCollider2Dë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!");
         }
 
         originalColliderSize = coll != null ? coll.size : Vector2.zero;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
         if (transform.position.x > 0f)
         {
-            TimeManager.Instance.AddGameTime(transform.position.x); //ÇÑÇÈ¼¿¿òÁ÷ÀÎ°Å¸®´ç 3ºĞ¾¿ ´õÇØÁöµµ·Ï
+            TimeManager.Instance.AddGameTime(transform.position.x); //í•œí”½ì…€ì›€ì§ì¸ê±°ë¦¬ë‹¹ 3ë¶„ì”© ë”í•´ì§€ë„ë¡
         }
     }
 }

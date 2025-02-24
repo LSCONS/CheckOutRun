@@ -1057,9 +1057,17 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 680939702707119389, guid: 2d55bc117f3912447b82868469827b26, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2005617884008738187, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932138169980087719, guid: 2d55bc117f3912447b82868469827b26, type: 3}
+      propertyPath: jumpForce
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5683936181922834745, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_LocalPosition.x

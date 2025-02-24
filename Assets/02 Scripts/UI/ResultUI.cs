@@ -14,7 +14,7 @@ public class ResultUI : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            if (GameManager.Instance.isWin = true)
+            if (GameManager.Instance.isWin == true)
             {
                 resultTitle.text = "퇴실 완료!";
             }
