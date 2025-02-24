@@ -10,7 +10,7 @@ public class ButtonHandler : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private PlayerController playerController;
     public Button pauseButton;
-    public GameObject pausePopUp;
+    public Transform pausePopUp;
     private void Start()
     {
         if (player == null)
@@ -62,13 +62,13 @@ public class ButtonHandler : MonoBehaviour
     {
         Time.timeScale = 0f;
         pauseButton = GetComponentInChildren<Button>(true);
-        pausePopUp = GetComponentInChildren<GameObject>(true);
-        pausePopUp.SetActive(true);
+        pausePopUp = transform.Find("Popup");
+        pausePopUp.gameObject.SetActive(true);
     }
 
     public void OnClickContinue()
     {
-        pausePopUp.SetActive(false);
+        pausePopUp.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 

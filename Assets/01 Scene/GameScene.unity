@@ -317,6 +317,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1338066395}
   - {fileID: 11084169}
   - {fileID: 484097458}
   - {fileID: 1865148913}
@@ -361,6 +362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1464109025}
   playerController: {fileID: 1464109027}
+  pauseButton: {fileID: 0}
+  pausePopUp: {fileID: 0}
 --- !u!1001 &166238785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,7 +807,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 318844350}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117601635}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: OnClickExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &318844350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,7 +1790,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1071372117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117601635}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: OnClickContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1071372117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,11 +2329,11 @@ RectTransform:
   m_Children:
   - {fileID: 1071372115}
   - {fileID: 318844348}
-  m_Father: {fileID: 1536427650}
+  m_Father: {fileID: 117601633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -600, y: -300}
+  m_AnchoredPosition: {x: -25, y: 15}
   m_SizeDelta: {x: 900, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338066396
@@ -2832,7 +2859,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 260284045}
-  - {fileID: 1338066395}
   m_Father: {fileID: 117601633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2883,7 +2909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536427652}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 117601635}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: OpenPuasePopUpPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1536427652
 MonoBehaviour:
   m_ObjectHideFlags: 0
