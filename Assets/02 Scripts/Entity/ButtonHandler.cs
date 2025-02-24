@@ -1,10 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
+    [SerializeField] private Player player;
+    [SerializeField] private PlayerController playerController;
+    public bool isFlap = false;
+    public bool isSlide = false;
+
+    private void Start()
+    {
+        if (player == null)
+        {
+            Debug.LogError("Player가 할당되지 않았습니다.");
+            return;
+        }
+    }
 
     public void LoadGamePage() //변수명 수정했습니다. + ResultScene에서 다시하기 클릭시 이 함수 사용
     {
@@ -26,13 +40,20 @@ public class ButtonHandler : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    //public void Jump() //추후 구현 예정
-    //{
+    public void PlayerJumpButton() 
+    {
+        isFlap = true;
+        playerController.HandleJump();
+    }
+    public void PlayerSlideButton() 
+    {
+        isSlide = true;
+        playerController.HandleSlide();
+    }
+    public void PlayerReleaseSlideButton() 
+    {
+        isSlide = false;
+        playerController.HandleSlide();
+    }
 
-    //}
-
-    //public void Slide() //추후 구현 예정
-    //{
-
-    //}
 }

@@ -4,69 +4,34 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    BoxCollider2D coll;
+    public Rigidbody2D rigid { get; private set; }
+    public BoxCollider2D coll { get; private set; }
+
+
     public int playerHealth = 100;
     public float jumpForce = 5f;
-    public float  playerSpeed = 5f;
-    public int maxJumpCount = 1;
+    public float playerSpeed = 5f;
+    public int maxJumpCount = 2;
     public int jumpCount = 0;
-    private Vector2 originalColliderSize;
 
-    void Start()
+    public Vector2 originalColliderSize { get; private set; }
+
+    void Awake()
     {
         rigid = GetComponentInChildren<Rigidbody2D>();
         coll = GetComponentInChildren<BoxCollider2D>();
-        originalColliderSize = coll.size;
-    }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (rigid == null)
         {
-            if(jumpCount<=maxJumpCount)
-            {
-                Jump();
-                jumpCount++;
-            }
+            Debug.LogError("Player: Rigidbody2D를 찾을 수 없습니다!");
         }
-        if(rigid.velocity.y == 0)
+        if (coll == null)
         {
-            jumpCount = 0;
+            Debug.LogError("Player: BoxCollider2D를 찾을 수 없습니다!");
         }
-        if(Input.GetMouseButtonDown(0))
-        {
-            Slide();
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            ResetSlide();
-        }
-    
-    }
 
-    void FixedUpdate()
-    {
-        if (rigid != null)
-        {
-            rigid.velocity = new Vector2(playerSpeed, rigid.velocity.y);
-        }
-    }
-
-    void Jump()
-    {
-        if (rigid != null)
-        {
-            rigid.velocity = new Vector2(playerSpeed, jumpForce);
-        }
-    }
-    public void Slide()
-    {
-        coll.size = new Vector2(originalColliderSize.x, originalColliderSize.y * 0.5f);
-    }
-
-    public void ResetSlide()
-    {
-        coll.size = originalColliderSize;
+        originalColliderSize = coll != null ? coll.size : Vector2.zero;
     }
 }
+
+
