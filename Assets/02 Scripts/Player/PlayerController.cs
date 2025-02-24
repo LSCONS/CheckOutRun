@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private ButtonHandler buttonHandler;
     public bool isJumping = false;
+    public bool isFlap = false; 
+    public bool isSlide = false; 
     void Start()
     {
         player = GetComponent<Player>();
@@ -41,13 +43,13 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
-        if (buttonHandler.isFlap)
+        if (isFlap)
         {
             if (player.jumpCount < player.maxJumpCount)
             {
                 Jump();
                 player.jumpCount++;
-                buttonHandler.isFlap = false;
+                isFlap = false;
                 isJumping = true;
             }
         }
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
     public void HandleSlide()
     {
         if (isJumping) return;
-        if (buttonHandler.isSlide)
+        if (isSlide)
         {
             Slide();
          
