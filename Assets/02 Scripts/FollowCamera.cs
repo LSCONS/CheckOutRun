@@ -5,13 +5,7 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public Transform target;
-    float offsetX; // ī�޶� �ʱ� x��ġ
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        offsetX = transform.position.x - target.position.x;
-    }
+    float offsetX = 4; // ī�޶� �ʱ� x��ġ
 
     // Update is called once per frame
     void Update()
