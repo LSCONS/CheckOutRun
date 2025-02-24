@@ -11,4 +11,6 @@ public class GameUI : MonoBehaviour
     //{
     //    front.localScale = new Vector3(hp, 1f, 1f);
     //}
+
+
 }
