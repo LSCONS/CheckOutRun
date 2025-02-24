@@ -4,15 +4,97 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Player player;
+    private ButtonHandler buttonHandler;
+    public bool isJumping = false;
     void Start()
     {
-        
+        player = GetComponent<Player>();
+        buttonHandler = FindObjectOfType<ButtonHandler>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (player == null) return;
+
+        HandleJump();
+        if (!isJumping)  
+        {
+            HandleSlide();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (player == null) return;
+
+        Move();
+    }
+
+    private void Move()
+    {
+        if (player.rigid != null)
+        {
+            player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
+        }
+    }
+
+    public void HandleJump()
+    {
+        if (buttonHandler.isFlap)
+        {
+            if (player.jumpCount < player.maxJumpCount)
+            {
+                Jump();
+                player.jumpCount++;
+                buttonHandler.isFlap = false;
+                isJumping = true;
+            }
+        }
+        if (player.rigid.velocity.y == 0)
+        {
+            player.jumpCount = 0;
+            isJumping = false;
+        }
+    }
+
+    private void Jump()
+    {
+        if (player.rigid != null)
+        {
+            player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
+        }
+    }
+
+    public void HandleSlide()
+    {
+        if (isJumping) return;
+        if (buttonHandler.isSlide)
+        {
+            Slide();
+         
+        }
+        else 
+        {
+            ResetSlide();
+        }
+    }
+
+    private void Slide()
+    {
+        if (player.coll != null)
+        {
+            player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y * 0.5f);
+        }
+    }
+
+    private void ResetSlide()
+    {
+        if (player.coll != null)
+        {
+            player.coll.size = player.originalColliderSize;
+        }
     }
 }
+
+
