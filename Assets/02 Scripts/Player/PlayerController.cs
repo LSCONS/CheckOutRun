@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public bool isSlide = false;
     private bool isGrounded = false;
     private bool wasGrounded = false;
-    private bool isShift = false;
 
     private void Awake()
     {
@@ -42,11 +41,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (playerAnimationHandler.IsJump1 == false && (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)))
         {
-            isShift = true;
+            isSlide = true;
         }
         else
         {
-            isShift = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
+            isSlide = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
         }
 
     }
@@ -65,8 +64,8 @@ public class PlayerController : MonoBehaviour
         if (player.rigid == null) return;
 
         player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
-
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down * 0.9f, 1f, LayerMask.GetMask("Ground"));
+        Vector3 temp = transform.position - new Vector3(0.3f, 0, 0);
+        isGrounded = Physics2D.Raycast(temp, Vector2.down * 0.9f, 1f, LayerMask.GetMask("Ground"));
         Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
         if (isGrounded && !wasGrounded)
         {
@@ -98,7 +97,7 @@ public class PlayerController : MonoBehaviour
     public void HandleSlide()
     {
         if (isFlap || !isGrounded) return;
-        if (isSlide || isShift) Slide();
+        if (isSlide) Slide();
         else ResetSlide();
     }
 
@@ -107,7 +106,8 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             playerAnimationHandler.IsSlide = true;
-            player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y * 0.5f);
+            player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y - 1f);
+            player.coll.offset = new Vector2(player.originalColliderOffset.x, player.originalColliderOffset.y - 0.5f);
         }
     }
 
@@ -115,7 +115,9 @@ public class PlayerController : MonoBehaviour
     {
         if (player.coll != null)
         {
+            playerAnimationHandler.IsSlide = false;
             player.coll.size = player.originalColliderSize;
+            player.coll.offset = player.originalColliderOffset;
             transform.rotation = Quaternion.identity;
         }
     }

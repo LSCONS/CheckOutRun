@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float InvincibleTime { get { return invincibleTime; } }
 
     public Vector2 originalColliderSize { get; private set; }
+    public Vector2 originalColliderOffset { get; private set; }
     StatHandler statHandler;
 
     void Awake()
