@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3707679022981096056}
   - component: {fileID: 60366594695120979}
   - component: {fileID: 4212230885805208145}
+  - component: {fileID: -7263183256987296546}
   m_Layer: 3
   m_Name: Platform6
   m_TagString: Untagged
@@ -126,6 +127,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f904566607f52f849a6df0f6e8fbfd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!251 &-7263183256987296546
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668177274373463135}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &7728963544431251430
 GameObject:
   m_ObjectHideFlags: 0
