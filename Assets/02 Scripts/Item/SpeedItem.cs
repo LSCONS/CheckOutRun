@@ -16,7 +16,7 @@ public class SpeedItem : MonoBehaviour ,IItem
 
 public enum SpeedType
 {
-    Slow,
+    Slow = 0,
     Fast,
     Max
 }

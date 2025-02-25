@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
-            if (collision.GetComponent<PotionItem>().GetType() == typeof(PotionItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(PotionItem))
             {
                 PotionItem item = collision.gameObject.GetComponent<PotionItem>();
                 if (item != null)
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (collision.GetComponent<SpeedItem>().GetType() == typeof(SpeedItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(SpeedItem))
             {
                 SpeedItem item = collision.gameObject.GetComponent<SpeedItem>();
                 if (item != null)
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (collision.GetComponent<CoinItem>().GetType() == typeof(CoinItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(CoinItem))
             {
                 CoinItem item = collision.gameObject.GetComponent<CoinItem>();
                 if (item != null)
