@@ -74,7 +74,8 @@ public class StatHandler : MonoBehaviour
 
         if (player.playerHealth <= 0)                   //체력 0일때 게임오버처리
         {
-            gameManager.GameOver();
+            player.isAlive = false;
+            gameManager.GameOver(player.isAlive);
         }
     }
 

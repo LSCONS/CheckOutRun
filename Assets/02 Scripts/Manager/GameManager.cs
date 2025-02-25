@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
     }
 
-    public void GameOver()
+    public void GameOver(bool isAlive)
     {
+        isWin = isAlive;
         SceneManager.LoadScene("ResultScene");
     }
 }
