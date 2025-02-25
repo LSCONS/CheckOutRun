@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (player == null) return;
-        if (Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
+        if (!isSlide&&Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
         {
             isFlap = true;
         }
@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
+
         if (!isFlap) return;
         if (!isFlap || player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
 
