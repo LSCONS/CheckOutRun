@@ -8,17 +8,26 @@ public class PlayerController : MonoBehaviour
     private StatHandler statHandler;
     private DataManager dataManager;
     public AudioClip hitSFX, pickupCoinSFX;
+    private PlayerAnimationHandler playerAnimationHandler;
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
     private bool wasGrounded = false;
-    void Start()
+
+    private void Awake()
     {
         player = GetComponent<Player>();
         statHandler = GetComponent<StatHandler>();
+        playerAnimationHandler = GetComponent<PlayerAnimationHandler>();
+    }
+
+    void Start()
+    {
         dataManager = DataManager.Instance;
         dataManager.Init();
     }
+
+
 
     void Update()
     {
@@ -62,14 +71,25 @@ public class PlayerController : MonoBehaviour
             isFlap = false;
         }
 
+        if (isGrounded)
+        {
+            playerAnimationHandler.IsGround = true;
+            playerAnimationHandler.IsJump1 = false;
+            playerAnimationHandler.IsJump2 = false;
+        }
+        else
+        {
+            playerAnimationHandler.IsGround = false;
+            playerAnimationHandler.IsJump1 = true;
+        }
+
         wasGrounded = isGrounded;
     }
 
     public void HandleJump()
     {
 
-        if (!isFlap) return;
-        if (!isFlap || player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
+        if (!isFlap || playerAnimationHandler.IsJump2 == true) return; // 점프 횟수 초과 시 실행 방지
 
         Jump();
         isFlap = false;
@@ -79,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         if (player.rigid != null)
         {
+            if (player.jumpCount == 1) playerAnimationHandler.IsJump2 = true;
             player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
             player.jumpCount++;
         }
