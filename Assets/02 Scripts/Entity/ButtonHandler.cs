@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class ButtonHandler : MonoBehaviour
 {
     private PlayerController playerController;
-    public Transform pausePopUp;
-    public Transform dimPanel;
 
     private void Awake()
     {
