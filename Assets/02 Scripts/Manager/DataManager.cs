@@ -5,6 +5,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance { get; private set; }
+    GameUI gameUI;
 
     private int score;
 
@@ -23,14 +24,16 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    //Á¡¼ö µ¥ÀÌÅÍºÎºĞ ÃÊ±âÈ­ ÀÛ¾÷
+    //ì ìˆ˜ ë°ì´í„°ë¶€ë¶„ ì´ˆê¸°í™” ì‘ì—…
     public void Init()
     {
         score = 0;
+        gameUI = FindObjectOfType<GameUI>();
     }
 
     public void AddScore(int unitScore)
     {
-        score = unitScore;
+        score += unitScore;
+        gameUI.UpdateScoreUI();
     }
 }
