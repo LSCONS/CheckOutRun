@@ -117,7 +117,6 @@ public class PlayerController : MonoBehaviour
         {
             player.coll.size = player.originalColliderSize;
             transform.rotation = Quaternion.identity;
-            playerAnimationHandler.IsSlide = false;
         }
     }
 
