@@ -10030,6 +10030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 0}
   pausePopUp: {fileID: 0}
+  dimPanel: {fileID: 0}
 --- !u!114 &1410819024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15417,6 +15418,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2729357887003090161, guid: b04b0ec522fd40d469f9da9538e970a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878127417150957899, guid: b04b0ec522fd40d469f9da9538e970a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6878127417150957899, guid: b04b0ec522fd40d469f9da9538e970a2, type: 3}

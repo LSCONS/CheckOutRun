@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class ButtonHandler : MonoBehaviour
 {
     private PlayerController playerController;
-    public Button pauseButton;
     public Transform pausePopUp;
+    public Transform dimPanel;
 
     private void Awake()
     {
@@ -56,25 +56,4 @@ public class ButtonHandler : MonoBehaviour
         playerController.isSlide = false; 
         playerController.HandleSlide();
     }
-
-    public void OpenPuasePopUpPage()
-    {
-        Time.timeScale = 0f;
-        pauseButton = GetComponentInChildren<Button>(true);
-        pausePopUp = transform.Find("Popup");
-        pausePopUp.gameObject.SetActive(true);
-    }
-
-    public void OnClickContinue()
-    {
-        pausePopUp.gameObject.SetActive(false);
-        Time.timeScale = 1f;
-    }
-
-    public void OnClickExit()
-    {
-        //pausePopUp.SetActive(false);
-        LoadMainPage();
-    }
-
 }
