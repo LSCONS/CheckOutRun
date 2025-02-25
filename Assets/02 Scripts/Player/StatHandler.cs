@@ -76,7 +76,7 @@ public class StatHandler : MonoBehaviour
     {
         player.isInvincible = true; // 무적 시작
         animator.SetBool("IsInvincible", true);
-        yield return new WaitForSeconds(player.invincibleTime);
+        yield return new WaitForSeconds(player.InvincibleTime);
 
         player.isInvincible = false; // 무적 종료
         animator.SetBool("IsInvincible", false); //애니메이션 OFF

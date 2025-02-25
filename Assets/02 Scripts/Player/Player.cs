@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     public int maxJumpCount = 2;
     public int jumpCount = 0;
     public bool isAlive = true;
-    public bool isDamage = false;
     public bool isInvincible = false;
-    public float invincibleTime = 1000f;
+    private float invincibleTime = 1f;
+    public float InvincibleTime { get { return invincibleTime; } }
 
     public Vector2 originalColliderSize { get; private set; }
 
