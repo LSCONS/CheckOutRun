@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
-
+    private bool wasGrounded = false;
     void Start()
     {
         player = GetComponent<Player>();
@@ -24,14 +24,15 @@ public class PlayerController : MonoBehaviour
     {
         if (player == null) return;
 
-        HandleJump();
-        if (!isFlap) HandleSlide();
+        Move();
     }
 
     void FixedUpdate()
     {
         if (player == null) return;
-        Move();
+        
+        HandleJump();
+        if (!isFlap) HandleSlide();
     }
 
     private void Move()
@@ -41,18 +42,20 @@ public class PlayerController : MonoBehaviour
         player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.2f, LayerMask.GetMask("Ground"));
 
-        if (isGrounded)
+        if (isGrounded && !wasGrounded)
         {
             player.jumpCount = 0;
             isFlap = false;
         }
+
+        wasGrounded = isGrounded;
     }
 
     public void HandleJump()
     {
         if (!isFlap) return;
         if (player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
-        player.jumpCount++;
+        
         Jump();
         isFlap = false;
     }
