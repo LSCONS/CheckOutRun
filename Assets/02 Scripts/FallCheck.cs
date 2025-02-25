@@ -15,7 +15,7 @@ public class FallCheck : MonoBehaviour
         {
             Debug.Log("플레이어는 죽었어요");
             GameManager.Instance.isWin = false;
-            GameManager.Instance.GameOver();
+            GameManager.Instance.GameOver(false);
         }
     }
 }
