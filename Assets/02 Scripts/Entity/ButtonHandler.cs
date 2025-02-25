@@ -7,9 +7,14 @@ using UnityEngine.UI;
 
 public class ButtonHandler : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    private PlayerController playerController;
     public Button pauseButton;
     public Transform pausePopUp;
+
+    private void Awake()
+    {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
     public void LoadGamePage() //결과씬에서 다시하기 버튼 클릭시 이 함수 사용
     {
