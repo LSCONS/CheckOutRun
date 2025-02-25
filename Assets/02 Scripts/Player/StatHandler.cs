@@ -51,9 +51,8 @@ public class StatHandler : MonoBehaviour
         }
     }
 
-    public void Damage()
+    public void Damage(int damage, Collider2D collider = null)
     {
-        int damage = 20;
         if (player.isInvincible)
         {
             return;
@@ -62,12 +61,20 @@ public class StatHandler : MonoBehaviour
         if (player.playerHealth - damage <= 0)
         {
             player.playerHealth = 0;
-            gameManager.GameOver();
         }
-        else
+        else if(collider != null)                       //충돌처리됐을때
         {
             player.playerHealth -= damage;
             StartCoroutine(InvincibilityRoutine());
+        }
+        else                                            //그게 아닐시 무적처리 없는 데미지
+        {
+            player.playerHealth -= damage;
+        }
+
+        if (player.playerHealth <= 0)                   //체력 0일때 게임오버처리
+        {
+            gameManager.GameOver();
         }
     }
 
