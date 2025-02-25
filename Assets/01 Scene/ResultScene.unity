@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d324ea99bd790409a0301494663417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTitle: {fileID: 0}
+  resultTitle: {fileID: 222430498}
   timeTxt: {fileID: 487494930}
   scoreTxt: {fileID: 1870570028}
 --- !u!1 &222430496
