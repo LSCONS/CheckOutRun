@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
     {
         if (player.coll != null)
         {
+            playerAnimationHandler.IsSlide = true;
             player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y * 0.5f);
         }
     }
@@ -115,6 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             player.coll.size = player.originalColliderSize;
             transform.rotation = Quaternion.identity;
+            playerAnimationHandler.IsSlide = false;
         }
     }
 
