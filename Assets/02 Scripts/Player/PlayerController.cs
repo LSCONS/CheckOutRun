@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
             isFlap = true;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift)) // 쉬프트가 눌려 있는 동안 슬라이드
+        if (Input.GetKey(KeyCode.RightShift)) // 쉬프트가 눌려 있는 동안 슬라이드
         {
             isSlide = true;
         }
