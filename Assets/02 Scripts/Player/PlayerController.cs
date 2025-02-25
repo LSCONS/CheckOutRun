@@ -118,24 +118,24 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
-            if (collision.GetType() == typeof(PotionItem))
+            if (collision.GetComponent<PotionItem>().GetType() == typeof(PotionItem))
             {
                 PotionItem item = collision.gameObject.GetComponent<PotionItem>();
                 if (item != null)
                 {
                     statHandler.Heal(item);
+                    item.OnCollisionEffect();
                 }
-                //item.OnCollisionEffect();
             }
 
-            if (collision.GetType() == typeof(SpeedItem))
+            if (collision.GetComponent<SpeedItem>().GetType() == typeof(SpeedItem))
             {
                 SpeedItem item = collision.gameObject.GetComponent<SpeedItem>();
                 if (item != null)
                 {
                     statHandler.ChangeSpeed(item);
+                    item.OnCollisionEffect();
                 }
-                //item.OnCollisionEffect();
             }
 
             if (collision.GetComponent<CoinItem>().GetType() == typeof(CoinItem))
