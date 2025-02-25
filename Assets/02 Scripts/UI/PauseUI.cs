@@ -39,6 +39,7 @@ public class PauseUI : MonoBehaviour
 
     public void OnClickExit()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
         if (SoundManager.Instance != null)
         {
