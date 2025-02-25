@@ -2890,16 +2890,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 61783472723351422, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_Size.y
-      value: 1.6597893
+      value: 1.9183108
       objectReference: {fileID: 0}
     - target: {fileID: 61783472723351422, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_Offset.y
-      value: 0.13989463
+      value: -0.090351045
       objectReference: {fileID: 0}
     - target: {fileID: 680939702707119389, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: a9157e2787abd01419113ca4a6542520, type: 2}
+    - target: {fileID: 680939702707119389, guid: 2d55bc117f3912447b82868469827b26, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 680939702707119389, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -2914,7 +2918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932138169980087719, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: jumpForce
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2932138169980087719, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: playerSpeed
