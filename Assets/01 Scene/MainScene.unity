@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924637cb24eef547a436298494cfb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   pauseButton: {fileID: 0}
   pausePopUp: {fileID: 0}
 --- !u!114 &261049262
@@ -753,7 +752,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 261049261}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
-        m_MethodName: LoadGamePage
+        m_MethodName: LoadLoadingPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

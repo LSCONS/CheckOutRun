@@ -13,12 +13,15 @@ public class ButtonHandler : MonoBehaviour
 
     private void Awake()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        if(GameObject.Find("Player") != null)
+        {
+            playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        }
     }
 
-    public void LoadGamePage() //결과씬에서 다시하기 버튼 클릭시 이 함수 사용
+    public void LoadLoadingPage() //결과씬에서 다시하기 버튼 클릭시 이 함수 사용
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("LoadingScene");
     }
 
     //public void LoadTutorialPage() //튜토리얼 구현시 사용
