@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Player player;
-    private ButtonHandler buttonHandler;
     private StatHandler statHandler;
     private DataManager dataManager;
+    public AudioClip hitSFX, pickupCoinSFX;
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
-        buttonHandler = FindObjectOfType<ButtonHandler>();
         statHandler = GetComponent<StatHandler>();
         dataManager = DataManager.Instance;
+        dataManager.Init();
     }
 
     void Update()
@@ -138,19 +138,23 @@ public class PlayerController : MonoBehaviour
                 //item.OnCollisionEffect();
             }
 
-            if (collision.GetType() == typeof(CoinItem))
+            if (collision.GetComponent<CoinItem>().GetType() == typeof(CoinItem))
             {
                 CoinItem item = collision.gameObject.GetComponent<CoinItem>();
                 if (item != null)
                 {
                     dataManager.AddScore(item.CoinScore);
+                    item.OnCollisionEffect();
                 }
-                //item.OnCollisionEffect();
             }
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.sfxManager.PlaySFX(hitSFX, 0.5f);
+            }
             statHandler.Damage();
         }
     }
