@@ -8,7 +8,6 @@ public class FollowCamera : MonoBehaviour
     public Transform backGround;
     //float offsetX; // ī�޶� �ʱ� x��ġ
 
-    [SerializeField] private float followSpeed = 5f;
     [SerializeField] private float parallaxFactor = 0.5f;
 
     // Start is called before the first frame update
