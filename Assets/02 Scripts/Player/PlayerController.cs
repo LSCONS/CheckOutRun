@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private StatHandler statHandler;
     private DataManager dataManager;
+    public AudioClip hitSFX, pickupCoinSFX;
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
@@ -149,6 +150,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.sfxManager.PlaySFX(hitSFX, 0.5f);
+            }
             statHandler.Damage();
         }
     }
