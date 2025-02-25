@@ -29,11 +29,11 @@ public class StatHandler : MonoBehaviour
             SpeedItem speedItem = (SpeedItem)item;
             if (Enum.Equals(speedItem.speedType, SpeedType.Slow))
             {
-                player.playerSpeed -= speedItem.speedStat;
+                player.playerSpeed = speedItem.speedStat - speedItem.speedStat < 3 ? 3 : player.playerSpeed - speedItem.speedStat;
             }
             else if (Enum.Equals(speedItem.speedType, SpeedType.Fast))
             {
-                player.playerSpeed += speedItem.speedStat;
+                player.playerSpeed = player.playerSpeed + speedItem.speedStat > 5 ? 5 : player.playerSpeed + speedItem.speedStat;
             }
         }
     }
@@ -47,7 +47,7 @@ public class StatHandler : MonoBehaviour
         if (item.GetType() == typeof(PotionItem))
         {
             PotionItem potionItem = (PotionItem)item;
-            player.playerHealth += potionItem.Heal;
+            player.playerHealth = player.playerHealth + potionItem.Heal > player.playerMaxHealth ? player.playerMaxHealth : player.playerHealth + potionItem.Heal;
         }
     }
 

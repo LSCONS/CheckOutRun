@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (player == null) return;
-        if (Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
+        if (!isSlide&&Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
         {
             isFlap = true;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift)) // 쉬프트가 눌려 있는 동안 슬라이드
+        if (Input.GetKey(KeyCode.RightShift)|| Input.GetKey(KeyCode.LeftShift)) 
         {
             isSlide = true;
         }
@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
+
         if (!isFlap) return;
         if (!isFlap || player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
 
@@ -117,24 +118,24 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
-            if (collision.GetType() == typeof(PotionItem))
+            if (collision.GetComponent<PotionItem>().GetType() == typeof(PotionItem))
             {
                 PotionItem item = collision.gameObject.GetComponent<PotionItem>();
                 if (item != null)
                 {
                     statHandler.Heal(item);
+                    item.OnCollisionEffect();
                 }
-                //item.OnCollisionEffect();
             }
 
-            if (collision.GetType() == typeof(SpeedItem))
+            if (collision.GetComponent<SpeedItem>().GetType() == typeof(SpeedItem))
             {
                 SpeedItem item = collision.gameObject.GetComponent<SpeedItem>();
                 if (item != null)
                 {
                     statHandler.ChangeSpeed(item);
+                    item.OnCollisionEffect();
                 }
-                //item.OnCollisionEffect();
             }
 
             if (collision.GetComponent<CoinItem>().GetType() == typeof(CoinItem))

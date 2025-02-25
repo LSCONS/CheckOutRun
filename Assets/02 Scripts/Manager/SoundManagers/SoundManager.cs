@@ -10,6 +10,9 @@ public class SoundManager : MonoBehaviour
     public BGMManager bgmManager;
     public SFXManager sfxManager;
 
+    [Range(0, 1)] public float bgmVolume = 1.0f;
+    [Range(0, 1)] public float sfxVolume = 1.0f;
+
     private void Awake()
     {
         if (Instance == null)

@@ -10,6 +10,7 @@ public class PotionItem : MonoBehaviour, IItem
 
     public void OnCollisionEffect()
     {
+        Destroy(gameObject);
         //애니메이션 동작 후 삭제 로직 필요
     }
 }
