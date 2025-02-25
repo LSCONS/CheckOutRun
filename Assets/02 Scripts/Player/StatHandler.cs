@@ -8,12 +8,14 @@ public class StatHandler : MonoBehaviour
 {
     GameManager gameManager;
     Player player;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.Instance;
         player = GetComponent<Player>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void ChangeSpeed(IItem item)
@@ -72,11 +74,11 @@ public class StatHandler : MonoBehaviour
     //피격시 무적처리
     IEnumerator InvincibilityRoutine()
     {
-        player.isInvincible = true;
-
-        //플레이어 무적 애니메이션 작업 필요
+        player.isInvincible = true; // 무적 시작
+        animator.SetBool("IsInvincible", true);
         yield return new WaitForSeconds(player.invincibleTime);
 
-        player.isInvincible = false;
+        player.isInvincible = false; // 무적 종료
+        animator.SetBool("IsInvincible", false); //애니메이션 OFF
     }
 }
