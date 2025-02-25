@@ -23,6 +23,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (player == null) return;
+        if (Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
+        {
+            isFlap = true;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift)) // 쉬프트가 눌려 있는 동안 슬라이드
+        {
+            isSlide = true;
+        }
+        else
+        {
+            isSlide = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
+        }
 
         Move();
     }
