@@ -107,7 +107,6 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y - 0.5f);
-            player.coll.offset = new Vector2(player.coll.offset.x, player.coll.offset.y - 0.25f);
         }
     }
 
@@ -116,7 +115,6 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             player.coll.size = player.originalColliderSize;
-            player.coll.offset = new Vector2(player.coll.offset.x, player.coll.offset.y + 0.25f);
             transform.rotation = Quaternion.identity;
         }
     }
