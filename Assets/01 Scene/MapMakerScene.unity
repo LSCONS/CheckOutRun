@@ -12219,7 +12219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683936181922834745, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 625
       objectReference: {fileID: 0}
     - target: {fileID: 5683936181922834745, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12305,7 +12305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924637cb24eef547a436298494cfb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
   pauseButton: {fileID: 0}
   pausePopUp: {fileID: 0}
 --- !u!114 &1938152601
