@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float InvincibleTime { get { return invincibleTime; } }
 
     public Vector2 originalColliderSize { get; private set; }
+    StatHandler statHandler;
 
     void Awake()
     {
@@ -35,12 +36,31 @@ public class Player : MonoBehaviour
 
         originalColliderSize = coll != null ? coll.size : Vector2.zero;
     }
+
+    private void Start()
+    {
+        statHandler = GetComponent<StatHandler>();
+        StartCoroutine(DecreaseHealthOverTime());
+    }
     private void Update()
     {
         if (transform.position.x > 0f)
         {
             TimeManager.Instance.AddGameTime(transform.position.x); //한픽셀움직인거리당 3분씩 더해지도록
         }
+    }
+
+    private IEnumerator DecreaseHealthOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            statHandler.Damage(1);
+            Debug.Log(playerHealth);
+
+            if (playerHealth <= 0) break;
+        }
+        
     }
 }
 
