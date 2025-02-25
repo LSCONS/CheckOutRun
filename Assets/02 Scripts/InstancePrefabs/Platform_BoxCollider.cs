@@ -12,5 +12,6 @@ public class Platform_BoxCollider : MonoBehaviour
         BoxCollider2D box2D = gameObject.AddComponent<BoxCollider2D>();
         box2D.size = new Vector2(box2D.size.x, box2D.size.y - (minusY / transform.localScale.y));
         box2D.offset = new Vector2(box2D.offset.x, box2D.offset.y - ((minusY / 2) / transform.localScale.y));
+        box2D.usedByEffector = true;
     }
 }
