@@ -6913,7 +6913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683936181922834745, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5683936181922834745, guid: 2d55bc117f3912447b82868469827b26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12786,7 +12786,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 966249514}
   backGround: {fileID: 576536328}
-  followSpeed: 5
   parallaxFactor: 0.5
 --- !u!81 &1956719130
 AudioListener:
