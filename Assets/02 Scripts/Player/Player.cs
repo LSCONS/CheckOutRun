@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rigid { get; private set; }
-    public BoxCollider2D coll { get; private set; }
+    public CapsuleCollider2D coll { get; private set; }
 
     public int playerMaxHealth = 100;
     public int playerHealth = 100;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rigid = GetComponentInChildren<Rigidbody2D>();
-        coll = GetComponentInChildren<BoxCollider2D>();
+        coll = GetComponentInChildren<CapsuleCollider2D>();
 
         if (rigid == null)
         {
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         }
         if (coll == null)
         {
-            Debug.LogError("Player: BoxCollider2D를 찾을 수 없습니다!");
+            Debug.LogError("Player: CapsuleCollider2D를 찾을 수 없습니다!");
         }
 
         originalColliderSize = coll != null ? coll.size : Vector2.zero;
