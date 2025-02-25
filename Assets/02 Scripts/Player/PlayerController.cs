@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,28 +9,38 @@ public class PlayerController : MonoBehaviour
     private StatHandler statHandler;
     private DataManager dataManager;
     public AudioClip hitSFX, pickupCoinSFX;
+    private PlayerAnimationHandler playerAnimationHandler;
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
     private bool wasGrounded = false;
     private bool isShift = false;
-    void Start()
+
+    private void Awake()
     {
         player = GetComponent<Player>();
         statHandler = GetComponent<StatHandler>();
+        playerAnimationHandler = GetComponent<PlayerAnimationHandler>();
+    }
+
+    void Start()
+    {
         dataManager = DataManager.Instance;
         dataManager.Init();
     }
 
+
+
     void Update()
     {
         if (player == null) return;
-        if (!isSlide && Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
+
+        if (!isSlide&&Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
         {
             isFlap = true;
+            isSlide = false;
         }
-
-        if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
+        else if (playerAnimationHandler.IsJump1 == false && (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)))
         {
             isShift = true;
         }
@@ -38,15 +49,15 @@ public class PlayerController : MonoBehaviour
             isShift = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
         }
 
-        Move();
     }
 
     void FixedUpdate()
     {
         if (player == null) return;
 
+        Move();
         HandleJump();
-        if (!isFlap) HandleSlide();
+        HandleSlide();
     }
 
     private void Move()
@@ -59,18 +70,17 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
         if (isGrounded && !wasGrounded)
         {
-            player.jumpCount = 0;
             isFlap = false;
         }
+
+        playerAnimationHandler.PlayerIsGround(isGrounded);
 
         wasGrounded = isGrounded;
     }
 
     public void HandleJump()
     {
-
-        if (!isFlap) return;
-        if (!isFlap || player.jumpCount >= player.maxJumpCount) return; // 점프 횟수 초과 시 실행 방지
+        if (!isFlap || playerAnimationHandler.IsJump2 == true) return; // 점프 횟수 초과 시 실행 방지
 
         Jump();
         isFlap = false;
@@ -80,8 +90,8 @@ public class PlayerController : MonoBehaviour
     {
         if (player.rigid != null)
         {
+            if (playerAnimationHandler.IsJump1) playerAnimationHandler.IsJump2 = true;
             player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
-            player.jumpCount++;
         }
     }
 
@@ -97,7 +107,6 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y * 0.5f);
-            transform.rotation = Quaternion.Euler(0, 0, 90);
         }
     }
 
@@ -119,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
-            if (collision.GetComponent<PotionItem>().GetType() == typeof(PotionItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(PotionItem))
             {
                 PotionItem item = collision.gameObject.GetComponent<PotionItem>();
                 if (item != null)
@@ -129,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (collision.GetComponent<SpeedItem>().GetType() == typeof(SpeedItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(SpeedItem))
             {
                 SpeedItem item = collision.gameObject.GetComponent<SpeedItem>();
                 if (item != null)
@@ -139,7 +148,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (collision.GetComponent<CoinItem>().GetType() == typeof(CoinItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(CoinItem))
             {
                 CoinItem item = collision.gameObject.GetComponent<CoinItem>();
                 if (item != null)
