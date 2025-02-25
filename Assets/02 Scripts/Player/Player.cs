@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public float jumpForce = 5f;
     public float playerSpeed = 5f;
     public int maxJumpCount = 2;
-    public int jumpCount = 0;
     public bool isAlive = true;
     public bool isInvincible = false;
     private float invincibleTime = 1f;

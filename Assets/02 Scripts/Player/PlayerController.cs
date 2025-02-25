@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,12 +33,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (player == null) return;
+
         if (!isSlide&&Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
         {
             isFlap = true;
+            isSlide = false;
         }
-
-        if (Input.GetKey(KeyCode.RightShift)|| Input.GetKey(KeyCode.LeftShift)) 
+        else if (playerAnimationHandler.IsJump1 == false &&
+            (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)))
         {
             isSlide = true;
         }
@@ -46,15 +49,15 @@ public class PlayerController : MonoBehaviour
             isSlide = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
         }
 
-        Move();
     }
 
     void FixedUpdate()
     {
         if (player == null) return;
-        
+
+        Move();
         HandleJump();
-        if (!isFlap) HandleSlide();
+        HandleSlide();
     }
 
     private void Move()
@@ -67,28 +70,16 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.down*0.8f, Color.green);
         if (isGrounded && !wasGrounded)
         {
-            player.jumpCount = 0;
             isFlap = false;
         }
 
-        if (isGrounded)
-        {
-            playerAnimationHandler.IsGround = true;
-            playerAnimationHandler.IsJump1 = false;
-            playerAnimationHandler.IsJump2 = false;
-        }
-        else
-        {
-            playerAnimationHandler.IsGround = false;
-            playerAnimationHandler.IsJump1 = true;
-        }
+        playerAnimationHandler.PlayerIsGround(isGrounded);
 
         wasGrounded = isGrounded;
     }
 
     public void HandleJump()
     {
-
         if (!isFlap || playerAnimationHandler.IsJump2 == true) return; // 점프 횟수 초과 시 실행 방지
 
         Jump();
@@ -99,15 +90,13 @@ public class PlayerController : MonoBehaviour
     {
         if (player.rigid != null)
         {
-            if (player.jumpCount == 1) playerAnimationHandler.IsJump2 = true;
+            if (playerAnimationHandler.IsJump1) playerAnimationHandler.IsJump2 = true;
             player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
-            player.jumpCount++;
         }
     }
 
     public void HandleSlide()
     {
-        if (isFlap || !isGrounded) return;
         if (isSlide) Slide();
         else ResetSlide();
     }
@@ -117,7 +106,6 @@ public class PlayerController : MonoBehaviour
         if (player.coll != null)
         {
             player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y * 0.5f);
-            transform.rotation = Quaternion.Euler(0, 0, 90);
         }
     }
 
