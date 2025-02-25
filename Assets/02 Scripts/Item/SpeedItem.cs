@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpeedItem : MonoBehaviour ,IItem
 {
     public float speedStat = 0.5f;               //충돌시 올려야할 speed 수치
-    public int speedType = 0;
+    public SpeedType speedType = SpeedType.Slow;
     
     public void OnCollisionEffect()
     {
