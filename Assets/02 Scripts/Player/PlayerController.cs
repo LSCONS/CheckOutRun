@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
             {
                 SoundManager.Instance.sfxManager.PlaySFX(hitSFX, 0.5f);
             }
-            statHandler.Damage();
+            statHandler.Damage(20, collision);
         }
     }
 }
