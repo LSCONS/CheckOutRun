@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool isSlide = false;
     private bool isGrounded = false;
     private bool wasGrounded = false;
+    private bool isShift = false;
     void Start()
     {
         player = GetComponent<Player>();
@@ -23,18 +24,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (player == null) return;
-        if (!isSlide&&Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
+        if (!isSlide && Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
         {
             isFlap = true;
         }
 
-        if (Input.GetKey(KeyCode.RightShift)|| Input.GetKey(KeyCode.LeftShift)) 
+        if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
         {
-            isSlide = true;
+            isShift = true;
         }
         else
         {
-            isSlide = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
+            isShift = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
         }
 
         Move();
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (player == null) return;
-        
+
         HandleJump();
         if (!isFlap) HandleSlide();
     }
@@ -53,9 +54,9 @@ public class PlayerController : MonoBehaviour
         if (player.rigid == null) return;
 
         player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
-        
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down*0.9f, 1f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position, Vector2.down*0.8f, Color.green);
+
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down * 0.9f, 1f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
         if (isGrounded && !wasGrounded)
         {
             player.jumpCount = 0;
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
     public void HandleSlide()
     {
         if (isFlap || !isGrounded) return;
-        if (isSlide) Slide();
+        if (isSlide || isShift) Slide();
         else ResetSlide();
     }
 
