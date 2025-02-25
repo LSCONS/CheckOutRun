@@ -19,7 +19,8 @@ public class BGMManager : MonoBehaviour
         if (bgmSource.clip == clip) return; // 같은 음악이면 재생 안 함
 
         bgmSource.clip = clip;
-        bgmSource.volume = volume;
+        bgmSource.volume = volume * SoundManager.Instance.bgmVolume;
+        bgmSource.loop = true;
         bgmSource.Play();
     }
 

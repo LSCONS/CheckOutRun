@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023f8ed8a0d18234cacf4e94738eac77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSFXSources: 10
 --- !u!4 &465585411
 Transform:
   m_ObjectHideFlags: 0
@@ -213,6 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmManager: {fileID: 1002621527}
   sfxManager: {fileID: 465585410}
+  bgmVolume: 1
+  sfxVolume: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

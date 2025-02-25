@@ -25,7 +25,7 @@ public class SFXManager : MonoBehaviour
             if (!source.isPlaying)
             {
                 source.clip = clip;
-                source.volume = volume;
+                source.volume = volume * SoundManager.Instance.sfxVolume;
                 source.Play();
                 return;
             }
