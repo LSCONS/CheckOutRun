@@ -16,9 +16,13 @@ public class CoinItem : MonoBehaviour, IItem
     private void OnTriggerEnter2D(Collider2D collision)
     {
        if(collision.CompareTag("Player"))
-        {
+       {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxPickupCoin, 0.2f);
+            }
             DataManager.Instance.AddScore(CoinScore);
             OnCollisionEffect();
-        }              
+       }
     }
 }

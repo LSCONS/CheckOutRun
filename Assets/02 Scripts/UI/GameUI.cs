@@ -13,6 +13,7 @@ public class GameUI : MonoBehaviour
     public TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI timeTxt;
 
+    public TextMeshProUGUI ampmTxt;
     public Slider timeSlider;
 
     public float lerpSpeed = 5f;
@@ -67,6 +68,16 @@ public class GameUI : MonoBehaviour
 
         int hours = Mathf.FloorToInt(gameTime / 60);
         int minutes = Mathf.FloorToInt(gameTime % 60);
+
+        if (gameTime < 720)
+        {
+            ampmTxt.text = "AM";
+        }
+        else
+        {
+            ampmTxt.text = "PM";
+        }
+
         timeTxt.text = string.Format("{0:D2} : {1:D2}", hours, minutes);
     }
 
