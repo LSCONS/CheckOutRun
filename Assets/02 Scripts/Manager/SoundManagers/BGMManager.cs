@@ -7,6 +7,7 @@ public class BGMManager : MonoBehaviour
     private AudioSource bgmSource;
 
     float bgmVolume;
+    float bgmMult;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject); // 씬 변경 시 유지
@@ -22,8 +23,9 @@ public class BGMManager : MonoBehaviour
     {
         if (bgmSource != null)
         {
+            bgmMult = volume;
             bgmSource.clip = clip;
-            bgmSource.volume = bgmVolume * volume;
+            UpdateVolume(SoundManager.Instance.bgmVolume);
             bgmSource.loop = true;
             bgmSource.Play();
         }
@@ -42,6 +44,7 @@ public class BGMManager : MonoBehaviour
         if (bgmSource != null)
         {
             bgmVolume = volume;
+            bgmSource.volume = bgmVolume * bgmMult;
         }
     }
 }
