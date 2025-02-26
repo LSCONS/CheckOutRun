@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4293393790260823738}
   - component: {fileID: 12863553669707171}
   - component: {fileID: 7608886750684893488}
-  - component: {fileID: 5468893498985605211}
   m_Layer: 6
   m_Name: Rtan1_Sprite
   m_TagString: Untagged
@@ -198,30 +197,3 @@ PolygonCollider2D:
       - {x: 0.59, y: -2.09}
       - {x: 0.93, y: -2.09}
   m_UseDelaunayMesh: 0
---- !u!50 &5468893498985605211
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3815170040393339067}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
