@@ -16,11 +16,10 @@ public class BGMManager : MonoBehaviour
 
     public void PlayBGM(AudioClip clip, float volume = 1.0f)
     {
-        if (bgmSource.clip == clip) return; // 같은 음악이면 재생 안 함
+        if (bgmSource.clip == clip && bgmSource.isPlaying) return; // 같은 음악이면 재생 안 함
 
         bgmSource.clip = clip;
         bgmSource.volume = volume * SoundManager.Instance.bgmVolume;
-        bgmSource.loop = true;
         bgmSource.Play();
     }
 

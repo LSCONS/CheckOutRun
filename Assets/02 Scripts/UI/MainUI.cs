@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +22,8 @@ public class MainUI : MonoBehaviour
         dimPanel.gameObject.SetActive(false);
         pausePopup.gameObject.SetActive(false);
 
-        highScore.text = DataManager.Instance.Score.ToString();
-        highTime.text = DataManager.Instance.Score.ToString(); // Score부분 시간관련으로 바꿔야함
+        highScore.text = PlayerPrefs.GetInt("bestScore").ToString();
+        GetHighTime();
 
         settingBtn.onClick.AddListener(OnClickSetting);
         exitBtn.onClick.AddListener(OnClickExitBtn);
@@ -38,5 +39,14 @@ public class MainUI : MonoBehaviour
     {
         dimPanel.gameObject.SetActive(false);
         pausePopup.gameObject.SetActive(false);
+    }
+
+    void GetHighTime()
+    {
+        float gameTime = PlayerPrefs.GetFloat("bestTime");
+
+        int hours = Mathf.FloorToInt(gameTime / 60);
+        int minutes = Mathf.FloorToInt(gameTime % 60);
+        highTime.text = string.Format("{0:D2}:{1:D2}", hours, minutes);
     }
 }

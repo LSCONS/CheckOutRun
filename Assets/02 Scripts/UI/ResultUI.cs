@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultUI : MonoBehaviour
 {
+    public Button returnBtn;
+    public Button retryBtn;
+
     public TextMeshProUGUI resultTitle;
     public TextMeshProUGUI timeTxt;
     public TextMeshProUGUI scoreTxt;
@@ -18,13 +23,20 @@ public class ResultUI : MonoBehaviour
             {
                 resultTitle.text = "퇴실 완료!";
             }
-            else
+            else if (TimeManager.Instance.gameTime < 900f)
             {
-                resultTitle.text = "퇴실 실패...";
+                resultTitle.text = "결석 처리...";
+            }
+            else if (TimeManager.Instance.gameTime >= 900f && TimeManager.Instance.gameTime < 1260f)
+            {
+                resultTitle.text = "지각 처리...";
             }
         }
         SetTimeTxt();
         SetScoreTxt();
+
+        returnBtn.onClick.AddListener(ReturnMainScene);
+        retryBtn.onClick.AddListener(OnClickRetryBtn);
     }
 
     public void SetTimeTxt()
@@ -39,5 +51,15 @@ public class ResultUI : MonoBehaviour
     public void SetScoreTxt()
     {
         scoreTxt.text = DataManager.Instance.Score.ToString();
+    }
+
+    void ReturnMainScene()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    void OnClickRetryBtn()
+    {
+        SceneManager.LoadScene("LoadingScene");
     }
 }

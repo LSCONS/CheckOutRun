@@ -29,5 +29,6 @@ public class GameManager : MonoBehaviour
         DataManager.Instance.UpdateBestScore();
         TimeManager.Instance.UpdateBestTime();
         SceneManager.LoadScene("ResultScene");
+        SoundManager.Instance.bgmManager.StopBGM();
     }
 }

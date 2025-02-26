@@ -1619,7 +1619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2324063404152389439, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2729357887003090161, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
       propertyPath: m_Pivot.x
@@ -1703,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4047199961916531371, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5382249138496533562, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
