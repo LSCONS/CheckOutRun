@@ -13,4 +13,12 @@ public class CoinItem : MonoBehaviour, IItem
         Destroy(gameObject);
         //애니메이션 동작 후 삭제 로직 필요
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if(collision.CompareTag("Player"))
+        {
+            DataManager.Instance.AddScore(CoinScore);
+            OnCollisionEffect();
+        }              
+    }
 }
