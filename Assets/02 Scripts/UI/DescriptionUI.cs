@@ -5,25 +5,33 @@ using UnityEngine;
 public class DescriptionUI : MonoBehaviour
 {
     public GameObject[] descPanels;
-    private int currentStep = 0;
+    public int currentStep = 0;
+    public string key = "AlreadyDesc";
 
     private void Start()
     {
-        Time.timeScale = 0f;
-        ShowStep(currentStep);
+        if (PlayerPrefs.GetInt(key, 0) == 0)
+        {
+            Time.timeScale = 0f;
+            ShowStep(currentStep);
+            PlayerPrefs.SetInt(key, 1);
+        }
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (PlayerPrefs.GetInt(key, 0) == 0)
         {
-            ShowNextStep();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                ShowNextStep();
+            }
         }
     }
 
     public void ShowNextStep()
     {
-        if(currentStep < descPanels.Length -1)
+        if (currentStep < descPanels.Length - 1)
         {
             descPanels[currentStep].SetActive(false);
             currentStep++;
