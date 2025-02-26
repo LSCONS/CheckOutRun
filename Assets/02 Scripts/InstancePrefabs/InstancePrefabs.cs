@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine;
 public class InstancePrefabs : MonoBehaviour
 {
     public GameObject[] backgroundPrefabs;
+    public GameObject[] backgroundZeps;
     private float maxWidthX = 400;
     private float maxRandHeightY = 2;
     private float minRandHeightY = 0;
@@ -25,17 +27,22 @@ public class InstancePrefabs : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player");
+        ShuffleArray(backgroundPrefabs);
+        ShuffleArray(backgroundZeps);
+
         float nowWidthX = 0;
+        int i = 0;
         while (nowWidthX < maxWidthX)
         {
-            int randIndex = Random.Range(0, backgroundPrefabs.Length);
+            if (i >= backgroundPrefabs.Length) i = 0;
             float randHeightY = Random.Range(minRandHeightY, maxRandHeightY);
             float randWidthX = Random.Range(minRandWidthX, maxRandWidthX);
             Vector3 tempVector = new Vector3(nowWidthX, randHeightY, 0f);
-            GameObject gameObject = Instantiate(backgroundPrefabs[randIndex], tempVector, Quaternion.identity);
+            GameObject gameObject = Instantiate(backgroundPrefabs[i], tempVector, Quaternion.identity);
             gameObject.transform.parent = this.transform;
 
             Renderer renderer = gameObject.GetComponent<Renderer>();
+
             if (renderer != null)
             {
                 nowWidthX += renderer.bounds.size.x + randWidthX;
@@ -46,6 +53,34 @@ public class InstancePrefabs : MonoBehaviour
             {
                 Debug.LogError("renderer is null");
             }
+            i++;
+        }
+        nowWidthX = 0;
+        i = 0;
+        while (nowWidthX < maxWidthX)
+        {
+            if (i >= backgroundZeps.Length) i = 0;
+            int randIndex = Random.Range(0, backgroundZeps.Length);
+            float randHeightY = Random.Range(minRandHeightY, maxRandHeightY);
+            float randWidthX = Random.Range(1, 3);
+            Vector3 tempVector = new Vector3(nowWidthX, randHeightY, 0f);
+            GameObject gameObject = Instantiate(backgroundZeps[i], tempVector, Quaternion.identity);
+            gameObject.transform.parent = this.transform;
+
+            Renderer renderer = gameObject.GetComponentInChildren<Renderer>();
+
+            if (renderer != null)
+            {
+                nowWidthX += renderer.bounds.size.x + randWidthX;
+                Debug.Log("nowSize = " + renderer.bounds.size.x);
+                Color beforeColor = renderer.material.color;
+                renderer.material.color = new Color(beforeColor.r, beforeColor.g, beforeColor.b, 0.6f);
+            }
+            else
+            {
+                Debug.LogError("renderer is null");
+            }
+            i++;
         }
     }
 
@@ -88,6 +123,17 @@ public class InstancePrefabs : MonoBehaviour
             {
                 backgroundsSpriteRenderer[i].color = beforeColor;
             }
+        }
+    }
+
+    void ShuffleArray<T>(T[] array)
+    {
+        for (int i = array.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            T temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
     }
 
