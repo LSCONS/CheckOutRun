@@ -56,9 +56,11 @@ public class PlayerAnimationHandler : MonoBehaviour
             IsGround = true;
             IsJump1 = false;
             IsJump2 = false;
+            IsSlide = false;
         }
         else
         {
+            IsSlide = false;
             IsGround = false;
             IsJump1 = true;
         }

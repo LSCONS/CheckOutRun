@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
-    private bool wasGrounded = false;
 
     private void Awake()
     {
@@ -43,9 +42,10 @@ public class PlayerController : MonoBehaviour
         {
             isSlide = true;
         }
-        else
+
+        if(Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift))
         {
-            isSlide = false; // 쉬프트가 눌리지 않으면 슬라이드 해제
+            isSlide = false;
         }
 
     }
@@ -67,14 +67,13 @@ public class PlayerController : MonoBehaviour
         Vector3 temp = transform.position - new Vector3(0.3f, 0, 0);
         isGrounded = Physics2D.Raycast(temp, Vector2.down * 0.9f, 1f, LayerMask.GetMask("Ground"));
         Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
-        if (isGrounded && !wasGrounded)
+
+        if(isGrounded == false)
         {
-            isFlap = false;
+            isSlide = false;
         }
 
         playerAnimationHandler.PlayerIsGround(isGrounded);
-
-        wasGrounded = isGrounded;
     }
 
     public void HandleJump()
