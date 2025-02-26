@@ -22,6 +22,7 @@ public class ResultUI : MonoBehaviour
             if (GameManager.Instance.isWin == true)
             {
                 resultTitle.text = "퇴실 완료!";
+                // resultTitle.color = new Color(1f, 0.5f, 0f); // 주황색 (R: 1, G: 0.5, B: 0)
             }
             else if (TimeManager.Instance.gameTime < 900f)
             {
@@ -32,6 +33,7 @@ public class ResultUI : MonoBehaviour
                 resultTitle.text = "지각 처리...";
             }
         }
+
         SetTimeTxt();
         SetScoreTxt();
 

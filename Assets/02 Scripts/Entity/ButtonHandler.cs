@@ -45,13 +45,11 @@ public class ButtonHandler : MonoBehaviour
 
     public void PlayerSlideButton()
     {
-        playerController.isSlide = true; 
-        playerController.HandleSlide();
+        playerController.isSlide = true;
     }
 
     public void PlayerReleaseSlideButton()
     {
         playerController.isSlide = false; 
-        playerController.HandleSlide();
     }
 }
