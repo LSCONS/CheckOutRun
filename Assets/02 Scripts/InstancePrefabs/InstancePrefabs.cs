@@ -65,7 +65,6 @@ public class InstancePrefabs : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("playerPositionX = " + player.transform.position.x);
         if(nowTime <= player.transform.position.x)
         {
             if(nowTime < 299)
@@ -78,8 +77,8 @@ public class InstancePrefabs : MonoBehaviour
             }
             lerpT = 0;
             nowTime += 60f;
-            Debug.Log("before = " + beforeColor);
-            Debug.Log("next = " + nextColor);
+            Debug.Log("before Color = " + beforeColor);
+            Debug.Log("next Color = " + nextColor);
         }
 
         if(beforeColor != nextColor)
