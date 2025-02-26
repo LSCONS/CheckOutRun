@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private StatHandler statHandler;
     private DataManager dataManager;
-    public AudioClip hitSFX, pickupCoinSFX;
+    public AudioClip hitSFX, pickupCoinSFX, jumpSFX;
     private PlayerAnimationHandler playerAnimationHandler;
     public bool isFlap = false;
     public bool isSlide = false;
@@ -90,6 +90,11 @@ public class PlayerController : MonoBehaviour
         {
             if (playerAnimationHandler.IsJump1) playerAnimationHandler.IsJump2 = true;
             player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
+
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.sfxManager.PlaySFX(jumpSFX, 0.5f);
+            }
         }
     }
 

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4466251748570362155}
   - component: {fileID: 6874294024355769566}
   - component: {fileID: 4494277212798404437}
+  - component: {fileID: 131343674555784816}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e30bba8443304f9550afd63755475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFX: {fileID: 0}
-  pickupCoinSFX: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: cf77b95519948864bb7a7cd16bba25ec, type: 3}
+  pickupCoinSFX: {fileID: 8300000, guid: ba9e70662d9611f438178087eb224557, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 968480bbadbcbd644b046c806dacb135, type: 3}
   isFlap: 0
   isSlide: 0
 --- !u!70 &6874294024355769566
@@ -146,6 +148,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7589764d4f7c04097cca3d0cf3829a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &131343674555784816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005617884008738187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621df8e7c807f4449bfa8dff08d4102b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
 --- !u!1 &8642460384823517026
 GameObject:
   m_ObjectHideFlags: 0
