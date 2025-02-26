@@ -57,7 +57,6 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             statHandler.Damage(1);
-            Debug.Log(playerHealth);
 
             if (playerHealth <= 0) break;
         }
