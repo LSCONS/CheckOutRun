@@ -66,19 +66,14 @@ public class GameUI : MonoBehaviour
     {
         float gameTime = TimeManager.Instance.gameTime;
 
-        int hours = Mathf.FloorToInt(gameTime / 60);
+        int totalhours = Mathf.FloorToInt(gameTime / 60);
         int minutes = Mathf.FloorToInt(gameTime % 60);
 
-        if (gameTime < 720)
-        {
-            ampmTxt.text = "AM";
-        }
-        else
-        {
-            ampmTxt.text = "PM";
-        }
+        string AMPM = (gameTime / 60) <= 12 ? "AM" : "PM";
+        int hours = totalhours % 12;
+        if(hours == 0) hours = 12;
 
-        timeTxt.text = string.Format("{0:D2} : {1:D2}", hours, minutes);
+        timeTxt.text = string.Format("{0:D2} : {1:D2} {2}", hours, minutes, AMPM);
     }
 
     public void UpdateTimeSlider()
