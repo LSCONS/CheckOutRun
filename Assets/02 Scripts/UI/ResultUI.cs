@@ -17,21 +17,19 @@ public class ResultUI : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance != null)
+        IsGameClear nowGameClear = TimeManager.Instance.GetNowState();
+
+        switch (nowGameClear)
         {
-            if (GameManager.Instance.isWin == true)
-            {
+            case IsGameClear.Clear:
                 resultTitle.text = "출석 완료!";
-                // resultTitle.color = new Color(1f, 0.5f, 0f); // 주황색 (R: 1, G: 0.5, B: 0)
-            }
-            else if (TimeManager.Instance.gameTime < 900f)
-            {
+                break;
+            case IsGameClear.Absence:
                 resultTitle.text = "결석 처리...";
-            }
-            else if (TimeManager.Instance.gameTime >= 900f && TimeManager.Instance.gameTime < 1260f)
-            {
+                break;
+            case IsGameClear.Perception:
                 resultTitle.text = "지각 처리...";
-            }
+                break;
         }
 
         SetTimeTxt();

@@ -50,4 +50,30 @@ public class TimeManager : MonoBehaviour
             PlayerPrefs.SetFloat("bestTime", gameTime);
         }
     }
+
+    
+    //현재 플레이어의 위치로 어떤 상태인지 enum으로 반환으로 메서드
+    public IsGameClear GetNowState()
+    {
+        if (gameTime >= 1260f)
+        {
+            return IsGameClear.Clear;
+        }
+        else if (gameTime >= 900f && gameTime < 1260f)
+        {
+            return IsGameClear.Perception;
+        }
+        else
+        {
+            return IsGameClear.Absence;
+        }
+    }
+}
+
+//현재 게임 클리어 여부에 대한 enum값
+public enum IsGameClear
+{
+    Absence,        //결석
+    Perception,     //지각
+    Clear           //승리
 }
