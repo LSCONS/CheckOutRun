@@ -10,15 +10,13 @@ public class InstancePrefabs : MonoBehaviour
     private float maxWidthX = 400;
     private float maxRandHeightY = 2;
     private float minRandHeightY = 0;
-    private float minRandWidthX = 3;
-    private float maxRandWidthX = 7;
+    private float minRandWidthX = 1;
+    private float maxRandWidthX = 3;
     private SpriteRenderer[] backgroundsSpriteRenderer;
     private Color minusColor = new Color(0.1f, 0.1f, 0.1f, 0f);
     private GameObject player;
     [SerializeField]private Color beforeColor;
     [SerializeField]private Color nextColor;
-    float playerPositionX;
-    private bool isHourTime = false;
     private float nowTime = 60f;
     private float lerpT = 0;
     private float startColor = 0.9f;
