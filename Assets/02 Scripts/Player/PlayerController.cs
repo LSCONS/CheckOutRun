@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private StatHandler statHandler;
     private DataManager dataManager;
-    public AudioClip hitSFX, pickupCoinSFX, jumpSFX;
     private PlayerAnimationHandler playerAnimationHandler;
     public bool isFlap = false;
     public bool isSlide = false;
@@ -93,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
             if (SoundManager.Instance != null)
             {
-                SoundManager.Instance.sfxManager.PlaySFX(jumpSFX, 0.5f);
+                SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxJump, 0.5f);
             }
         }
     }
@@ -173,7 +172,7 @@ public class PlayerController : MonoBehaviour
         {
             if (SoundManager.Instance != null)
             {
-                SoundManager.Instance.sfxManager.PlaySFX(hitSFX, 0.5f);
+                SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxHit, 0.5f);
             }
             statHandler.Damage(20, collision);
         }

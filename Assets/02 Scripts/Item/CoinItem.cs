@@ -5,7 +5,6 @@ using UnityEngine;
 public class CoinItem : MonoBehaviour, IItem
 {
     private int coinScore = 1;          //충돌시 올라가는 점수 수치
-    public AudioClip pickupCoinSFX;
 
     public int CoinScore { get { return coinScore; } }
 
@@ -20,7 +19,7 @@ public class CoinItem : MonoBehaviour, IItem
        {
             if (SoundManager.Instance != null)
             {
-                SoundManager.Instance.sfxManager.PlaySFX(pickupCoinSFX, 0.2f);
+                SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxPickupCoin, 0.2f);
             }
             DataManager.Instance.AddScore(CoinScore);
             OnCollisionEffect();
