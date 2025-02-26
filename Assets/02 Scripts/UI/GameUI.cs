@@ -4,15 +4,16 @@ using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class GameUI : MonoBehaviour
 {
     Player player;
     public RectTransform front;
-    public RectTransform back;
+
     public TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI timeTxt;
+
+    public Slider timeSlider;
 
     public float lerpSpeed = 5f;
 
@@ -26,11 +27,13 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void Update() // 나중에 업데이트 말고 다른걸로 수정해야됨...(최적화 문제)
+    private void Update()
     {
         UpdateTimeUI();
         UpdateHealthBar();
+        UpdateTimeSlider();
     }
+
     public void UpdateHealthBar() // hp가 변경될 때마다 호출해서 UI를 업데이트해줘야함
     {
         float currentHp = player.playerHealth;
@@ -64,6 +67,13 @@ public class GameUI : MonoBehaviour
 
         int hours = Mathf.FloorToInt(gameTime / 60);
         int minutes = Mathf.FloorToInt(gameTime % 60);
-        timeTxt.text = string.Format("{0:D2}:{1:D2}", hours, minutes);
+        timeTxt.text = string.Format("{0:D2} : {1:D2}", hours, minutes);
+    }
+
+    public void UpdateTimeSlider()
+    {
+        float gameTime = TimeManager.Instance.gameTime;
+
+        timeSlider.value = (gameTime - 540f) / 1260f;
     }
 }
