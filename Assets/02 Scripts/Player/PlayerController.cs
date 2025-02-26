@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private DataManager dataManager;
     public AudioClip hitSFX, pickupCoinSFX;
     private PlayerAnimationHandler playerAnimationHandler;
-    private GameObject absorber;
     public bool isFlap = false;
     public bool isSlide = false;
     private bool isGrounded = false;
@@ -19,12 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<Player>();
         statHandler = GetComponent<StatHandler>();
-        playerAnimationHandler = GetComponent<PlayerAnimationHandler>();
-        absorber = transform.Find("Absorber")?.gameObject;
-        if (absorber != null)
-        {
-            absorber.SetActive(false); // 시작 시 비활성화
-        }
+        playerAnimationHandler = GetComponent<PlayerAnimationHandler>();  
     }
 
     void Start()
@@ -156,22 +150,14 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (collision.GetComponent<IItem>().GetType() == typeof(CoinItem))
-            {
-                CoinItem item = collision.gameObject.GetComponent<CoinItem>();
-                if (item != null)
-                {
-                    dataManager.AddScore(item.CoinScore);
-                    item.OnCollisionEffect();
-                }
-            }
+        
 
-            if(collision.GetComponent<IItem>().GetType() == typeof(MagnetItem))
+            if (collision.GetComponent<IItem>().GetType() == typeof(MagnetItem))
             {
                 MagnetItem item = collision.gameObject.GetComponent<MagnetItem>();
-                if(item != null)
+                if (item != null)
                 {
-                    MagnetEffect(5f);
+                    //MagnetItem.MagnetEffect(5f);
                     item.OnCollisionEffect();
                 }
 
@@ -188,16 +174,5 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    private void MagnetEffect(float duration)
-    {
-        if (absorber == null) return;
 
-        absorber.SetActive(true); 
-        StartCoroutine(DisableMagnetEffect(duration));
-    }
-    private IEnumerator DisableMagnetEffect(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        absorber.SetActive(false);
-    }
 }
