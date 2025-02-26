@@ -15,7 +15,7 @@ public class LoadingScene : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -23,7 +23,6 @@ public class LoadingScene : MonoBehaviour
     private void Move()
     {
         if (rb == null) return;
-
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
     }
 }
