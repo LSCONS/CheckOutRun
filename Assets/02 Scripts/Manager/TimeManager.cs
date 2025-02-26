@@ -40,4 +40,14 @@ public class TimeManager : MonoBehaviour
             gameTime = endHour;
         }
     }
+
+    public void UpdateBestTime()
+    {
+        float bestTime = PlayerPrefs.GetFloat("bestTime");
+
+        if (gameTime > bestTime)
+        {
+            PlayerPrefs.SetFloat("bestTime", gameTime);
+        }
+    }
 }

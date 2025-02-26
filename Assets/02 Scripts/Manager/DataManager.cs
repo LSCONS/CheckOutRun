@@ -36,4 +36,13 @@ public class DataManager : MonoBehaviour
         score += unitScore;
         gameUI.UpdateScoreUI();
     }
+
+    public void UpdateBestScore()
+    {
+        int bestScore = PlayerPrefs.GetInt("bestScore");
+        if (score > bestScore)
+        {
+            PlayerPrefs.SetInt("bestScore", score);
+        }
+    }
 }
