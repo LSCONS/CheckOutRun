@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d33caa28103914ab7bc85e11ca79bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupCoinSFX: {fileID: 8300000, guid: ba9e70662d9611f438178087eb224557, type: 3}
 --- !u!50 &8797610165620351596
 Rigidbody2D:
   serializedVersion: 4
