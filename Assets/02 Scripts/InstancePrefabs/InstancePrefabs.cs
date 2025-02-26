@@ -21,6 +21,7 @@ public class InstancePrefabs : MonoBehaviour
     private bool isHourTime = false;
     private float nowTime = 60f;
     private float lerpT = 0;
+    private float startColor = 0.9f;
 
 
     private void Awake()
@@ -53,8 +54,8 @@ public class InstancePrefabs : MonoBehaviour
     private void Start()
     {
         backgroundsSpriteRenderer = GetComponentsInChildren<SpriteRenderer>();
-        beforeColor = new Color(0.6f, 0.6f, 0.6f, 1);
-        nextColor = new Color(0.6f, 0.6f, 0.6f, 1);
+        beforeColor = new Color(startColor, startColor, startColor, 1);
+        nextColor = new Color(startColor, startColor, startColor, 1);
         for (int i = 0; i < backgroundsSpriteRenderer.Length; i++)
         {
             backgroundsSpriteRenderer[i].color = beforeColor;
@@ -69,11 +70,11 @@ public class InstancePrefabs : MonoBehaviour
         {
             if(nowTime < 299)
             {
-                nextColor = nextColor + minusColor;
+                nextColor = nextColor + (minusColor / 4);
             }
             else
             {
-                nextColor = nextColor - minusColor;
+                nextColor = nextColor - (minusColor / 0.9f);
             }
             lerpT = 0;
             nowTime += 60f;
