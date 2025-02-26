@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
     }
 
-    public void GameOver(bool isAlive)
+    public void GameOver()
     {
-        isWin = isAlive;                                    //플레이어 생사여부 확인하여 게임 승리 여부 판단
+        IsGameClear isGameClear = TimeManager.Instance.GetNowState();
+        if (isGameClear == IsGameClear.Clear) isWin = true;
         DataManager.Instance.UpdateBestScore();
         TimeManager.Instance.UpdateBestTime();
         SceneManager.LoadScene("ResultScene");
