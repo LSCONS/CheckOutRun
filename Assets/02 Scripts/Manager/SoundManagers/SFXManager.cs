@@ -7,6 +7,8 @@ public class SFXManager : MonoBehaviour
     public int maxSFXSources = 10;
     private List<AudioSource> sfxSources = new List<AudioSource>();
 
+    float sfxVolume;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject); // 씬 변경 시 유지
@@ -25,18 +27,18 @@ public class SFXManager : MonoBehaviour
             if (!source.isPlaying)
             {
                 source.clip = clip;
-                source.volume = volume * SoundManager.Instance.sfxVolume;
+                source.volume = sfxVolume * volume;
                 source.Play();
                 return;
             }
         }
     }
 
-    public void SetVolume(float volume)
+    public void UpdateVolume(float volume)
     {
         foreach (var source in sfxSources)
         {
-            source.volume = volume;
+            sfxVolume = volume;
         }
     }
 }

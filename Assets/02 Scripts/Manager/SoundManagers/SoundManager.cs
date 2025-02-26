@@ -10,8 +10,36 @@ public class SoundManager : MonoBehaviour
     public BGMManager bgmManager;
     public SFXManager sfxManager;
 
-    [Range(0, 1)] public float bgmVolume = 1.0f;
-    [Range(0, 1)] public float sfxVolume = 1.0f;
+    private float _bgmVolume = 1.0f;
+    private float _sfxVolume = 1.0f;
+
+    public float bgmVolume
+    {
+        get { return _bgmVolume; }
+        set
+        {
+            _bgmVolume = Mathf.Clamp01(value);
+            PlayerPrefs.SetFloat("BGMVolume", _bgmVolume);
+            PlayerPrefs.Save();
+
+            if (bgmManager != null)
+                bgmManager.UpdateVolume(_bgmVolume);
+        }
+    }
+
+    public float sfxVolume
+    {
+        get { return _sfxVolume; }
+        set
+        {
+            _sfxVolume = Mathf.Clamp01(value);
+            PlayerPrefs.SetFloat("SFXVolume", _sfxVolume);
+            PlayerPrefs.Save();
+
+            if (sfxManager != null)
+                sfxManager.UpdateVolume(_sfxVolume);
+        }
+    }
 
     private void Awake()
     {
@@ -26,6 +54,9 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1.0f);
+        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+
         // BGMManager와 SFXManager도 DontDestroyOnLoad 유지
         if (bgmManager == null)
         {
@@ -37,5 +68,8 @@ public class SoundManager : MonoBehaviour
             sfxManager = gameObject.AddComponent<SFXManager>();
             DontDestroyOnLoad(sfxManager);
         }
+
+        bgmManager.UpdateVolume(_bgmVolume);
+        sfxManager.UpdateVolume(_sfxVolume);
     }
 }
