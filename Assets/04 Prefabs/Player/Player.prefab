@@ -81,11 +81,8 @@ MonoBehaviour:
   jumpForce: 8
   playerSpeed: 3
   maxJumpCount: 2
-  jumpCount: 0
   isAlive: 1
-  isDamage: 0
   isInvincible: 0
-  invincibleTime: 0.5
 --- !u!114 &4466251748570362155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e30bba8443304f9550afd63755475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSFX: {fileID: 0}
+  pickupCoinSFX: {fileID: 0}
   isFlap: 0
   isSlide: 0
 --- !u!70 &6874294024355769566

@@ -6,30 +6,42 @@ public class BGMManager : MonoBehaviour
 {
     private AudioSource bgmSource;
 
+    float bgmVolume;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject); // 씬 변경 시 유지
 
-        bgmSource = gameObject.AddComponent<AudioSource>();
-        bgmSource.loop = true;
+        bgmSource = GetComponent<AudioSource>();
+        if (bgmSource == null)
+        {
+            bgmSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void PlayBGM(AudioClip clip, float volume = 1.0f)
     {
-        if (bgmSource.clip == clip && bgmSource.isPlaying) return; // 같은 음악이면 재생 안 함
-
-        bgmSource.clip = clip;
-        bgmSource.volume = volume * SoundManager.Instance.bgmVolume;
-        bgmSource.Play();
+        if (bgmSource != null)
+        {
+            bgmSource.clip = clip;
+            bgmSource.volume = bgmVolume * volume;
+            bgmSource.loop = true;
+            bgmSource.Play();
+        }
     }
 
     public void StopBGM()
     {
-        bgmSource.Stop();
+        if (bgmSource != null)
+        {
+            bgmSource.Stop();
+        }
     }
 
-    public void SetVolume(float volume)
+    public void UpdateVolume(float volume)
     {
-        bgmSource.volume = volume;
+        if (bgmSource != null)
+        {
+            bgmVolume = volume;
+        }
     }
 }
