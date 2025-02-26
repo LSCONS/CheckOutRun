@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6540568881651374820}
   - component: {fileID: 1852675285005883734}
   - component: {fileID: 7671334415272895313}
+  - component: {fileID: 4576353032396138468}
   m_Layer: 0
   m_Name: G_Sprite
   m_TagString: Untagged
@@ -207,3 +208,15 @@ PolygonCollider2D:
       - {x: 0.53, y: -0.705}
       - {x: 0.63, y: -0.715}
   m_UseDelaunayMesh: 0
+--- !u!114 &4576353032396138468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436968955441212887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fc3e124640dc1459d91b3b838456cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
