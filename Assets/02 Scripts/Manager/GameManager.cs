@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool isAlive)
     {
-        isWin = isAlive;
+        isWin = isAlive;                                    //플레이어 생사여부 확인하여 게임 승리 여부 판단
+        DataManager.Instance.UpdateBestScore();
+        TimeManager.Instance.UpdateBestTime();
         SceneManager.LoadScene("ResultScene");
     }
 }
