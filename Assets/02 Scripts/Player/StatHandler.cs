@@ -83,9 +83,20 @@ public class StatHandler : MonoBehaviour
     {
         player.isInvincible = true; // 무적 시작
         animator.SetBool("IsInvincible", true);
+        StartCoroutine(ObstacleRoutine());
         yield return new WaitForSeconds(player.InvincibleTime);
 
         player.isInvincible = false; // 무적 종료
         animator.SetBool("IsInvincible", false); //애니메이션 OFF
+    }
+
+    IEnumerator ObstacleRoutine()
+    {
+        float playerSpeed = player.playerSpeed;
+
+        player.playerSpeed = playerSpeed / 2f;
+        yield return new WaitForSeconds(0.1f);
+
+        player.playerSpeed = playerSpeed;
     }
 }
