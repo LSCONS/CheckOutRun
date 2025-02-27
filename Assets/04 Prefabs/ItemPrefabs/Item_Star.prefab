@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 293925431250831575}
   - component: {fileID: 7163597883800109542}
   - component: {fileID: 921073597562765488}
-  m_Layer: 0
+  - component: {fileID: 8805444808889915932}
+  - component: {fileID: 2356186732695924450}
+  m_Layer: 8
   m_Name: Item_Star_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +108,98 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &8805444808889915932
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808918444215686839}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.97, y: 1.06}
+    newSize: {x: 0.97, y: 1.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.48499998, y: -0.31}
+      - {x: 0.475, y: -0.28}
+      - {x: 0.465, y: -0.28}
+      - {x: 0.42499998, y: -0.29}
+      - {x: 0.325, y: -0.32}
+      - {x: 0.24499999, y: -0.28}
+      - {x: 0.175, y: -0.28}
+      - {x: 0.175, y: -0.53}
+      - {x: 0.48499998, y: -0.53}
+      - {x: 0.48499998, y: -0.48}
+      - {x: 0.475, y: -0.45999998}
+      - {x: 0.48499998, y: -0.39999998}
+    - - {x: 0.36499998, y: -0.099999994}
+      - {x: 0.375, y: -0.02}
+      - {x: 0.375, y: 0.26999998}
+      - {x: 0.33499998, y: 0.29}
+      - {x: 0.065, y: 0.37}
+      - {x: -0.13499999, y: 0.53}
+      - {x: -0.355, y: 0.53}
+      - {x: -0.36499998, y: 0.51}
+      - {x: -0.375, y: 0.39999998}
+      - {x: -0.345, y: 0.37}
+      - {x: -0.315, y: 0.37}
+      - {x: -0.295, y: 0.39}
+      - {x: -0.465, y: 0.13}
+      - {x: -0.48499998, y: 0.089999996}
+      - {x: -0.48499998, y: -0.02}
+      - {x: -0.45499998, y: -0.049999997}
+      - {x: -0.275, y: -0.35}
+      - {x: -0.235, y: -0.39}
+      - {x: -0.105, y: -0.39}
+      - {x: -0.024999999, y: -0.35999998}
+      - {x: 0.225, y: -0.29}
+      - {x: 0.33499998, y: -0.19}
+  m_UseDelaunayMesh: 0
+--- !u!114 &2356186732695924450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808918444215686839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e784360782028f4a934854352503d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventDuration: 5
 --- !u!1 &7441978335782816169
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372031538452912985}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item_Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
