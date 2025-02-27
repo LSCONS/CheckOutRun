@@ -72,7 +72,6 @@ public class InstancePrefabs : MonoBehaviour
             if (renderer != null)
             {
                 nowWidthX += renderer.bounds.size.x + randWidthX;
-                Debug.Log("nowSize = " + renderer.bounds.size.x);
                 Color beforeColor = renderer.material.color;
                 renderer.material.color = new Color(beforeColor.r, beforeColor.g, beforeColor.b, 0.6f);
             }
