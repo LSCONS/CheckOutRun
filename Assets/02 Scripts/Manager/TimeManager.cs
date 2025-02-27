@@ -30,6 +30,7 @@ public class TimeManager : MonoBehaviour
 
     public void AddGameTime(float moveDistance)
     {
+        if (moveDistance < 0) moveDistance = 0;
         float TimetoAdd = moveDistance; // 플레이어 이동거리에 따라 더해주는거라 Time.deltaTime을 곱해주지 않아도 됨
         gameTime = TimetoAdd + startHour;
 
