@@ -6,37 +6,21 @@ public class DescriptionUI : MonoBehaviour
 {
     public GameObject[] descPanels;
     public int currentStep = 0;
-    public string key = "AlreadyDesc";
-
-    //private void Start()
-    //{
-    //    if (PlayerPrefs.GetInt(key, 0) == 0)
-    //    {
-    //        Time.timeScale = 0f;
-    //        ShowStep(currentStep);
-    //        PlayerPrefs.SetInt(key, 1);
-    //    }
-    //}
+    public static string AlreadyDescKey = "AlreadyDesc";
 
     private void OnEnable()
     {
-        currentStep = 0;
-        if (PlayerPrefs.GetInt(key, 0) == 0)
-        {
-            Time.timeScale = 0f;
-            ShowStep(currentStep);
-            PlayerPrefs.SetInt(key, 1);
-        }
+        Time.timeScale = 0f;
+        ShowStep(currentStep);
+        PlayerPrefs.SetInt(AlreadyDescKey, 1);
     }
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             ShowNextStep();
         }
-
     }
 
     public void ShowNextStep()
@@ -61,5 +45,10 @@ public class DescriptionUI : MonoBehaviour
         {
             descPanels[i].SetActive(i == step);
         }
+    }
+
+    private void OnDisable()
+    {
+        currentStep = 0;
     }
 }

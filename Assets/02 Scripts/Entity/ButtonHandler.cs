@@ -63,7 +63,6 @@ public class ButtonHandler : MonoBehaviour
 
     public void ActiveDescCanvas()
     {
-        PlayerPrefs.SetInt("AlreadyDesc", 0);
         ReDesc = GetComponentInChildren<DescriptionUI>(true).gameObject;
         if (ReDesc == null) return;
         ReDesc.SetActive(true);
