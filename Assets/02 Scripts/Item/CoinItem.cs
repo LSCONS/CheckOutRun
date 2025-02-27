@@ -9,6 +9,8 @@ public class CoinItem : MonoBehaviour, IItem
     private static bool isEvented = false;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem Eventparticle;
+
 
     public int CoinScore { get { return isEvented ? EventScore : coinScore; } }
 
@@ -41,13 +43,28 @@ public class CoinItem : MonoBehaviour, IItem
     {
         isEvented = true;
         Debug.Log("코인 점수 상승! " + duration + "초 동안 유지됨.");
-        GameManager.Instance.StartCoroutine(DeactivateEventAfterTime(duration));
+
+        // 현재 씬에서 CoinItem 인스턴스 찾기
+        CoinItem instance = FindObjectOfType<CoinItem>();
+        if (instance != null && instance.Eventparticle != null)
+        {
+            instance.Eventparticle.Play();  // 이벤트 파티클 재생
+        }
+
+        // 이벤트 종료 후 복귀
+        GameManager.Instance.StartCoroutine(DeactivateEventAfterTime(duration, instance));
     }
 
-    private static IEnumerator DeactivateEventAfterTime(float duration)
+    // 이벤트 종료 후 점수 복귀 및 파티클 정지
+    private static IEnumerator DeactivateEventAfterTime(float duration, CoinItem instance)
     {
         yield return new WaitForSeconds(duration);
         isEvented = false;
         Debug.Log("코인 점수 원래대로 복귀.");
+
+        if (instance != null && instance.Eventparticle != null)
+        {
+            instance.Eventparticle.Stop();  // 이벤트 파티클 정지
+        }
     }
 }
