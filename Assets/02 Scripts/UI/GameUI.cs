@@ -80,6 +80,6 @@ public class GameUI : MonoBehaviour
     {
         float gameTime = TimeManager.Instance.gameTime;
 
-        timeSlider.value = (gameTime - 540f) / 1260f;
+        timeSlider.value = (gameTime - 540f) / 720f;
     }
 }
