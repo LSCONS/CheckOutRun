@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ButtonHandler : MonoBehaviour
 {
     private PlayerController playerController;
-
+    private GameObject ReDesc;
     private void Awake()
     {
         if(GameObject.Find("Player") != null)
@@ -59,5 +59,13 @@ public class ButtonHandler : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    public void ActiveDescCanvas()
+    {
+        PlayerPrefs.SetInt("AlreadyDesc", 0);
+        ReDesc = GetComponentInChildren<DescriptionUI>(true).gameObject;
+        if (ReDesc == null) return;
+        ReDesc.SetActive(true);
     }
 }

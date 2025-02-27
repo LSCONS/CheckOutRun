@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 StarItem item = collision.gameObject.GetComponent<StarItem>();
                 if (item != null)
                 {
+                    Debug.Log("별 충돌");
                     item.OnCollisionEffect();
                 }
             }

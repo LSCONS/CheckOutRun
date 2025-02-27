@@ -5,9 +5,15 @@ using UnityEngine;
 public class StarItem : MonoBehaviour, IItem
 {
     public float EventDuration = 5f;
+
     public void OnCollisionEffect()
     {
-        CoinItem.ActivateCoinEvent(EventDuration);
-        Destroy(gameObject);
+        CoinItem[] coinItems = FindObjectsOfType<CoinItem>();  
+        foreach (CoinItem coinItem in coinItems)
+        {
+            coinItem.ActivateCoinEvent(EventDuration);  
+        }
+
+        Destroy(gameObject);  
     }
 }

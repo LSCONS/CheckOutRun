@@ -8,25 +8,36 @@ public class DescriptionUI : MonoBehaviour
     public int currentStep = 0;
     public string key = "AlreadyDesc";
 
-    private void Start()
+    //private void Start()
+    //{
+    //    if (PlayerPrefs.GetInt(key, 0) == 0)
+    //    {
+    //        Time.timeScale = 0f;
+    //        ShowStep(currentStep);
+    //        PlayerPrefs.SetInt(key, 1);
+    //    }
+    //}
+
+    private void OnEnable()
     {
-        //if (PlayerPrefs.GetInt(key, 0) == 0)
-        //{
-        Time.timeScale = 0f;
-        ShowStep(currentStep);
-        //    PlayerPrefs.SetInt(key, 1);
-        //}
+        currentStep = 0;
+        if (PlayerPrefs.GetInt(key, 0) == 0)
+        {
+            Time.timeScale = 0f;
+            ShowStep(currentStep);
+            PlayerPrefs.SetInt(key, 1);
+        }
     }
 
     private void Update()
     {
-        //if (PlayerPrefs.GetInt(key, 0) == 0)
-        //{
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (PlayerPrefs.GetInt(key, 0) == 0)
         {
-            ShowNextStep();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                ShowNextStep();
+            }
         }
-        //}
     }
 
     public void ShowNextStep()

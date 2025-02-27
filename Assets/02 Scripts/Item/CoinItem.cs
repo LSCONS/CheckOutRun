@@ -5,10 +5,12 @@ using UnityEngine;
 public class CoinItem : MonoBehaviour, IItem
 {
     private int coinScore = 1;          //충돌시 올라가는 점수 수치
-    private int EventScore = 2;
+    private int EventScore = 5;
     private static bool isEvented = false;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem Eventparticle;
+
 
     public int CoinScore { get { return isEvented ? EventScore : coinScore; } }
 
@@ -37,17 +39,33 @@ public class CoinItem : MonoBehaviour, IItem
             OnCollisionEffect();
         }
     }
-    public static void ActivateCoinEvent(float duration)
+    public void ActivateCoinEvent(float duration)
     {
         isEvented = true;
-        Debug.Log("코인 점수 상승! " + duration + "초 동안 유지됨.");
-        GameManager.Instance.StartCoroutine(DeactivateEventAfterTime(duration));
+
+        if (Eventparticle != null)
+        {
+            if (!Eventparticle.isPlaying)
+            {
+                Eventparticle.Play();  // 파티클 재생
+            }
+        }
+
+        GameManager.Instance.StartCoroutine(DeactivateEventAfterTime(duration, this));
     }
 
-    private static IEnumerator DeactivateEventAfterTime(float duration)
+
+    private static IEnumerator DeactivateEventAfterTime(float duration, CoinItem instance)
     {
         yield return new WaitForSeconds(duration);
+
         isEvented = false;
-        Debug.Log("코인 점수 원래대로 복귀.");
+
+
+        if (instance != null && instance.Eventparticle != null && instance.Eventparticle.isPlaying)
+        {
+            instance.Eventparticle.Stop();  // 파티클 정지
+        }
     }
+
 }
