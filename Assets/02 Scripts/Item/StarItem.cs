@@ -7,7 +7,7 @@ public class StarItem : MonoBehaviour, IItem
     public float EventDuration = 5f;
     public void OnCollisionEffect()
     {
-        CoinItem.ActivateCoinBoost(EventDuration);
+        CoinItem.ActivateCoinEvent(EventDuration);
         Destroy(gameObject);
     }
 }
