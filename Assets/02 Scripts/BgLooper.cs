@@ -16,16 +16,6 @@ public class BgLooper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Item")|| collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            Destroy(collision.gameObject);
-        }
-        else     
-        {
-            Destroy(collision.gameObject);
-        }
-
+        Destroy(collision.gameObject);
     }
 }
