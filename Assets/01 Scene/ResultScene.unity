@@ -279,7 +279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 218.1}
+  m_AnchoredPosition: {x: 0, y: 169}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222430498
@@ -613,7 +613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 106.4}
+  m_AnchoredPosition: {x: 0, y: 50.000008}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &487494930
@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 588169565}
   - component: {fileID: 588169564}
   - component: {fileID: 588169566}
+  - component: {fileID: 588169567}
   m_Layer: 5
   m_Name: Popup
   m_TagString: Untagged
@@ -753,7 +754,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 600}
+  m_SizeDelta: {x: 700, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588169564
 MonoBehaviour:
@@ -808,6 +809,27 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 30, y: -30}
   m_UseGraphicAlpha: 1
+--- !u!95 &588169567
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588169562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f87e2e42bc4e424eb8617472ca8592f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &781312885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,8 +1113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845b105c5ed3fe841b1802435aa7397c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winBGM: {fileID: 8300000, guid: bc8d9c53a1efe6643bed44df5254e882, type: 3}
-  defeatSFX: {fileID: 8300000, guid: 349634fec3a085b43a9905bcd0331fc4, type: 3}
 --- !u!1 &1720682348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,7 +1268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: -100}
+  m_AnchoredPosition: {x: 40, y: -45}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870570028
@@ -1382,7 +1402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -115}
+  m_AnchoredPosition: {x: -150, y: -60}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889227475
