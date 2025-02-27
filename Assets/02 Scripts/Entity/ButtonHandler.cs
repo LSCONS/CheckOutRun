@@ -52,4 +52,12 @@ public class ButtonHandler : MonoBehaviour
     {
         playerController.isSlide = false; 
     }
+
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }
