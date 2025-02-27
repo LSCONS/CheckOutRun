@@ -758,7 +758,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 403842457}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 970843657}
+        m_TargetAssemblyTypeName: MainUI, Assembly-CSharp
+        m_MethodName: OnClickSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &403842457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6131,11 +6143,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBtn: {fileID: 344886955}
   settingBtn: {fileID: 403842456}
-  exitBtn: {fileID: 0}
+  exitBtn: {fileID: 2100611081}
   highScore: {fileID: 125033628}
   highTime: {fileID: 391567636}
-  dimPanel: {fileID: 0}
-  pausePopup: {fileID: 0}
+  dimPanel: {fileID: 2100611080}
+  pausePopup: {fileID: 2100611079}
 --- !u!114 &970843658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7045,6 +7057,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
+--- !u!224 &2100611079 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1548656046785910981, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
+  m_PrefabInstance: {fileID: 2100611078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2100611080 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 951528667515055729, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
+  m_PrefabInstance: {fileID: 2100611078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2100611081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1027536460064800409, guid: 550f15843742c6f4b870d3953f669a42, type: 3}
+  m_PrefabInstance: {fileID: 2100611078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
