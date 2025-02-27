@@ -9,16 +9,11 @@ public class LoadingUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countDownText;
     private float delayBeforeStart = 1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CountdownCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     private IEnumerator CountdownCoroutine()
     {
         countDownText.text = "Loading...";
