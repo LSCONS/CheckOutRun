@@ -31,13 +31,12 @@ public class DescriptionUI : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerPrefs.GetInt(key, 0) == 0)
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
-                ShowNextStep();
-            }
+            ShowNextStep();
         }
+
     }
 
     public void ShowNextStep()
