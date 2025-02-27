@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8750489435774955961}
   - component: {fileID: 886520605256763963}
   m_Layer: 8
-  m_Name: CoinParticle
+  m_Name: Coin_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5036,7 +5036,7 @@ GameObject:
   - component: {fileID: 5322802543866787590}
   - component: {fileID: 6569034986157831463}
   m_Layer: 8
-  m_Name: CoinSprite
+  m_Name: Coin_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class SpeedItem : MonoBehaviour ,IItem
 {
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] ParticleSystem particle;
     public float speedStat = 0.5f;               //충돌시 올려야할 speed 수치
     public SpeedType speedType = SpeedType.Slow;
     
     public void OnCollisionEffect()
     {
-        Destroy(gameObject);
-        //애니메이션 동작 후 삭제 로직 필요
+        if (spriteRenderer == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            particle.Play();
+            Destroy(spriteRenderer.gameObject);
+            Destroy(gameObject, 1f);
+        }
     }
 }
 
