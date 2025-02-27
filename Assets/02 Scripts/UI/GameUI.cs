@@ -12,9 +12,8 @@ public class GameUI : MonoBehaviour
 
     public TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI timeTxt;
-
-    public TextMeshProUGUI ampmTxt;
     public Slider timeSlider;
+    public GameObject descriptionUI_Canvas;
 
     public float lerpSpeed = 5f;
 
@@ -25,6 +24,11 @@ public class GameUI : MonoBehaviour
         {
             Debug.LogError("Time is not assigned!");
             return;
+        }
+
+        if(PlayerPrefs.GetInt(DescriptionUI.AlreadyDescKey, 0) == 0)
+        {
+            descriptionUI_Canvas.SetActive(true);
         }
     }
 

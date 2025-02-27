@@ -8590,6 +8590,7 @@ MonoBehaviour:
   startBtn: {fileID: 422289992}
   settingBtn: {fileID: 604959901}
   exitBtn: {fileID: 2100611081}
+  desBtn: {fileID: 1064108262}
   highScore: {fileID: 944651812}
   highTime: {fileID: 1096882489}
   dimPanel: {fileID: 2100611080}
@@ -8714,7 +8715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1064108261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10196,7 +10197,6 @@ MonoBehaviour:
   - {fileID: 367474576}
   - {fileID: 1879885634}
   currentStep: 0
-  key: AlreadyDesc
 --- !u!1 &1513433400
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class MainUI : MonoBehaviour
     public Button startBtn;
     public Button settingBtn;
     public Button exitBtn;
+    public Button desBtn;
 
     public TextMeshProUGUI highScore;
     public TextMeshProUGUI highTime;
@@ -29,6 +30,11 @@ public class MainUI : MonoBehaviour
 
         settingBtn.onClick.AddListener(OnClickSetting);
         exitBtn.onClick.AddListener(OnClickExitBtn);
+
+        if(PlayerPrefs.GetInt(DescriptionUI.AlreadyDescKey, 0) == 1)
+        {
+            desBtn.gameObject.SetActive(true);
+        }
     }
 
     //private void OnEnable()
