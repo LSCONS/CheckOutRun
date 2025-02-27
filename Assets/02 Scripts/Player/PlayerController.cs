@@ -77,7 +77,11 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
-        if (!isFlap || playerAnimationHandler.IsJump2 == true) return; // 점프 횟수 초과 시 실행 방지
+        if (!isFlap || playerAnimationHandler.IsJump2 == true) 
+        { 
+            isFlap = false; 
+            return; 
+        } // 점프 횟수 초과 시 실행 방지
 
         Jump();
         isFlap = false;
