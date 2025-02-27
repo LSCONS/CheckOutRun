@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
                 MagnetItem item = collision.gameObject.GetComponent<MagnetItem>();
                 if (item != null)
                 {
+                    Debug.Log("자석");
                     item.OnCollisionEffect();
                 }
 
