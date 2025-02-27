@@ -143,8 +143,7 @@ public class PlayerController : MonoBehaviour
                     item.OnCollisionEffect();
                 }
             }
-
-            if (collision.GetComponent<IItem>()?.GetType() == typeof(SpeedItem))
+            else if (collision.GetComponent<IItem>()?.GetType() == typeof(SpeedItem))
             {
                 SpeedItem item = collision.gameObject.GetComponent<SpeedItem>();
                 if (item != null)
@@ -153,10 +152,7 @@ public class PlayerController : MonoBehaviour
                     item.OnCollisionEffect();
                 }
             }
-
-        
-
-            if (collision.GetComponentInParent<IItem>().GetType() == typeof(MagnetItem))
+            else if (collision.GetComponentInParent<IItem>().GetType() == typeof(MagnetItem))
             {
                 MagnetItem item = collision.gameObject.GetComponentInParent<MagnetItem>();
                 if (item != null)
@@ -164,16 +160,14 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("자석");
                     item.OnCollisionEffect();
                 }
-
             }
-            if (collision.GetComponent<IItem>().GetType() == typeof(StarItem))
+            else if (collision.GetComponent<IItem>()?.GetType() == typeof(StarItem))
             {
                 StarItem item = collision.gameObject.GetComponent<StarItem>();
                 if (item != null)
                 {
                     item.OnCollisionEffect();
                 }
-
             }
 
         }
