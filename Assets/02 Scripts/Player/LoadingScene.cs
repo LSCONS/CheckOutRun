@@ -24,11 +24,9 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator Move()
     {
-        Debug.Log("들어왔어");
         yield return new WaitForSeconds(0.7f);
         SettingObject.SetActive(true);
         yield return new WaitForSeconds(0.7f);
-        Debug.Log("나갔어");
         rb.AddForce(new Vector2(200, 300));
         animationHandler.IsJump1 = true;
     }

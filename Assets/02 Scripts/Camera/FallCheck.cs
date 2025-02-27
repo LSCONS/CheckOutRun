@@ -11,7 +11,6 @@ public class FallCheck : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("플레이어는 죽었어요");
             GameManager.Instance.GameOver();
         }
     }

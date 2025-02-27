@@ -109,8 +109,6 @@ public class InstancePrefabs : MonoBehaviour
             }
             lerpT = 0;
             nowTime += 60f;
-            Debug.Log("before Color = " + beforeColor);
-            Debug.Log("next Color = " + nextColor);
         }
 
         if(beforeColor != nextColor)

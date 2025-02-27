@@ -55,16 +55,12 @@ public class MagnetItem : MonoBehaviour, IItem
         absorber.SetActive(true);
         absorber1.SetActive(true);
 
-        Debug.Log($"자석 효과 시작! 지속 시간: {duration}초");
-
         // 지정된 시간 동안 대기
         yield return new WaitForSeconds(duration);
 
         // 자석 효과 종료
         absorber.SetActive(false);
         absorber1.SetActive(false);
-
-        Debug.Log("자석 효과 종료");
 
         // 아이템 삭제
         Destroy(gameObject);

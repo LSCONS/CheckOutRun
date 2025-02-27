@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour
                 MagnetItem item = collision.gameObject.GetComponentInParent<MagnetItem>();
                 if (item != null)
                 {
-                    Debug.Log("자석");
                     item.OnCollisionEffect();
                 }
             }
@@ -170,7 +169,6 @@ public class PlayerController : MonoBehaviour
                 StarItem item = collision.gameObject.GetComponent<StarItem>();
                 if (item != null)
                 {
-                    Debug.Log("별 충돌");
                     item.OnCollisionEffect();
                 }
             }

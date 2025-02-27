@@ -8,7 +8,6 @@ public class GameAudio : MonoBehaviour
     {
         if (SoundManager.Instance != null)
         {
-            Debug.Log("브금 ON");
             SoundManager.Instance.bgmManager.PlayBGM(SoundLibrary.Instance.bgmGame, 0.4f);
         }
     }
