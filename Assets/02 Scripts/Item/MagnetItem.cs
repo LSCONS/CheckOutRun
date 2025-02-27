@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MagnetItem : MonoBehaviour, IItem
 {
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] ParticleSystem particle;
     public float duration = 5f; // 자석 효과 지속 시간
     private GameObject absorber;
     private GameObject absorber1;
@@ -33,8 +35,10 @@ public class MagnetItem : MonoBehaviour, IItem
     public void OnCollisionEffect()
     {
         // 아이템을 보이지 않게 하고, 효과를 실행
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        gameObject.GetComponent<Collider2D>().enabled = false;
+        if (spriteRenderer != null)
+        {
+            Destroy(spriteRenderer.gameObject);
+        }
 
         // 자석 효과 활성화
         StartCoroutine(MagnetEffect(duration));

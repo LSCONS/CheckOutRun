@@ -16,7 +16,7 @@ public class CoinItem : MonoBehaviour, IItem
     {
         if (spriteRenderer == null)
         {
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
         }
         else
         {
