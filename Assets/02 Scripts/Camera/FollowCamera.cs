@@ -6,34 +6,29 @@ public class FollowCamera : MonoBehaviour
 {
     public Transform target;
     public Transform backGround;
-    //float offsetX; // ī�޶� �ʱ� x��ġ
 
     [SerializeField] private float parallaxFactor = 0.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //offsetX = transform.position.x - target.position.x;
+        if (backGround != null)
+        {
+            backGround.position = new Vector3((transform.position.x * parallaxFactor) - 3, 0f, 0f);
+        }
     }
-
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    Vector3 pos = transform.position;
-    //    pos.x = target.position.x + offsetX;
-    //    transform.position = pos;
-    //}
 
     private void LateUpdate()
     {
-        if( target == null) return;
-
+        if(target == null || target.position.x < 0) return;
+        
+        //카메라의 목표 지점을 결정함.
         Vector3 targetPosition = new Vector3(target.position.x + 4, 0, -10f);
         transform.position = targetPosition;
 
+        //배경이 카메라를 기준으로 따라가게 함.
         if(backGround != null)
         {
-            backGround.position = new Vector3((target.position.x * parallaxFactor) - 3, 0f, 0f); 
+            backGround.position = new Vector3((transform.position.x * parallaxFactor) - 3, 0f, 0f); 
         }
     }
 }

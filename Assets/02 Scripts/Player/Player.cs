@@ -42,13 +42,11 @@ public class Player : MonoBehaviour
     {
         statHandler = GetComponent<StatHandler>();
         StartCoroutine(DecreaseHealthOverTime());
+        TimeManager.Instance.AddGameTime(transform.position.x);
     }
     private void Update()
     {
-        if (transform.position.x > 0f)
-        {
-            TimeManager.Instance.AddGameTime(transform.position.x); //한픽셀움직인거리당 3분씩 더해지도록
-        }
+        TimeManager.Instance.AddGameTime(transform.position.x); //한픽셀움직인거리당 3분씩 더해지도록
     }
 
     private IEnumerator DecreaseHealthOverTime()
@@ -61,7 +59,7 @@ public class Player : MonoBehaviour
 
             if (playerHealth <= 0) break;
         }
-        
+
     }
 }
 
