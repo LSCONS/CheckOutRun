@@ -17,13 +17,12 @@ public class MainUI : MonoBehaviour
     public Transform dimPanel;
     public Transform pausePopup;
 
-    public Transform descBtn;
+    //public Transform descBtn;
 
     void Start()
     {
         dimPanel.gameObject.SetActive(false);
         pausePopup.gameObject.SetActive(false);
-        descBtn.gameObject.SetActive(false);
 
         highScore.text = PlayerPrefs.GetInt("bestScore").ToString();
         GetHighTime();
@@ -32,13 +31,13 @@ public class MainUI : MonoBehaviour
         exitBtn.onClick.AddListener(OnClickExitBtn);
     }
 
-    private void OnEnable()
-    {
-        if(PlayerPrefs.GetInt("AlreadyDesc", 0) == 1)
-        {
-            descBtn.gameObject.SetActive(true);
-        }
-    }
+    //private void OnEnable()
+    //{
+    //    if(PlayerPrefs.GetInt("AlreadyDesc", 0) == 1)
+    //    {
+    //        descBtn.gameObject.SetActive(true);
+    //    }
+    //}
     void OnClickSetting()
     {
         dimPanel.gameObject.SetActive(true);
