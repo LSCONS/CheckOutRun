@@ -161,11 +161,20 @@ public class PlayerController : MonoBehaviour
                 MagnetItem item = collision.gameObject.GetComponent<MagnetItem>();
                 if (item != null)
                 {
-                    //MagnetItem.MagnetEffect(5f);
                     item.OnCollisionEffect();
                 }
 
             }
+            if (collision.GetComponent<IItem>().GetType() == typeof(StarItem))
+            {
+                StarItem item = collision.gameObject.GetComponent<StarItem>();
+                if (item != null)
+                {
+                    item.OnCollisionEffect();
+                }
+
+            }
+
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
