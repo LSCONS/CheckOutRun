@@ -10,6 +10,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     public static readonly int IsJump2Key = Animator.StringToHash("IsJump2");
     public static readonly int IsGroundKey = Animator.StringToHash("IsGround");
     public static readonly int IsSlideKey = Animator.StringToHash("IsSlide");
+    public static readonly int IsClearKey = Animator.StringToHash("IsClear");
 
     public bool IsGround
     { 
@@ -38,6 +39,11 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         get => playerAnimator.GetBool(IsSlideKey);
         set => playerAnimator.SetBool(IsSlideKey, value);
+    }
+    public bool IsClear
+    {
+        get => playerAnimator.GetBool(IsClearKey);
+        set => playerAnimator.SetBool(IsClearKey, value);
     }
 
     public Animator playerAnimator;

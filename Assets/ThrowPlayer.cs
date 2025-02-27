@@ -6,6 +6,9 @@ public class ThrowPlayer : MonoBehaviour
 {
     public GameObject mainCamera;
     public GameObject clearBackground;
+    public GameObject mainUI;
+    public GameObject pauseUI;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -21,6 +24,11 @@ public class ThrowPlayer : MonoBehaviour
         Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
         GameManager.Instance.isWin = true;
         playerRigidbody.gravityScale = 0f;
+        mainUI.SetActive(false);
+        pauseUI.SetActive(false);
+
+        PlayerAnimationHandler playerAnimation = player.GetComponent<PlayerAnimationHandler>();
+
 
         Player player1 = player.GetComponent<Player>();
 
@@ -28,6 +36,9 @@ public class ThrowPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        playerAnimation.IsJump1 = false;
+        playerAnimation.IsJump2 = false;
+        playerAnimation.IsClear = true;
         Destroy(playerRigidbody);
         Destroy(player.GetComponent<PlayerMoveCheck>());
         player.transform.position = new Vector3(800, 200, 0);
@@ -35,7 +46,8 @@ public class ThrowPlayer : MonoBehaviour
         clearBackground.SetActive(true);
 
         yield return new WaitForSeconds(1f);
-
+        Camera camera = Camera.main;
+        camera.orthographicSize = 6;
         mainCamera.transform.position = player.transform.position + Vector3.back * 10;
     }
 }
