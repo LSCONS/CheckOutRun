@@ -36,12 +36,7 @@ public class InstancePrefabs : MonoBehaviour
 
     private void Start()
     {
-        beforeColor = new Color(startColor, startColor, startColor, 1);
-        nextColor = new Color(startColor, startColor, startColor, 1);
-        for (int i = 0; i < backgroundsSpriteRenderer.Length; i++)
-        {
-            backgroundsSpriteRenderer[i].color = beforeColor;
-        }
+        ResetBackgroundColor();
     }
 
 
@@ -51,7 +46,19 @@ public class InstancePrefabs : MonoBehaviour
         ChangeColor();
     }
 
-    
+    //컬러를 배어받은 후, 배경들의 색깔을 변경하는 메서드
+    private void ResetBackgroundColor()
+    {
+        beforeColor = new Color(startColor, startColor, startColor, 1);
+        nextColor = new Color(startColor, startColor, startColor, 1);
+        for (int i = 0; i < backgroundsSpriteRenderer.Length; i++)
+        {
+            backgroundsSpriteRenderer[i].color = beforeColor;
+        }
+    }
+
+
+
     //배경 바탕 이미지를 초기화
     private void ResetBackgroundImage()
     {

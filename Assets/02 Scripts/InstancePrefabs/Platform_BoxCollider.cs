@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 public class Platform_BoxCollider : MonoBehaviour
 {
     float minusY = 0.4f;
+
+    //현재 프리팹 오브젝트의 Scale에 따라 BoxCollider2D의 크기를 조정합니다.
     private void Awake()
     {
         BoxCollider2D box2D = gameObject.AddComponent<BoxCollider2D>();
