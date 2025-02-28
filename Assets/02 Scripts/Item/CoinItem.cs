@@ -5,14 +5,14 @@ using UnityEngine;
 public class CoinItem : MonoBehaviour, IItem
 {
     private int coinScore = 1;          //충돌시 올라가는 점수 수치
-    private int EventScore = 5;
-    private static bool isEvented = false;
+    private int eventScore = 5;  // 코인 점수 증가 아이템(StarItem)을 먹으면 코인 점수 증가
+    private static bool isEvented = false; // 코인 점수 증가 이벤트 여부
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] ParticleSystem particle;
     [SerializeField] ParticleSystem Eventparticle;
 
-
-    public int CoinScore { get { return isEvented ? EventScore : coinScore; } }
+    // 이벤트 여부가 true이면 eventScore, false면 coinScore을 반영
+    public int CoinScore { get { return isEvented ? eventScore : coinScore; } }
 
     public void OnCollisionEffect()
     {
@@ -41,13 +41,14 @@ public class CoinItem : MonoBehaviour, IItem
     }
     public void ActivateCoinEvent(float duration)
     {
-        isEvented = true;
+        // 코인 증가 이벤트 실행 (파티클 재생)
+        isEvented = true; 
 
         if (Eventparticle != null)
         {
             if (!Eventparticle.isPlaying)
             {
-                Eventparticle.Play();  // 파티클 재생
+                Eventparticle.Play(); 
             }
         }
 
@@ -57,6 +58,7 @@ public class CoinItem : MonoBehaviour, IItem
 
     private static IEnumerator DeactivateEventAfterTime(float duration, CoinItem instance)
     {
+        // 5초 후 코인 증가 이벤트 종료 (파티클 정지)
         yield return new WaitForSeconds(duration);
 
         isEvented = false;
@@ -64,7 +66,7 @@ public class CoinItem : MonoBehaviour, IItem
 
         if (instance != null && instance.Eventparticle != null && instance.Eventparticle.isPlaying)
         {
-            instance.Eventparticle.Stop();  // 파티클 정지
+            instance.Eventparticle.Stop();
         }
     }
 
