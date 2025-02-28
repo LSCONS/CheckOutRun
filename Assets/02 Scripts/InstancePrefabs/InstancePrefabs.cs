@@ -27,11 +27,11 @@ public class InstancePrefabs : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player");
-        backgroundsSpriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         ShuffleArray(backgroundPrefabs);
         ShuffleArray(backgroundZeps);
         ResetBackgroundImage();
         ResetCharactorImage();
+        backgroundsSpriteRenderer = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void Start()
