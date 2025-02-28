@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// SoundLibrary는 게임 내에서 사용되는 오디오 클립을 관리하는 클래스입니다.
+/// 승리와 패배 시 재생되는 BGM 및 SFX 클립을 제공합니다.
+/// </summary>
 public class SoundLibrary : MonoBehaviour
 {
     public static SoundLibrary Instance { get; private set; }

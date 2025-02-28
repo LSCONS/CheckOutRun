@@ -39,6 +39,9 @@ public class GameUI : MonoBehaviour
         UpdateTimeSlider();
     }
 
+    /// <summary>
+    /// 체력 바를 업데이트합니다.
+    /// </summary>
     public void UpdateHealthBar() // hp가 변경될 때마다 호출해서 UI를 업데이트해줘야함
     {
         float currentHp = player.playerHealth;
@@ -60,12 +63,18 @@ public class GameUI : MonoBehaviour
         front.sizeDelta = new Vector2(newWidth, height);
     }
 
+    /// <summary>
+    /// 점수 UI를 업데이트합니다.
+    /// </summary>
     public void UpdateScoreUI()
     {
         int score = DataManager.Instance.Score;
         scoreTxt.text = score.ToString();
     }
 
+    /// <summary>
+    /// 시간 UI를 업데이트합니다.
+    /// </summary>
     public void UpdateTimeUI()
     {
         float gameTime = TimeManager.Instance.gameTime;

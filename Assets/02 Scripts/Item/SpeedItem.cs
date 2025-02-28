@@ -24,6 +24,12 @@ public class SpeedItem : MonoBehaviour ,IItem
     }
 }
 
+/**
+ * SpeedType
+ * Slow = 느려지게 하는 타입
+ * Fast = 빨라지게 하는 타입
+ * Max = 최고속도로 만들어주는 타입(사용 X)
+ * */
 public enum SpeedType
 {
     Slow = 0,
