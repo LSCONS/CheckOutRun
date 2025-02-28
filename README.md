@@ -9,10 +9,6 @@
 6. [기술스택](#기술스택)
 7. [서비스 구조](#서비스-구조)
 8. [와이어프레임](#와이어프레임)
-9. [API 명세서](#API-명세서)
-10. [ERD](#ERD)
-11. [프로젝트 파일 구조](#프로젝트-파일-구조)
-12. [Trouble Shooting](#trouble-shooting)
     
 ## 👨‍🏫 프로젝트 소개
 21시를 향해 달리자!
@@ -67,23 +63,11 @@ Windows, Android, WebGL
 PlayerPrefs
 
 ## 서비스 구조
-
+클라이언트(Unity)
+게임 실행 및 플레이어 입력 처리
+UI 및 애니메이션 렌더링
+데이터 저장 및 로드 (PlayerPrefs, JSON 등 활용)
 
 
 ## 와이어프레임
 ![image](https://github.com/user-attachments/assets/5fc52d6f-1831-4bbe-9dfa-2d3623fab6a6)
-
-
-
-## API 명세서
-
-
-## ERD
-
-
-## 프로젝트 파일 구조
-
-
-
-
-## Trouble Shooting
