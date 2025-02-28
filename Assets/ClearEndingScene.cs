@@ -19,5 +19,11 @@ public class ClearEndingScene : MonoBehaviour
         {
             textObjects[i].transform.position = textObjects[i].transform.position + new Vector3(0, speed / 2, 0);
         }
+
+
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 }
