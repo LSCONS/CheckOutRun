@@ -27,9 +27,34 @@ public class InstancePrefabs : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player");
+        backgroundsSpriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         ShuffleArray(backgroundPrefabs);
         ShuffleArray(backgroundZeps);
+        ResetBackgroundImage();
+        ResetCharactorImage();
+    }
 
+    private void Start()
+    {
+        beforeColor = new Color(startColor, startColor, startColor, 1);
+        nextColor = new Color(startColor, startColor, startColor, 1);
+        for (int i = 0; i < backgroundsSpriteRenderer.Length; i++)
+        {
+            backgroundsSpriteRenderer[i].color = beforeColor;
+        }
+    }
+
+
+    private void Update()
+    {
+        SettingColor();
+        ChangeColor();
+    }
+
+    
+    //배경 바탕 이미지를 초기화
+    private void ResetBackgroundImage()
+    {
         float nowWidthX = 0;
         int i = 0;
         while (nowWidthX < maxWidthX)
@@ -55,20 +80,24 @@ public class InstancePrefabs : MonoBehaviour
             }
             i++;
         }
-        nowWidthX = 0;
-        i = 0;
+    }
+
+    
+    //배경 캐릭터 이미지를 초기화
+    private void ResetCharactorImage()
+    {
+        float nowWidthX = 0;
+        int i = 0;
         while (nowWidthX < maxWidthX)
         {
             if (i >= backgroundZeps.Length) i = 0;
             int randIndex = Random.Range(0, backgroundZeps.Length);
             float randHeightY = Random.Range(minRandHeightY, maxRandHeightY);
-            float randWidthX = Random.Range(1, 3);
+            float randWidthX = Random.Range(minRandWidthX, maxRandWidthX);
             Vector3 tempVector = new Vector3(nowWidthX, randHeightY, 0f);
             GameObject gameObject = Instantiate(backgroundZeps[i], tempVector, Quaternion.identity);
             gameObject.transform.parent = this.transform;
-
             Renderer renderer = gameObject.GetComponentInChildren<Renderer>();
-
             if (renderer != null)
             {
                 nowWidthX += renderer.bounds.size.x + randWidthX;
@@ -83,23 +112,13 @@ public class InstancePrefabs : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        backgroundsSpriteRenderer = GetComponentsInChildren<SpriteRenderer>();
-        beforeColor = new Color(startColor, startColor, startColor, 1);
-        nextColor = new Color(startColor, startColor, startColor, 1);
-        for (int i = 0; i < backgroundsSpriteRenderer.Length; i++)
-        {
-            backgroundsSpriteRenderer[i].color = beforeColor;
-        }
-    }
 
-
-    private void Update()
+    //현재 시간에 비례해서 색깔의 목표치를 정하는 메서드
+    private void SettingColor()
     {
-        if(nowTime <= player.transform.position.x)
+        if (nowTime <= player.transform.position.x)
         {
-            if(nowTime < 299)
+            if (nowTime < 299)
             {
                 nextColor = nextColor + (minusColor / 4);
             }
@@ -110,8 +129,13 @@ public class InstancePrefabs : MonoBehaviour
             lerpT = 0;
             nowTime += 60f;
         }
+    }
 
-        if(beforeColor != nextColor)
+
+    //before컬러를 next컬러로 교체하는 메서드
+    private void ChangeColor()
+    {
+        if (beforeColor != nextColor)
         {
             lerpT += Time.deltaTime * 2;
             if (lerpT >= 1) lerpT = 1;
@@ -123,7 +147,9 @@ public class InstancePrefabs : MonoBehaviour
         }
     }
 
-    void ShuffleArray<T>(T[] array)
+
+    //입력된 배열들을 무작위로 섞는 메서드
+    private void ShuffleArray<T>(T[] array)
     {
         for (int i = array.Length - 1; i > 0; i--)
         {
