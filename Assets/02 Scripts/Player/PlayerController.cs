@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
     private StatHandler statHandler;
     private DataManager dataManager;
     private PlayerAnimationHandler playerAnimationHandler;
-    public bool isFlap = false;
-    public bool isSlide = false;
-    private bool isGrounded = false;
+    public bool isFlap = false; // 점프 
+    public bool isSlide = false; // 슬라이드
+    private bool isGrounded = false; // 플랫폼 오브젝트에
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         HandleSlide();
     }
 
-    private void Move()
+    private void Move() // 플레이어가 X축으로 쭉 이동하도록 구현
     {
         if (player.rigid == null) return;
 
@@ -75,13 +75,14 @@ public class PlayerController : MonoBehaviour
         playerAnimationHandler.PlayerIsGround(isGrounded);
     }
 
-    public void HandleJump()
+    public void HandleJump() 
     {
+        // 버튼 입력 또는 키보드 입력 감지 되면 해당 함수 호출
         if (!isFlap || playerAnimationHandler.IsJump2 == true) 
         { 
             isFlap = false; 
             return; 
-        } // 점프 횟수 초과 시 실행 방지
+        } 
 
         Jump();
         isFlap = false;
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        // 점프 동작 수행
         if (player.rigid != null)
         {
             if (playerAnimationHandler.IsJump1) playerAnimationHandler.IsJump2 = true;
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleSlide()
     {
+        // 버튼 입력 또는 키보드 입력 감지 되면 해당 함수 호출
         if (isFlap || !isGrounded) return;
         if (isSlide) Slide();
         else ResetSlide();
@@ -110,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void Slide()
     {
+        // 슬라이드 동작 수행
         if (player.coll != null)
         {
             playerAnimationHandler.IsSlide = true;
@@ -120,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void ResetSlide()
     {
+        // 슬라이드 해제 및 원래 상태로 복구
         if (player.coll != null)
         {
             playerAnimationHandler.IsSlide = false;
@@ -131,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 아이템 충독 감지 및 처리
         if (collision == null)
         {
             return;
