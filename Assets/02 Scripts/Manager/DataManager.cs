@@ -31,12 +31,14 @@ public class DataManager : MonoBehaviour
         gameUI = FindObjectOfType<GameUI>();
     }
 
+    //점수 더하기
     public void AddScore(int unitScore)
     {
         score += unitScore;
         gameUI.UpdateScoreUI();
     }
 
+    //최고기록 갱신
     public void UpdateBestScore()
     {
         int bestScore = PlayerPrefs.GetInt("bestScore");
