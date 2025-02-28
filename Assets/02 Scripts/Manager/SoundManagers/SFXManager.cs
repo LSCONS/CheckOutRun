@@ -20,6 +20,11 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 지정된 오디오 클립을 주어진 볼륨으로 재생합니다.
+    /// </summary>
+    /// <param name="clip">재생할 오디오 클립</param>
+    /// <param name="volume">재생할 볼륨 (기본값: 1.0f)</param>
     public void PlaySFX(AudioClip clip, float volume = 1.0f)
     {
         foreach (var source in sfxSources)
@@ -34,6 +39,10 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 모든 SFX AudioSource의 볼륨을 업데이트합니다.
+    /// </summary>
+    /// <param name="volume">새로운 볼륨 값</param>
     public void UpdateVolume(float volume)
     {
         foreach (var source in sfxSources)

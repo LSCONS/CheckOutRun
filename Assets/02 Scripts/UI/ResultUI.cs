@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// ResultUI는 게임 결과 화면에서 표시되는 UI 요소를 관리하는 클래스입니다.
+/// 결과 제목, 시간, 점수를 표시하고, 다시 시도 및 메인 화면으로 돌아가는 버튼을 제공합니다.
+/// </summary>
 public class ResultUI : MonoBehaviour
 {
     public Button returnBtn;

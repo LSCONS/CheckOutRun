@@ -13,6 +13,9 @@ public class SoundManager : MonoBehaviour
     private float _bgmVolume = 1.0f;
     private float _sfxVolume = 1.0f;
 
+    /// <summary>
+    /// BGM 볼륨을 가져오거나 설정합니다. 설정 시 PlayerPrefs에 저장됩니다.
+    /// </summary>
     public float bgmVolume
     {
         get { return _bgmVolume; }
@@ -27,6 +30,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// SFX 볼륨을 가져오거나 설정합니다. 설정 시 PlayerPrefs에 저장됩니다.
+    /// </summary>
     public float sfxVolume
     {
         get { return _sfxVolume; }
@@ -41,6 +47,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 싱글톤 인스턴스를 초기화하고, BGMManager와 SFXManager를 설정합니다.
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
