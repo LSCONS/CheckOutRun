@@ -17,6 +17,10 @@ public class StatHandler : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    /// <summary>
+    /// 아이템에 따라 플레이어의 속도를 변경합니다.
+    /// </summary>
+    /// <param name="item">속도를 변경할 아이템</param>
     public void ChangeSpeed(IItem item)
     {
         if (item == null || !player.isAlive)
@@ -37,6 +41,10 @@ public class StatHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 아이템에 따라 플레이어의 체력을 회복합니다.
+    /// </summary>
+    /// <param name="item">체력을 회복할 아이템</param>
     public void Heal(IItem item)
     {
         if (item == null || !player.isAlive)
@@ -50,6 +58,11 @@ public class StatHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 플레이어에게 데미지를 입힙니다.
+    /// </summary>
+    /// <param name="damage">입힐 데미지 양</param>
+    /// <param name="collider">충돌한 Collider2D 객체 (선택 사항)</param>
     public void Damage(int damage, Collider2D collider = null)
     {
         if (player.isInvincible)
@@ -61,7 +74,7 @@ public class StatHandler : MonoBehaviour
         {
             player.playerHealth = 0;
         }
-        else if(collider != null)                       //충돌처리됐을때
+        else if (collider != null)                       //충돌처리됐을때
         {
             player.playerHealth -= damage;
             StartCoroutine(InvincibilityRoutine());
@@ -77,7 +90,9 @@ public class StatHandler : MonoBehaviour
         }
     }
 
-    //피격시 무적처리
+    /// <summary>
+    /// 피격 시 무적 처리를 합니다.
+    /// </summary>
     IEnumerator InvincibilityRoutine()
     {
         player.isInvincible = true; // 무적 시작
@@ -89,6 +104,9 @@ public class StatHandler : MonoBehaviour
         animator.SetBool("IsInvincible", false); //애니메이션 OFF
     }
 
+    /// <summary>
+    /// 장애물에 부딪혔을 때 플레이어의 속도를 일시적으로 감소시킵니다.
+    /// </summary>
     IEnumerator ObstacleRoutine()
     {
         float playerSpeed = player.playerSpeed;
@@ -99,3 +117,4 @@ public class StatHandler : MonoBehaviour
         player.playerSpeed = playerSpeed;
     }
 }
+
