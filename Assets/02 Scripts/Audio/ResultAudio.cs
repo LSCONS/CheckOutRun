@@ -10,9 +10,9 @@ public class ResultAudio : MonoBehaviour
 {
     private void Start()
     {
-        if (GameManager.Instance != null && SoundManager.Instance != null)
+        if (GameManager1.Instance != null && SoundManager.Instance != null)
         {
-            if (GameManager.Instance.isWin == false)
+            if (GameManager1.Instance.isWin == false)
             {
                 SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxLose, 0.5f);
             }

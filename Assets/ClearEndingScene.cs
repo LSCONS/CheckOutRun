@@ -23,7 +23,7 @@ public class ClearEndingScene : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            GameManager.Instance.GameOver();
+            GameManager1.Instance.GameOver();
         }
     }
 }

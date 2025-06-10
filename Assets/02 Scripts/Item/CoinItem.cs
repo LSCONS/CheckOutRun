@@ -27,6 +27,8 @@ public class CoinItem : MonoBehaviour, IItem
             Destroy(gameObject, 1f);
         }
     }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -39,6 +41,8 @@ public class CoinItem : MonoBehaviour, IItem
             OnCollisionEffect();
         }
     }
+
+
     public void ActivateCoinEvent(float duration)
     {
         // 코인 증가 이벤트 실행 (파티클 재생)
@@ -51,8 +55,7 @@ public class CoinItem : MonoBehaviour, IItem
                 Eventparticle.Play(); 
             }
         }
-
-        GameManager.Instance.StartCoroutine(DeactivateEventAfterTime(duration, this));
+        GameManager2.Instance.StartCoroutine(DeactivateEventAfterTime(duration, this));
     }
 
 
@@ -63,11 +66,9 @@ public class CoinItem : MonoBehaviour, IItem
 
         isEvented = false;
 
-
         if (instance != null && instance.Eventparticle != null && instance.Eventparticle.isPlaying)
         {
             instance.Eventparticle.Stop();
         }
     }
-
 }

@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class StatHandler : MonoBehaviour
 {
-    GameManager gameManager;
+    GameManager1 gameManager;
     Player player;
     Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
+        gameManager = GameManager1.Instance;
         player = GetComponent<Player>();
         animator = GetComponentInChildren<Animator>();
     }

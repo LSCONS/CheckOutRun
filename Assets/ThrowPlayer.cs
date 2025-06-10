@@ -22,13 +22,12 @@ public class ThrowPlayer : MonoBehaviour
     IEnumerator ThrowNow(GameObject player)
     {
         Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
-        GameManager.Instance.isWin = true;
+        GameManager1.Instance.isWin = true;
         playerRigidbody.gravityScale = 0f;
         mainUI.SetActive(false);
         pauseUI.SetActive(false);
 
         PlayerAnimationHandler playerAnimation = player.GetComponent<PlayerAnimationHandler>();
-
 
         Player player1 = player.GetComponent<Player>();
 
