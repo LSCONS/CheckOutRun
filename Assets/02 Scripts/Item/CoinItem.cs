@@ -55,7 +55,7 @@ public class CoinItem : MonoBehaviour, IItem
                 Eventparticle.Play(); 
             }
         }
-        GameManager2.Instance.StartCoroutine(DeactivateEventAfterTime(duration, this));
+        GameManager.Instance.StartCoroutine(DeactivateEventAfterTime(duration, this));
     }
 
 

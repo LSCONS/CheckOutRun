@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player == null && GameManager1.Instance.isWin) return;
+        if (player == null && GameManager.Instance.isWin) return;
 
         Move();
         HandleJump();

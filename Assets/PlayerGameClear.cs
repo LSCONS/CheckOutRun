@@ -8,7 +8,7 @@ public class PlayerGameClear : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            GameManager1.Instance.GameOver();
+            GameManager.Instance.GameOver();
         }
     }
 }

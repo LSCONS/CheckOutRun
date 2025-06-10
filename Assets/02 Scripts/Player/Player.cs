@@ -51,10 +51,10 @@ public class Player : MonoBehaviour
 
     private IEnumerator DecreaseHealthOverTime()
     {
-        while (GameManager1.Instance.isWin == false)
+        while (GameManager.Instance.isWin == false)
         {
             yield return new WaitForSeconds(1f);
-            if (GameManager1.Instance.isWin) yield break;
+            if (GameManager.Instance.isWin) yield break;
 
             statHandler.Damage(1);
 

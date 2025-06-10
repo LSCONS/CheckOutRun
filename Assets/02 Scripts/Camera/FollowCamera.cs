@@ -24,7 +24,7 @@ public class FollowCamera : MonoBehaviour
         //카메라의 목표 지점을 결정함.
         Vector3 targetPosition;
 
-        if (GameManager1.Instance.isWin == false)
+        if (GameManager.Instance.isWin == false)
         {
             targetPosition = new Vector3(target.position.x + 4, 0, -10f);
             transform.position = targetPosition;

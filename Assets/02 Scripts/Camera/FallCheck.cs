@@ -19,7 +19,7 @@ public class FallCheck : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Player"))
         {
-            GameManager1.Instance.GameOver();
+            GameManager.Instance.GameOver();
         }
     }
 }
