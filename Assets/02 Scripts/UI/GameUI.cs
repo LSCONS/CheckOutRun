@@ -74,7 +74,7 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void UpdateTimeUI()
     {
-        float gameTime = TimeManager.Instance.gameTime;
+        float gameTime = TimeManager.Instance.GameTime;
 
         int totalhours = Mathf.FloorToInt(gameTime / 60);
         int minutes = Mathf.FloorToInt(gameTime % 60);
@@ -88,7 +88,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdateTimeSlider()
     {
-        float gameTime = TimeManager.Instance.gameTime;
+        float gameTime = TimeManager.Instance.GameTime;
 
         timeSlider.value = (gameTime - 540f) / 720f;
     }

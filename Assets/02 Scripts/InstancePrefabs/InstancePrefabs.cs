@@ -21,7 +21,7 @@ public class InstancePrefabs : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindWithTag(ReadonlyData.PlayerTagName);
         ShuffleArray(backgroundPrefabs);
         ShuffleArray(backgroundZeps);
         ResetBackgroundImage();
@@ -41,6 +41,7 @@ public class InstancePrefabs : MonoBehaviour
         ChangeColor();
     }
 
+
     //컬러를 배어받은 후, 배경들의 색깔을 변경하는 메서드
     private void ResetBackgroundColor()
     {
@@ -53,7 +54,6 @@ public class InstancePrefabs : MonoBehaviour
     }
 
 
-
     //배경 바탕 이미지를 초기화
     private void ResetBackgroundImage()
     {
@@ -62,18 +62,18 @@ public class InstancePrefabs : MonoBehaviour
         while (nowWidthX < maxWidthX)
         {
             if (i >= backgroundPrefabs.Length) i = 0;
-            float randHeightY = Random.Range(minRandHeightY, maxRandHeightY);
-            float randWidthX = Random.Range(minRandWidthX, maxRandWidthX);
-            Vector3 tempVector = new Vector3(nowWidthX, randHeightY, 0f);
-            GameObject gameObject = Instantiate(backgroundPrefabs[i], tempVector, Quaternion.identity);
-            gameObject.transform.parent = this.transform;
 
-            Renderer renderer = gameObject.GetComponent<Renderer>();
+            float randHeightY       = Random.Range(minRandHeightY, maxRandHeightY);
+            float randWidthX        = Random.Range(minRandWidthX, maxRandWidthX);
+            Vector3 tempVector      = new Vector3(nowWidthX, randHeightY, 0f);
+            GameObject obj          = Instantiate(backgroundPrefabs[i], tempVector, Quaternion.identity);
+            Renderer renderer       = obj.GetComponent<Renderer>();
+            obj.transform.parent    = this.transform;
 
             if (renderer != null)
             {
-                nowWidthX += renderer.bounds.size.x + randWidthX;
-                Color beforeColor = renderer.material.color;
+                nowWidthX              += renderer.bounds.size.x + randWidthX;
+                Color beforeColor       = renderer.material.color;
                 renderer.material.color = new Color(beforeColor.r, beforeColor.g, beforeColor.b, 0.6f);
             }
             else
@@ -93,17 +93,19 @@ public class InstancePrefabs : MonoBehaviour
         while (nowWidthX < maxWidthX)
         {
             if (i >= backgroundZeps.Length) i = 0;
-            int randIndex = Random.Range(0, backgroundZeps.Length);
-            float randHeightY = Random.Range(minRandHeightY, maxRandHeightY);
-            float randWidthX = Random.Range(minRandWidthX, maxRandWidthX);
-            Vector3 tempVector = new Vector3(nowWidthX, randHeightY, 0f);
-            GameObject gameObject = Instantiate(backgroundZeps[i], tempVector, Quaternion.identity);
-            gameObject.transform.parent = this.transform;
-            Renderer renderer = gameObject.GetComponentInChildren<Renderer>();
+
+            int randIndex           = Random.Range(0, backgroundZeps.Length);
+            float randHeightY       = Random.Range(minRandHeightY, maxRandHeightY);
+            float randWidthX        = Random.Range(minRandWidthX, maxRandWidthX);
+            Vector3 tempVector      = new Vector3(nowWidthX, randHeightY, 0f);
+            GameObject obj          = Instantiate(backgroundZeps[i], tempVector, Quaternion.identity);
+            obj.transform.parent    = this.transform;
+            Renderer renderer       = obj.GetComponentInChildren<Renderer>();
+
             if (renderer != null)
             {
-                nowWidthX += renderer.bounds.size.x + randWidthX;
-                Color beforeColor = renderer.material.color;
+                nowWidthX              += renderer.bounds.size.x + randWidthX;
+                Color beforeColor       = renderer.material.color;
                 renderer.material.color = new Color(beforeColor.r, beforeColor.g, beforeColor.b, 0.6f);
             }
             else
@@ -161,5 +163,4 @@ public class InstancePrefabs : MonoBehaviour
             array[j] = temp;
         }
     }
-
 }

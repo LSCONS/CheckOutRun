@@ -7,7 +7,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
-    public float gameTime { get; private set; } = 0;
+    public float GameTime { get; private set; } = 0;
 
     private float startHour = 9f * 60f; //출석 시간
     private float endHour = 21f * 60f; //퇴실 시간
@@ -28,6 +28,7 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// 플레이어의 이동 거리에 따라 게임 시간을 증가시킵니다.
     /// </summary>
@@ -36,24 +37,11 @@ public class TimeManager : MonoBehaviour
     {
         if (moveDistance < 0) moveDistance = 0;
         float TimetoAdd = moveDistance; // 플레이어 이동거리에 따라 더해주는거라 Time.deltaTime을 곱해주지 않아도 됩니다.
-        gameTime = TimetoAdd + startHour;
+        GameTime = TimetoAdd + startHour;
 
-        if (gameTime >= endHour) //21시 이후는 출력되지 않도록 합니다.
+        if (GameTime >= endHour) //21시 이후는 출력되지 않도록 합니다.
         {
-            gameTime = endHour;
-        }
-    }
-
-    /// <summary>
-    /// 최고 기록을 갱신합니다.
-    /// </summary>
-    public void UpdateBestTime()
-    {
-        float bestTime = PlayerPrefs.GetFloat(ReadonlyData.BestScorePlayerPrefabs);
-
-        if (gameTime > bestTime)
-        {
-            PlayerPrefs.SetFloat(ReadonlyData.BestScorePlayerPrefabs, gameTime);
+            GameTime = endHour;
         }
     }
 
@@ -63,11 +51,11 @@ public class TimeManager : MonoBehaviour
     /// <returns>현재 게임 상태를 나타내는 IsGameClear 열거형 값</returns>
     public IsGameClear GetNowState()
     {
-        if (gameTime >= 1260f)
+        if (GameTime >= 1260f)
         {
             return IsGameClear.Clear;
         }
-        else if (gameTime >= 900f && gameTime < 1260f)
+        else if (GameTime >= 900f && GameTime < 1260f)
         {
             return IsGameClear.Perception;
         }

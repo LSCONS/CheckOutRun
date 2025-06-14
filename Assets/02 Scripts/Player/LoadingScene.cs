@@ -4,36 +4,38 @@ using UnityEngine;
 public class LoadingScene : MonoBehaviour
 {
     
-    private Rigidbody2D rb;
+    private Rigidbody2D rigidPlayer;
     private PlayerAnimationHandler animationHandler;
     private float moveSpeed = 3f;
     public GameObject SettingObject;
     
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        animationHandler = GetComponent<PlayerAnimationHandler>();
-        rb = GetComponent<Rigidbody2D>();
-        if (animationHandler == null) Debug.LogError("animationHandler is null");
-        if (rb == null) Debug.LogError("rigidbody is null");
+        animationHandler    = GetComponent<PlayerAnimationHandler>();
+        rigidPlayer         = GetComponent<Rigidbody2D>();
         StartCoroutine(Move());
     }
 
+
+    //특정 시간 이후 오브젝트 활성화 및 플레이어를 오른쪽 위로 날려보냄.
     IEnumerator Move()
     {
         yield return new WaitForSeconds(0.7f);
         SettingObject.SetActive(true);
         yield return new WaitForSeconds(0.7f);
-        rb.AddForce(new Vector2(200, 300));
+        rigidPlayer.AddForce(new Vector2(200, 300));
         animationHandler.IsJump1Parameter = true;
     }
 
+
+    //땅에 착지할 경우 걷는 모션과 함께 오른쪽으로 이동시킴.
     private void OnCollisionStay2D(Collision2D collision)
     {
         animationHandler.IsJump1Parameter = false;
         if (1 << collision.gameObject.layer == ReadonlyData.GroundLayerMask)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rigidPlayer.velocity = new Vector2(moveSpeed, rigidPlayer.velocity.y);
             animationHandler.IsGroundParameter = true;
         }
     }

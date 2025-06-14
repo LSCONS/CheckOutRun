@@ -42,7 +42,7 @@ public class ResultUI : MonoBehaviour
 
     public void SetTimeTxt()
     {
-        float gameTime = TimeManager.Instance.gameTime;
+        float gameTime = TimeManager.Instance.GameTime;
 
         int hours = Mathf.FloorToInt(gameTime / 60);
         int minutes = Mathf.FloorToInt(gameTime % 60);
