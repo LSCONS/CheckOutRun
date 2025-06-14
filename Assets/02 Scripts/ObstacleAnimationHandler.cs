@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleAnimationHandler : MonoBehaviour
 {
-    private readonly int ObstacleAnimationKey = Animator.StringToHash("IsStart");
     private Animator animator;
 
 
@@ -18,6 +15,6 @@ public class ObstacleAnimationHandler : MonoBehaviour
     //애니메이션 실행
     public void AnimationStart()
     {
-        animator.SetBool(ObstacleAnimationKey, true);
+        animator.SetBool(ReadonlyData.IsStartKey, true);
     }
 }

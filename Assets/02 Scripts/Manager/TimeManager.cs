@@ -52,11 +52,11 @@ public class TimeManager : MonoBehaviour
     /// </summary>
     public void UpdateBestTime()
     {
-        float bestTime = PlayerPrefs.GetFloat("bestTime");
+        float bestTime = PlayerPrefs.GetFloat(ReadonlyData.BestScorePlayerPrefabs);
 
         if (gameTime > bestTime)
         {
-            PlayerPrefs.SetFloat("bestTime", gameTime);
+            PlayerPrefs.SetFloat(ReadonlyData.BestScorePlayerPrefabs, gameTime);
         }
     }
 

@@ -48,10 +48,10 @@ public class DataManager : MonoBehaviour
     /// </summary>
     public void UpdateBestScore()
     {
-        int bestScore = PlayerPrefs.GetInt("bestScore");
+        int bestScore = PlayerPrefs.GetInt(ReadonlyData.BestScorePlayerPrefabs);
         if (score > bestScore)
         {
-            PlayerPrefs.SetInt("bestScore", score);
+            PlayerPrefs.SetInt(ReadonlyData.BestScorePlayerPrefabs, score);
         }
     }
 }

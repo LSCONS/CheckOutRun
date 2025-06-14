@@ -11,7 +11,7 @@ public class ThrowPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if(1 << collision.gameObject.layer == ReadonlyData.PlayerLayerMask)
         {
             StartCoroutine(ThrowNow(collision.gameObject));
 
@@ -35,9 +35,9 @@ public class ThrowPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        playerAnimation.IsJump1 = false;
-        playerAnimation.IsJump2 = false;
-        playerAnimation.IsClear = true;
+        playerAnimation.IsJump1Parameter = false;
+        playerAnimation.IsJump2Parameter = false;
+        playerAnimation.IsClearParameter = true;
         Destroy(playerRigidbody);
         Destroy(player.GetComponent<PlayerMoveCheck>());
         player.transform.position = new Vector3(800, 200, 0);

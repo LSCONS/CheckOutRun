@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,6 +38,6 @@ public class LoadingUI : MonoBehaviour
         countDownText.text = "Start!";
         yield return new WaitForSeconds(delayBeforeStart);
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(ReadonlyData.GameSceneName);
     }
 }

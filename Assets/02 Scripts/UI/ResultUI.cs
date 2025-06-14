@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,11 +56,11 @@ public class ResultUI : MonoBehaviour
 
     void ReturnMainScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(ReadonlyData.MainSceneName);
     }
 
     void OnClickRetryBtn()
     {
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene(ReadonlyData.LoadingSceneName);
     }
 }

@@ -5,45 +5,35 @@ using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
 {
-    public static readonly int IsInvincibleKey = Animator.StringToHash("IsInvincible");
-    public static readonly int IsJump1KeY = Animator.StringToHash("IsJump1");
-    public static readonly int IsJump2Key = Animator.StringToHash("IsJump2");
-    public static readonly int IsGroundKey = Animator.StringToHash("IsGround");
-    public static readonly int IsSlideKey = Animator.StringToHash("IsSlide");
-    public static readonly int IsClearKey = Animator.StringToHash("IsClear");
-
-    public bool IsGround
+    public bool IsGroundParameter
     { 
-        get => playerAnimator.GetBool(IsGroundKey);
-        set => playerAnimator.SetBool(IsGroundKey, value);
+        get => playerAnimator.GetBool(ReadonlyData.IsGroundKey);
+        set => playerAnimator.SetBool(ReadonlyData.IsGroundKey, value);
     }
-
-    public bool IsJump1
+    public bool IsJump1Parameter
     {
-        get => playerAnimator.GetBool(IsJump1KeY);
-        set => playerAnimator.SetBool(IsJump1KeY, value);
+        get => playerAnimator.GetBool(ReadonlyData.IsJump1KeY);
+        set => playerAnimator.SetBool(ReadonlyData.IsJump1KeY, value);
     }
-
-    public bool IsJump2
+    public bool IsJump2Parameter
     {
-        get => playerAnimator.GetBool(IsJump2Key);
-        set => playerAnimator.SetBool(IsJump2Key, value);
+        get => playerAnimator.GetBool(ReadonlyData.IsJump2Key);
+        set => playerAnimator.SetBool(ReadonlyData.IsJump2Key, value);
     }
-
-    public bool IsInvincible
+    public bool IsInvincibleParameter
     {
-        get => playerAnimator.GetBool(IsInvincibleKey);
-        set => playerAnimator.SetBool(IsInvincibleKey, value);
+        get => playerAnimator.GetBool(ReadonlyData.IsInvincibleKey);
+        set => playerAnimator.SetBool(ReadonlyData.IsInvincibleKey, value);
     }
-    public bool IsSlide
+    public bool IsSlideParameter
     {
-        get => playerAnimator.GetBool(IsSlideKey);
-        set => playerAnimator.SetBool(IsSlideKey, value);
+        get => playerAnimator.GetBool(ReadonlyData.IsSlideKey);
+        set => playerAnimator.SetBool(ReadonlyData.IsSlideKey, value);
     }
-    public bool IsClear
+    public bool IsClearParameter
     {
-        get => playerAnimator.GetBool(IsClearKey);
-        set => playerAnimator.SetBool(IsClearKey, value);
+        get => playerAnimator.GetBool(ReadonlyData.IsClearKey);
+        set => playerAnimator.SetBool(ReadonlyData.IsClearKey, value);
     }
 
     public Animator playerAnimator;
@@ -59,16 +49,16 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         if (isGround)
         {
-            IsGround = true;
-            IsJump1 = false;
-            IsJump2 = false;
-            IsSlide = false;
+            IsGroundParameter = true;
+            IsJump1Parameter = false;
+            IsJump2Parameter = false;
+            IsSlideParameter = false;
         }
         else
         {
-            IsSlide = false;
-            IsGround = false;
-            IsJump1 = true;
+            IsSlideParameter = false;
+            IsGroundParameter = false;
+            IsJump1Parameter = true;
         }
     }
 }

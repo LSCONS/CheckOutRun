@@ -1,20 +1,16 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatHandler : MonoBehaviour
 {
-    GameManager gameManager;
+    GameManager gameManager => GameManager.Instance;
     Player player;
-    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.Instance;
         player = GetComponent<Player>();
-        animator = GetComponentInChildren<Animator>();
     }
 
     /// <summary>
@@ -65,7 +61,7 @@ public class StatHandler : MonoBehaviour
     /// <param name="collider">충돌한 Collider2D 객체 (선택 사항)</param>
     public void Damage(int damage, Collider2D collider = null)
     {
-        if (player.isInvincible)
+        if (player.PlayerAnimationHandler.IsInvincibleParameter)
         {
             return;
         }
@@ -95,13 +91,11 @@ public class StatHandler : MonoBehaviour
     /// </summary>
     IEnumerator InvincibilityRoutine()
     {
-        player.isInvincible = true; // 무적 시작
-        animator.SetBool("IsInvincible", true);
+        player.PlayerAnimationHandler.IsInvincibleParameter = true;
         StartCoroutine(ObstacleRoutine());
         yield return new WaitForSeconds(player.InvincibleTime);
 
-        player.isInvincible = false; // 무적 종료
-        animator.SetBool("IsInvincible", false); //애니메이션 OFF
+        player.PlayerAnimationHandler.IsInvincibleParameter = false;
     }
 
     /// <summary>

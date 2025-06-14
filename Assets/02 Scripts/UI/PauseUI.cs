@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,7 +38,7 @@ public class PauseUI : MonoBehaviour
     public void OnClickExit()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(ReadonlyData.MainSceneName);
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.bgmManager.StopBGM();

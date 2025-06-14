@@ -6,7 +6,7 @@ public class PlayerGameClear : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if(1 << collision.gameObject.layer == ReadonlyData.PlayerLayerMask)
         {
             GameManager.Instance.GameOver();
         }

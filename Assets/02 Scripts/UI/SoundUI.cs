@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,15 +12,15 @@ public class SoundUI : MonoBehaviour
 
     void Start()
     {
-        bgmSlider.value = SoundManager.Instance.bgmVolume;
-        sfxSlider.value = SoundManager.Instance.sfxVolume;
-        bgmSlider.onValueChanged.AddListener(value => SoundManager.Instance.bgmVolume = value);
-        sfxSlider.onValueChanged.AddListener(value => SoundManager.Instance.sfxVolume = value);
+        bgmSlider.value = SoundManager.Instance.BGMVolume;
+        sfxSlider.value = SoundManager.Instance.SFXVolume;
+        bgmSlider.onValueChanged.AddListener(value => SoundManager.Instance.BGMVolume = value);
+        sfxSlider.onValueChanged.AddListener(value => SoundManager.Instance.SFXVolume = value);
     }
 
     private void Update()
     {
-        bgmSlider.onValueChanged.AddListener(value => SoundManager.Instance.bgmVolume = value);
-        sfxSlider.onValueChanged.AddListener(value => SoundManager.Instance.sfxVolume = value);
+        bgmSlider.onValueChanged.AddListener(value => SoundManager.Instance.BGMVolume = value);
+        sfxSlider.onValueChanged.AddListener(value => SoundManager.Instance.SFXVolume = value);
     }
 }

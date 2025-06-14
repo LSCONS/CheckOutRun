@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,8 +6,8 @@ public class PlayerController : MonoBehaviour
     private StatHandler statHandler;
     private DataManager dataManager;
     private PlayerAnimationHandler playerAnimationHandler;
-    public bool isFlap = false; // 점프 
-    public bool isSlide = false; // 슬라이드
+    public bool isJumpFlag = false; // 점프 
+    public bool isSlideFlag = false; // 슬라이드
     private bool isGrounded = false; // 플랫폼 오브젝트에
 
     private void Awake()
@@ -20,6 +17,7 @@ public class PlayerController : MonoBehaviour
         playerAnimationHandler = GetComponent<PlayerAnimationHandler>();  
     }
 
+
     void Start()
     {
         dataManager = DataManager.Instance;
@@ -27,109 +25,149 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
     void Update()
     {
         if (player == null) return;
-
-        if (!isSlide&&Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
-        {
-            isFlap = true;
-            isSlide = false;
-        }
-        else if (playerAnimationHandler.IsJump1 == false && (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)))
-        {
-            isSlide = true;
-        }
-
-        if(Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            isSlide = false;
-        }
-
+        CheckInputAction();
+        CancelSlide();
     }
+
 
     void FixedUpdate()
     {
-        if (player == null && GameManager.Instance.isWin) return;
-
+        if (player?.RigidPlayer == null) return;
+        if (GameManager.Instance.isWin) return;
+        CheckGround();
         Move();
         HandleJump();
         HandleSlide();
     }
 
-    private void Move() // 플레이어가 X축으로 쭉 이동하도록 구현
+
+    /// <summary>
+    /// 점프나 슬라이딩 키를 입력했는지 확인하는 메서드
+    /// </summary>
+    private void CheckInputAction()
     {
-        if (player.rigid == null) return;
-
-        player.rigid.velocity = new Vector2(player.playerSpeed, player.rigid.velocity.y);
-        Vector3 temp = transform.position - new Vector3(0.3f, 0, 0);
-        isGrounded = Physics2D.Raycast(temp, Vector2.down * 0.9f, 1f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
-
-        if(isGrounded == false)
+        if (!isSlideFlag && Input.GetKeyDown(KeyCode.Space)) // 스페이스바로 점프
         {
-            isSlide = false;
+            isJumpFlag = true;
+            isSlideFlag = false;
         }
+        else if (playerAnimationHandler.IsJump1Parameter == false && 
+                (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)))
+        {
+            isSlideFlag = true;
+        }
+    }
 
+
+    /// <summary>
+    /// 슬라이딩을 취소했을 때 실행하는 메서드
+    /// </summary>
+    private void CancelSlide()
+    {
+        if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isSlideFlag = false;
+        }
+    }
+
+    
+    /// <summary>
+    /// 현재 플레이어가 바닥에 닿은 상태인지 확인하는 메서드
+    /// </summary>
+    private void CheckGround()
+    {
+        Vector3 temp = transform.position - new Vector3(0.3f, 0, 0);
+        isGrounded = Physics2D.Raycast(temp, Vector2.down, 1f, ReadonlyData.GroundLayerMask);
+#if UNITY_EDITOR
+        Debug.DrawRay(temp, Vector2.down * 1f, Color.green);
+#endif
+
+        if (isGrounded == false)
+        {
+            isSlideFlag = false;
+        }
         playerAnimationHandler.PlayerIsGround(isGrounded);
     }
 
-    public void HandleJump() 
-    {
-        // 버튼 입력 또는 키보드 입력 감지 되면 해당 함수 호출
-        if (!isFlap || playerAnimationHandler.IsJump2 == true) 
-        { 
-            isFlap = false; 
-            return; 
-        } 
 
-        Jump();
-        isFlap = false;
+    /// <summary>
+    /// 플레이어의 움직임을 처리하는 메서드
+    /// </summary>
+    private void Move() // 플레이어가 X축으로 쭉 이동하도록 구현
+    {
+        player.RigidPlayer.velocity = new Vector2(player.playerSpeed, player.RigidPlayer.velocity.y);
     }
 
+
+    /// <summary>
+    /// 플레이어가 점프 가능 여부를 확인하는 메서드
+    /// </summary>
+    public void HandleJump() 
+    {
+        if (!(isJumpFlag)) return;
+        if (playerAnimationHandler.IsJump2Parameter == true) 
+        { 
+            isJumpFlag = false; 
+            return; 
+        } 
+        Jump();
+        isJumpFlag = false;
+    }
+
+
+    /// <summary>
+    /// 플레이어의 velocity.y를 올리는 메서드
+    /// </summary>
     private void Jump()
     {
         // 점프 동작 수행
-        if (player.rigid != null)
-        {
-            if (playerAnimationHandler.IsJump1) playerAnimationHandler.IsJump2 = true;
-            player.rigid.velocity = new Vector2(player.rigid.velocity.x, player.jumpForce);
-
-            if (SoundManager.Instance != null)
-            {
-                SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxJump, 0.5f);
-            }
-        }
+        if (playerAnimationHandler.IsJump1Parameter) playerAnimationHandler.IsJump2Parameter = true;
+        player.RigidPlayer.velocity = new Vector2(player.RigidPlayer.velocity.x, player.jumpForce);
+        SoundManager.Instance.sfxManager.PlaySFX(SoundLibrary.Instance.sfxJump, 0.5f);
     }
 
+
+    /// <summary>
+    /// 슬라이딩이 가능한지 확인하는 메서드
+    /// </summary>
     public void HandleSlide()
     {
         // 버튼 입력 또는 키보드 입력 감지 되면 해당 함수 호출
-        if (isFlap || !isGrounded) return;
-        if (isSlide) Slide();
+        if (isJumpFlag || !isGrounded) return;
+        if (isSlideFlag) Slide();
         else ResetSlide();
     }
 
+
+    /// <summary>
+    /// 슬라이딩 동작을 실행하는 메서드
+    /// </summary>
     private void Slide()
     {
         // 슬라이드 동작 수행
-        if (player.coll != null)
+        if (player.ColliderPlayer != null)
         {
-            playerAnimationHandler.IsSlide = true;
-            player.coll.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y - 1f);
-            player.coll.offset = new Vector2(player.originalColliderOffset.x, player.originalColliderOffset.y - 0.5f);
+            playerAnimationHandler.IsSlideParameter = true;
+            player.ColliderPlayer.size = new Vector2(player.originalColliderSize.x, player.originalColliderSize.y - 1f);
+            player.ColliderPlayer.offset = new Vector2(player.originalColliderOffset.x, player.originalColliderOffset.y - 0.5f);
         }
     }
 
+
+    /// <summary>
+    /// 슬라이딩 상태에서 빠져나올 때 실행하는 메서드
+    /// </summary>
     private void ResetSlide()
     {
         // 슬라이드 해제 및 원래 상태로 복구
-        if (player.coll != null)
+        if (player.ColliderPlayer != null)
         {
-            playerAnimationHandler.IsSlide = false;
-            player.coll.size = player.originalColliderSize;
-            player.coll.offset = player.originalColliderOffset;
+            playerAnimationHandler.IsSlideParameter = false;
+            player.ColliderPlayer.size = player.originalColliderSize;
+            player.ColliderPlayer.offset = player.originalColliderOffset;
             transform.rotation = Quaternion.identity;
         }
     }
@@ -137,12 +175,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 아이템 충독 감지 및 처리
-        if (collision == null)
-        {
-            return;
-        }
+        if (collision == null) return;
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        if (1 << collision.gameObject.layer == ReadonlyData.ItemLayerMask)
         {
             if (collision.GetComponent<IItem>()?.GetType() == typeof(PotionItem))
             {
@@ -181,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (1 << collision.gameObject.layer == ReadonlyData.ObstacleLayerMask)
         {
             if (SoundManager.Instance != null)
             {
@@ -189,7 +224,5 @@ public class PlayerController : MonoBehaviour
             }
             statHandler.Damage(10, collision);
         }
-
     }
-
 }

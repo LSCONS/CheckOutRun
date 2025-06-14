@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Rigidbody2D rigid { get; private set; }
-    public CapsuleCollider2D coll { get; private set; }
-
+    public Rigidbody2D RigidPlayer { get; private set; }
+    public CapsuleCollider2D ColliderPlayer { get; private set; }
+    public PlayerAnimationHandler PlayerAnimationHandler { get; private set; }
     public int playerMaxHealth = 100;
     public int playerHealth = 100;
     public float jumpForce = 5f;
     public float playerSpeed = 5f;
     public int maxJumpCount = 2;
     public bool isAlive = true;
-    public bool isInvincible = false;
     private float invincibleTime = 1.5f;
     public float InvincibleTime { get { return invincibleTime; } }
 
@@ -23,31 +22,36 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        rigid = GetComponentInChildren<Rigidbody2D>();
-        coll = GetComponentInChildren<CapsuleCollider2D>();
+        RigidPlayer = GetComponentInChildren<Rigidbody2D>();
+        ColliderPlayer = GetComponentInChildren<CapsuleCollider2D>();
+        PlayerAnimationHandler = GetComponentInChildren<PlayerAnimationHandler>();
+        statHandler = GetComponent<StatHandler>();
 
-        if (rigid == null)
+        if (RigidPlayer == null)
         {
             Debug.LogError("Player: Rigidbody2D를 찾을 수 없습니다!");
         }
-        if (coll == null)
+        if (ColliderPlayer == null)
         {
             Debug.LogError("Player: CapsuleCollider2D를 찾을 수 없습니다!");
         }
 
-        originalColliderSize = coll != null ? coll.size : Vector2.zero;
+        originalColliderSize = ColliderPlayer != null ? ColliderPlayer.size : Vector2.zero;
     }
+
 
     private void Start()
     {
-        statHandler = GetComponent<StatHandler>();
         StartCoroutine(DecreaseHealthOverTime());
         TimeManager.Instance.AddGameTime(transform.position.x);
     }
+
+
     private void Update()
     {
         TimeManager.Instance.AddGameTime(transform.position.x); //한픽셀움직인거리당 3분씩 더해지도록
     }
+
 
     private IEnumerator DecreaseHealthOverTime()
     {

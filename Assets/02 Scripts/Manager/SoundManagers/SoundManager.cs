@@ -16,13 +16,13 @@ public class SoundManager : MonoBehaviour
     /// <summary>
     /// BGM 볼륨을 가져오거나 설정합니다. 설정 시 PlayerPrefs에 저장됩니다.
     /// </summary>
-    public float bgmVolume
+    public float BGMVolume
     {
         get { return _bgmVolume; }
         set
         {
             _bgmVolume = Mathf.Clamp01(value);
-            PlayerPrefs.SetFloat("BGMVolume", _bgmVolume);
+            PlayerPrefs.SetFloat(ReadonlyData.BGMVolumePlayerPrefabs, _bgmVolume);
             PlayerPrefs.Save();
 
             if (bgmManager != null)
@@ -33,13 +33,13 @@ public class SoundManager : MonoBehaviour
     /// <summary>
     /// SFX 볼륨을 가져오거나 설정합니다. 설정 시 PlayerPrefs에 저장됩니다.
     /// </summary>
-    public float sfxVolume
+    public float SFXVolume
     {
         get { return _sfxVolume; }
         set
         {
             _sfxVolume = Mathf.Clamp01(value);
-            PlayerPrefs.SetFloat("SFXVolume", _sfxVolume);
+            PlayerPrefs.SetFloat(ReadonlyData.SFXVolumePlayerPrefabs, _sfxVolume);
             PlayerPrefs.Save();
 
             if (sfxManager != null)
@@ -63,8 +63,8 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        _bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1.0f);
-        _sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+        _bgmVolume = PlayerPrefs.GetFloat(ReadonlyData.BGMVolumePlayerPrefabs, 1.0f);
+        _sfxVolume = PlayerPrefs.GetFloat(ReadonlyData.SFXVolumePlayerPrefabs, 1.0f);
 
         // BGMManager와 SFXManager도 DontDestroyOnLoad 유지
         if (bgmManager == null)

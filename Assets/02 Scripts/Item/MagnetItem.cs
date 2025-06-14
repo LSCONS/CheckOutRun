@@ -13,8 +13,9 @@ public class MagnetItem : MonoBehaviour, IItem
 
     private void Start()
     {
-        absorber = GameObject.Find("Player").transform.Find("Absorber")?.gameObject;
-        absorber1 = GameObject.Find("Player").transform.Find("Absorber1")?.gameObject;
+        Transform trPlayer = GameObject.FindWithTag(ReadonlyData.PlayerTagName).transform;
+        absorber = trPlayer.Find("Absorber")?.gameObject;
+        absorber1 = trPlayer.Find("Absorber1")?.gameObject;
 
         if (absorber == null)
         {

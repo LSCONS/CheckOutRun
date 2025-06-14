@@ -28,16 +28,16 @@ public class LoadingScene : MonoBehaviour
         SettingObject.SetActive(true);
         yield return new WaitForSeconds(0.7f);
         rb.AddForce(new Vector2(200, 300));
-        animationHandler.IsJump1 = true;
+        animationHandler.IsJump1Parameter = true;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        animationHandler.IsJump1 = false;
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        animationHandler.IsJump1Parameter = false;
+        if (1 << collision.gameObject.layer == ReadonlyData.GroundLayerMask)
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            animationHandler.IsGround = true;
+            animationHandler.IsGroundParameter = true;
         }
     }
 }

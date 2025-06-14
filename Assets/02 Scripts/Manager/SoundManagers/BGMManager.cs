@@ -30,7 +30,7 @@ public class BGMManager : MonoBehaviour
         {
             bgmMult = volume;
             bgmSource.clip = clip;
-            UpdateVolume(SoundManager.Instance.bgmVolume);
+            UpdateVolume(SoundManager.Instance.BGMVolume);
             bgmSource.loop = true;
             bgmSource.Play();
         }

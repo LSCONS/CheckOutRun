@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,7 +26,7 @@ public class MainUI : MonoBehaviour
         dimPanel.gameObject.SetActive(false);
         pausePopup.gameObject.SetActive(false);
 
-        highScore.text = PlayerPrefs.GetInt("bestScore").ToString();
+        highScore.text = PlayerPrefs.GetInt(ReadonlyData.BestScorePlayerPrefabs).ToString();
         GetHighTime();
 
         settingBtn.onClick.AddListener(OnClickSetting);
@@ -62,7 +59,7 @@ public class MainUI : MonoBehaviour
 
     void GetHighTime()
     {
-        float gameTime = PlayerPrefs.GetFloat("bestTime");
+        float gameTime = PlayerPrefs.GetFloat(ReadonlyData.BestScorePlayerPrefabs);
 
         int hours = Mathf.FloorToInt(gameTime / 60);
         int minutes = Mathf.FloorToInt(gameTime % 60);

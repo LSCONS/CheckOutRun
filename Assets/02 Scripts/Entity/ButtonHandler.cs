@@ -19,9 +19,9 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if(GameObject.Find("Player") != null)
+        if(GameObject.FindWithTag(ReadonlyData.PlayerTagName) != null)
         {
-            playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+            playerController = GameObject.FindWithTag(ReadonlyData.PlayerTagName).GetComponent<PlayerController>();
         }
     }
     /// <summary>
@@ -30,7 +30,7 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     public void LoadLoadingPage()
     {
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene(ReadonlyData.LoadingSceneName);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     public void LoadResultPage() 
     {
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene(ReadonlyData.ResultSceneName);
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     public void LoadMainPage()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(ReadonlyData.MainSceneName);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     public void PlayerJumpButton()
     {
-        playerController.isFlap = true; 
+        playerController.isJumpFlag = true; 
         playerController.HandleJump();
     }
 
@@ -68,7 +68,7 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     public void PlayerSlideButton()
     {
-        playerController.isSlide = true;
+        playerController.isSlideFlag = true;
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class ButtonHandler : MonoBehaviour
     /// </summary>
     public void PlayerReleaseSlideButton()
     {
-        playerController.isSlide = false; 
+        playerController.isSlideFlag = false; 
     }
 
     /// <summary>

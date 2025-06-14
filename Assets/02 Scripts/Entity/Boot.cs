@@ -14,6 +14,6 @@ public class Boot : MonoBehaviour
     private IEnumerator LoadMainSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(ReadonlyData.MainSceneName);
     }
 }

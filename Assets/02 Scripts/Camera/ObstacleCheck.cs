@@ -6,7 +6,7 @@ public class ObstacleCheck : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if(1 << collision.gameObject.layer == ReadonlyData.ObstacleLayerMask)
         {
             ObstacleAnimationHandler animator = collision.GetComponent<ObstacleAnimationHandler>();
             if(animator != null)

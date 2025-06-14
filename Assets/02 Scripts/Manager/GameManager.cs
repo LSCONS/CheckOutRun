@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         if (isGameClear == IsGameClear.Clear) isWin = true;
         DataManager.Instance.UpdateBestScore();
         TimeManager.Instance.UpdateBestTime();
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene(ReadonlyData.ResultSceneName);
         SoundManager.Instance.bgmManager.StopBGM();
     }
 }
