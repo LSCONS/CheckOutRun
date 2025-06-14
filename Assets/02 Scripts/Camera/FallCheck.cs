@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 /// <summary>
 /// 플레이어가 추락했을 때 게임 오버를 처리하는 클래스입니다.

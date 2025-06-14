@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public interface IItem
 {
-    void OnCollisionEffect();           //惑加罐篮 酒捞袍篮 面倒贸府 鞘夸
+    void OnCollisionEffect();           //靸侅啀氚涭潃 鞎勳澊韰滌潃 於╇弻觳橂Μ 頃勳殧
 }
